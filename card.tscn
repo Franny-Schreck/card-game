@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://c020n5x7omlt7"]
+
+[ext_resource type="Script" path="res://card.gd" id="1_4b5jr"]
+[ext_resource type="Texture2D" uid="uid://76of3323kao3" path="res://assets/card_base.png" id="1_l6uaj"]
+[ext_resource type="FontFile" uid="uid://dghd7hie6kewj" path="res://assets/PixelOperator8-Bold.ttf" id="3_nnu1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mravh"]
+bg_color = Color(0.807843, 0.533333, 0.219608, 0.470588)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="card" type="Node2D"]
+script = ExtResource("1_4b5jr")
+
+[node name="hover_outline" type="Panel" parent="."]
+visible = false
+offset_left = -43.0
+offset_top = -62.0
+offset_right = 43.0
+offset_bottom = 63.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mravh")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_l6uaj")
+
+[node name="display_name" type="Label" parent="."]
+offset_left = -33.0
+offset_top = -52.0
+offset_right = 35.0
+offset_bottom = -43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_nnu1b")
+theme_override_font_sizes/font_size = 8
+
+[node name="collider" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -39.0
+offset_top = -58.0
+offset_right = 39.0
+offset_bottom = 58.0
+
+[connection signal="gui_input" from="collider" to="." method="_on_collider_gui_input"]
+[connection signal="mouse_entered" from="collider" to="." method="_on_collider_mouse_entered"]
+[connection signal="mouse_exited" from="collider" to="." method="_on_collider_mouse_exited"]
