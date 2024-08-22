@@ -13,21 +13,32 @@ static func create(display_name: String) -> Card:
 	var scene = load("res://card.tscn")
 	var card: Card = scene.instantiate()
 	card.get_node("display_name").text = display_name
-	#card.get_node("collider").mouse_filter = Control.MOUSE_FILTER_PASS
 	return card
 
 
 func _on_collider_mouse_entered() -> void:
-	self.get_node("hover_outline").show()
-	var hand: Hand = self.get_parent()
-	hand.hover_timeout = 0
-	hand.hovered_card = self
+	var parent = self.get_parent()
+
+	if parent is Hand:
+		self.get_node("hover_outline").show()
+		parent.hover_timeout = 0
+		parent.hovered_card = self
+	elif parent is Shop:
+		pass # TODO
+	else:
+		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())
 
 
 func _on_collider_mouse_exited() -> void:
-	self.get_node("hover_outline").hide()
-	var hand: Hand = self.get_parent()
-	hand.hover_timeout = Hand.HOVER_EXIT_DELAY
+	var parent = self.get_parent()
+
+	if parent is Hand:
+		self.get_node("hover_outline").hide()
+		parent.hover_timeout = Hand.HOVER_EXIT_DELAY
+	elif parent is Shop:
+		pass # TODO
+	else:
+		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())
 
 
 func set_clicked(event: InputEvent) -> void:
@@ -41,8 +52,14 @@ func is_click(event: InputEvent) -> bool:
 
 
 func _on_collider_gui_input(event: InputEvent) -> void:
-	var hand: Hand = self.get_parent()
+	var parent = self.get_parent()
 
-	if event.is_action_pressed("mouse_left") and hand.hovered_card == self:
-		self.set_clicked(event)
-		hand.clicked_card = self
+	if parent is Hand:
+		if event.is_action_pressed("mouse_left") and parent.hovered_card == self:
+			self.set_clicked(event)
+			parent.clicked_card = self
+	elif parent is Shop:
+		if event.is_action_pressed("mouse_left"):
+			parent.buy(self)
+	else:
+		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())

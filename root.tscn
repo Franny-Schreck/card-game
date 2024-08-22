@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://by6l74d3rajqa"]
+[gd_scene load_steps=4 format=3 uid="uid://by6l74d3rajqa"]
 
 [ext_resource type="Script" path="res://hand.gd" id="2_o7nvh"]
 [ext_resource type="Script" path="res://board.gd" id="3_1b2fl"]
+[ext_resource type="Script" path="res://shop.gd" id="3_2o8d3"]
 
 [node name="root" type="Node2D"]
 
@@ -18,3 +19,15 @@ script = ExtResource("3_1b2fl")
 position = Vector2(20, 5)
 scale = Vector2(1.07435, 1)
 polygon = PackedVector2Array(30, 40, 20, 300, 600, 300, 540, 50)
+
+[node name="shop" type="Node2D" parent="."]
+position = Vector2(903, 122)
+script = ExtResource("3_2o8d3")
+
+[node name="restock_btn" type="Button" parent="shop"]
+offset_left = 178.0
+offset_top = -98.0
+offset_right = 209.0
+offset_bottom = -69.0
+
+[connection signal="pressed" from="shop/restock_btn" to="shop" method="restock"]

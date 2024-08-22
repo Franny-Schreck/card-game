@@ -23,10 +23,12 @@ var hovered_card: Card = null
 
 var hover_timeout: float = 0
 
+
 func _ready() -> void:
 	self.board = self.get_parent().get_node("board")
 	add_card_to_hand(Card.create("The Card OOOOOOOOOOOOOOOOOOOOOO"))
 	add_card_to_hand(Card.create("The other Card"))
+
 
 func add_card_to_hand(card: Card) -> void:
 	print("Adding card")
@@ -47,6 +49,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("mouse_left") and not self.clicked_card.is_click(event) or event.is_action_pressed("mouse_left"):
 		self.board.play(self.clicked_card)
 		self.clicked_card = null
+
 
 func _process(delta: float) -> void:
 	if hover_timeout != 0:
@@ -84,10 +87,10 @@ func _process(delta: float) -> void:
 		if (i > enlarged_index):
 			angle += ARC_FOCUS_ANGLE_BASE
 
-		var transform = Transform2D()
+		var transf = Transform2D()
 
 		if i == enlarged_index:
-			transform = transform.scaled(Vector2(1.5, 1.5))
+			transf = transf.scaled(Vector2(1.5, 1.5))
 
 		if i == enlarged_index:
 			card.z_index = 2
@@ -95,12 +98,28 @@ func _process(delta: float) -> void:
 		else:
 			card.z_index = 1
 			self.move_child(self.cards[i], i)
-
+		
+		var tween: Tween = null
+		
 		if i == centered_index:
-			transform = transform.translated(Vector2(0, -CLICKED_OFFSET))
-		else:
-			var move_up = ARC_FOCUS_OFFSET_BASE if i == hovered_index and self.clicked_card == null else 0
+			tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+		
+			tween.tween_property(self.cards[i], "position", Vector2(0, -CLICKED_OFFSET), 0.3).from_current()
 			
-			transform = transform.translated(Vector2(0, -(offset + move_up))).rotated(angle).translated(Vector2(0, offset))
+			#transf = transf.translated(Vector2(0, -CLICKED_OFFSET))
+		else:
+			var move_up = ARC_FOCUS_OFFSET_BASE if i == hovered_index and self.clicked_card == null else 0.0
 
-		card.transform = transform
+			transf = transf.translated(Vector2(0, -(offset + move_up))).rotated(angle).translated(Vector2(0, offset))
+
+			var current_card = self.cards[i]
+
+			current_card.transform = transf
+
+			var current_position = current_card.position
+
+			tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
+
+			tween.tween_property(self.cards[i], "position", current_position, 1).from_current()
+			
+		card.transform = transf
