@@ -1,0 +1,11 @@
+NAME balia
+DISPLAYNAME "I'm the (COM)baila my asss"
+DESCRIPTION ""
+IMAGE-PATH ""
+TAGS
+TARGET district
+CONDITION true
+EFFECT
+	(card-from-draw-pile 1 true)
+	(setf + $gp 3)
+	(setf - %contentment 2)

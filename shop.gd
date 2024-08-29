@@ -17,12 +17,11 @@ func _ready() -> void:
 	self.hand = self.get_parent().get_node("hand")
 
 	for i in range(INITIAL_SELECTION_SIZE * 2):
-		self.selection.append(null)
-
-	self.restock()
+		self.selection.append(null)	
 
 func new_card() -> Card:
-	return Card.create("xoxo") # TODO: Create actual card
+	var factory = self.get_parent().get_node("card_factory")
+	return factory.get_card()
 
 # Replaces the shop's current selection with a newly generated one
 func restock() -> void:
@@ -54,7 +53,7 @@ func buy(card: Card) -> bool:
 	return false # TODO
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	assert(self.selection.size() % CARDS_PER_ROW == 0)
 	
 	for i in range(self.selection.size()):
@@ -63,6 +62,6 @@ func _process(delta: float) -> void:
 
 		var col = i % CARDS_PER_ROW
 
-		var row: int = i / CARDS_PER_ROW
+		var row: int = int(i / CARDS_PER_ROW)
 		
 		self.selection[i].transform = Transform2D().translated(Vector2(col * COL_WIDTH, row * ROW_HEIGHT))

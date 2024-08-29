@@ -1,0 +1,25 @@
+NAME test-card
+
+DISPLAYNAME "I'm not a real card 👉👈"
+
+DESCRIPTION "You die. Vrom dissees. Unvair"
+
+IMAGE-PATH "regierung_smaller"
+
+TAGS
+	unlawful
+	blub
+
+TARGET global
+
+CONDITION (< $fl 7)
+
+EFFECT
+	(card-from-draw-pile 1 true)
+	(card-from 1 card-category-unlawful)
+	(setf * $fl (- $fl 3))
+	# (setf - $fl 3)
+	# (setf - $fl 3)
+	# (add-card-to-hand 1 !crime)
+	# (add-state 5 (setf - $fl 1))
+	# (setf + %industry 3)

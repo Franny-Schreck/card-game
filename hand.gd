@@ -3,19 +3,23 @@ extends Node2D
 
 const ARC_ANGLE_BASE: float = 0.1
 
-const ARC_OFFSET_BASE: float = 700
+const ARC_OFFSET_BASE: float = 1100
 
 const ARC_FOCUS_ANGLE_BASE: float = 0.015
 
-const ARC_FOCUS_OFFSET_BASE: float = 50
-
 const HOVER_EXIT_DELAY: float = 0.05
 
-const CLICKED_OFFSET: float = 50
+const FOCUS_UP_OFFSET: float = 110
 
 var board: Board
 
+var card_scripts: Dictionary
+
 var cards: Array[Card] = []
+
+var draw_pile: Array[Card] = []
+
+var discard_pile: Array[Card] = []
 
 var clicked_card: Card = null
 
@@ -26,8 +30,6 @@ var hover_timeout: float = 0
 
 func _ready() -> void:
 	self.board = self.get_parent().get_node("board")
-	add_card_to_hand(Card.create("The Card OOOOOOOOOOOOOOOOOOOOOO"))
-	add_card_to_hand(Card.create("The other Card"))
 
 
 func add_card_to_hand(card: Card) -> void:
@@ -47,6 +49,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_released("mouse_left") and not self.clicked_card.is_click(event) or event.is_action_pressed("mouse_left"):
+		self.clicked_card.get_node("scale_container/click_outline").hide()
 		self.board.play(self.clicked_card)
 		self.clicked_card = null
 
@@ -92,23 +95,22 @@ func _process(delta: float) -> void:
 		if i == enlarged_index:
 			transf = transf.scaled(Vector2(1.5, 1.5))
 
-		if i == enlarged_index:
-			card.z_index = 2
-			self.move_child(self.cards[i], -1)
-		else:
-			card.z_index = 1
-			self.move_child(self.cards[i], i)
-		
-		var tween: Tween = null
+		card.z_index = 1
+		self.move_child(self.cards[i], i)
 		
 		if i == centered_index:
-			tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+			var tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 		
-			tween.tween_property(self.cards[i], "position", Vector2(0, -CLICKED_OFFSET), 0.3).from_current()
+			tween.tween_property(self.cards[i], "position", Vector2(0, -FOCUS_UP_OFFSET), 0.3).from_current()
 			
-			#transf = transf.translated(Vector2(0, -CLICKED_OFFSET))
+		#TODO: move up a little
+		elif i == hovered_index:
+			var move_up = FOCUS_UP_OFFSET if i == hovered_index and self.clicked_card == null else 0.0
+
+			transf = transf.rotated(-angle).translated(Vector2(0, -(offset + move_up))).rotated(angle).translated(Vector2(0, offset))
+
 		else:
-			var move_up = ARC_FOCUS_OFFSET_BASE if i == hovered_index and self.clicked_card == null else 0.0
+			var move_up = FOCUS_UP_OFFSET if i == hovered_index and self.clicked_card == null else 0.0
 
 			transf = transf.translated(Vector2(0, -(offset + move_up))).rotated(angle).translated(Vector2(0, offset))
 
@@ -116,10 +118,79 @@ func _process(delta: float) -> void:
 
 			current_card.transform = transf
 
-			var current_position = current_card.position
+			var base_position = current_card.position
 
-			tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
+			var tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 
-			tween.tween_property(self.cards[i], "position", current_position, 1).from_current()
-			
+			tween.tween_property(current_card, "position", base_position, 0.001).from_current()
+
 		card.transform = transf
+		
+	if hovered_index < self.cards.size():
+		self.cards[enlarged_index].z_index = 2
+		self.move_child(self.cards[enlarged_index], -1)
+
+
+func from_draw_pile(count: int, from_top: bool) -> int:
+	return 0 # TODO
+
+
+func from_discard_pile(count: int, inspect_count: int) -> int:
+	return 0 # TODO
+
+
+func discard_from_hand(count: int) -> int:
+	return 0 # TODO
+
+
+func add_card_from_category(count: int, category_name: String) -> int:
+	return 0 # TODO
+
+
+class ScriptNodeCardFromDrawPile extends ScriptInterpreter.ScriptNode:
+	static func create(token_: String, filename_: String, line_number_: int, line_offset_: int) -> ScriptNode:
+		return ScriptNodeCardFromDrawPile.new().init_helper(2, token_, filename_, line_number_, line_offset_)
+
+	func evaluate(args: Array[ScriptTree], env: ScriptEnvironment) -> int:
+		var hand: Hand = env.package_data["hand"]
+		return hand.from_draw_pile(args[0].evaluate(env), args[1].evaluate(env))
+
+
+class ScriptNodeCardFromDiscardPile extends ScriptInterpreter.ScriptNode:
+	static func create(token_: String, filename_: String, line_number_: int, line_offset_: int) -> ScriptNode:
+		return ScriptNodeCardFromDiscardPile.new().init_helper(2, token_, filename_, line_number_, line_offset_)
+
+	func evaluate(args: Array[ScriptTree], env: ScriptEnvironment) -> int:
+		var hand: Hand = env.package_data["hand"]
+		return hand.from_discard_pile(args[0].evaluate(env), args[1].evaluate(env))
+
+
+class ScriptNodeCardDiscard extends ScriptInterpreter.ScriptNode:
+	static func create(token_: String, filename_: String, line_number_: int, line_offset_: int) -> ScriptNode:
+		return ScriptNodeCardFromDiscardPile.new().init_helper(1, token_, filename_, line_number_, line_offset_)
+
+	func evaluate(args: Array[ScriptTree], env: ScriptEnvironment) -> int:
+		var hand: Hand = env.package_data["hand"]
+		return hand.discard_from_hand(args[0].evaluate(env))
+
+
+class ScriptNodeCardFromCategory extends ScriptInterpreter.ScriptNode:
+	static func create(token_: String, filename_: String, line_number_: int, line_offset_: int) -> ScriptNode:
+		return ScriptNodeCardFromCategory.new().init_helper(2, token_, filename_, line_number_, line_offset_)
+
+	func evaluate(args: Array[ScriptTree], env: ScriptEnvironment) -> int:
+		var hand: Hand = env.package_data["hand"]
+		assert(args[1].node is ScriptNodeCardCategory)
+		return hand.add_card_from_category(args[0].evaluate(env), args[1].category)
+
+
+class ScriptNodeCardCategory extends ScriptInterpreter.ScriptNode:
+	var category: String
+
+	static func create(token_: String, filename_: String, line_number_: int, line_offset_: int) -> ScriptNode:
+		var node = ScriptNodeCardCategory.new().init_helper(0, token_, filename_, line_number_, line_offset_)
+		node.category = token_.substr("card-category-".length())
+		return node
+
+	func evaluate(_args: Array[ScriptTree], _env: ScriptEnvironment) -> int:
+		return 0
