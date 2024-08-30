@@ -20,8 +20,15 @@ func _ready() -> void:
 
 
 func play(card: Card) -> bool:
-	if self.active_district == null:
-		return false
-	else:
-		print("Played " + str(card) + " onto " + str(self.active_district))
+	var factory: CardFactory = self.get_parent().get_node("card_factory")
+	var env: ScriptInterpreter.ScriptEnvironment = factory.create_environment( \
+		self.active_district != null, \
+		{ }, # TODO
+		{ "fl" = 0, "gp" = 0, "cm" = 0 } # TODO
+	)
+
+	if card.card_script.is_applicable(env):
+		card.card_script.apply(env)
 		return true
+	else:
+		return false
