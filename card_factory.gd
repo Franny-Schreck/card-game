@@ -22,6 +22,10 @@ func load_hand_package() -> void:
 		self.get_parent().get_node("hand"))
 
 
+func create_environment(has_target: bool, target_vars: Dictionary, global_vars: Dictionary) -> ScriptInterpreter.ScriptEnvironment:
+	return ScriptInterpreter.ScriptEnvironment.create(has_target, target_vars, global_vars, interpreter.package_data())
+
+
 func _ready() -> void:
 	self.interpreter = self.get_node("script_interpreter")
 	
