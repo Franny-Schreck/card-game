@@ -5,11 +5,15 @@ const ARC_ANGLE_BASE: float = 0.1
 
 const ARC_OFFSET_BASE: float = 1100
 
+const ARC_ANGLE_POW: float = 0.6
+
+const ARC_OFFSET_POW: float = 0.5
+
 const ARC_FOCUS_ANGLE_BASE: float = 0.015
 
-const HOVER_EXIT_DELAY: float = 0.05
-
 const FOCUS_UP_OFFSET: float = 110
+
+const HOVER_EXIT_DELAY: float = 0.05
 
 var board: Board
 
@@ -61,74 +65,23 @@ func _process(delta: float) -> void:
 			hovered_card = null
 		else:
 			hover_timeout -= delta
-	
-	var hovered_index: int = self.cards.find(self.hovered_card) if self.hovered_card != null else 9999
 
-	var clicked_index: int = self.cards.find(self.clicked_card) if self.clicked_card != null else 9999
+	var enlarged_card_index: int = self.cards.find(self.clicked_card)
 
-	var centered_index: int = clicked_index
-	
-	var enlarged_index: int = clicked_index if self.clicked_card != null else hovered_index
+	if enlarged_card_index == -1:
+		enlarged_card_index = self.cards.find(self.hovered_card)
 
-	var card_count = self.cards.size()
-
-	var offset = ARC_OFFSET_BASE * pow(card_count, 0.5)
-
-	var angle_delta = ARC_ANGLE_BASE / pow(card_count, 0.6)
-
-	var angle_offset = ((card_count - 1) * angle_delta) / 2
-
-	if self.hovered_card != null or self.clicked_card != null:
-		angle_offset += ARC_FOCUS_ANGLE_BASE / 2
-
-	for i in range(card_count):
-
-		var card = self.cards[i]
-
-		var angle = i * angle_delta - angle_offset
-
-		if (i > enlarged_index):
-			angle += ARC_FOCUS_ANGLE_BASE
-
-		var transf = Transform2D()
-
-		if i == enlarged_index:
-			transf = transf.scaled(Vector2(1.5, 1.5))
-
+	for i in range(self.cards.size()):
+		var card: Card = self.cards[i]
+		var is_clicked: bool = card == self.clicked_card
+		card.render_in_hand(i, self.cards.size(), enlarged_card_index, is_clicked)
 		card.z_index = 1
-		self.move_child(self.cards[i], i)
-		
-		if i == centered_index:
-			var tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
-		
-			tween.tween_property(self.cards[i], "position", Vector2(0, -FOCUS_UP_OFFSET), 0.3).from_current()
-			
-		#TODO: move up a little
-		elif i == hovered_index:
-			var move_up = FOCUS_UP_OFFSET if i == hovered_index and self.clicked_card == null else 0.0
+		self.move_child(card, i)
 
-			transf = transf.rotated(-angle).translated(Vector2(0, -(offset + move_up))).rotated(angle).translated(Vector2(0, offset))
-
-		else:
-			var move_up = FOCUS_UP_OFFSET if i == hovered_index and self.clicked_card == null else 0.0
-
-			transf = transf.translated(Vector2(0, -(offset + move_up))).rotated(angle).translated(Vector2(0, offset))
-
-			var current_card = self.cards[i]
-
-			current_card.transform = transf
-
-			var base_position = current_card.position
-
-			var tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
-
-			tween.tween_property(current_card, "position", base_position, 0.001).from_current()
-
-		card.transform = transf
-		
-	if hovered_index < self.cards.size():
-		self.cards[enlarged_index].z_index = 2
-		self.move_child(self.cards[enlarged_index], -1)
+	if enlarged_card_index != -1:
+		var enlarged_card: Card = self.cards[enlarged_card_index]
+		enlarged_card.z_index = 2
+		self.move_child(enlarged_card, -1)
 
 
 func from_draw_pile(count: int, from_top: bool) -> int:

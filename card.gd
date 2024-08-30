@@ -23,11 +23,41 @@ static func create_from_script(card_script_: ScriptInterpreter.ScriptBlock) -> C
 	return card
 
 
+func render_in_hand(index_in_hand: int, hand_size: int, enlarged_card_index: int, is_centered: bool) -> void:
+	# Whether the card is enlarged (i.e., its index is equal to enlarged_card_index)
+	var is_enlarged: bool = index_in_hand == enlarged_card_index
+
+	# Distance from the card arc's center point
+	var offset: float = Hand.ARC_OFFSET_BASE * pow(hand_size, Hand.ARC_OFFSET_POW)
+
+	# Angle between cards
+	var angle_delta: float = Hand.ARC_ANGLE_BASE / pow(hand_size, Hand.ARC_ANGLE_POW)
+
+	# Offset applied to the card's angle to 'center' the card arc
+	var angle_offset: float = ((hand_size - 1) * angle_delta) / 2 + (Hand.ARC_FOCUS_ANGLE_BASE / 2 if enlarged_card_index >= 0 and enlarged_card_index <= index_in_hand else 0.0)
+
+	var tf_scale: Vector2 = Vector2(1.5, 1.5) if is_enlarged else Vector2(1, 1)
+
+	var tf_rotate: float = angle_delta * index_in_hand - angle_offset if not is_centered else 0.0
+
+	var tf_up: float = Hand.FOCUS_UP_OFFSET if is_enlarged else 0.0
+
+	var tf_unrotate: float = -tf_rotate if is_enlarged and not is_centered else 0
+
+	self.transform = Transform2D() \
+		.scaled(tf_scale) \
+		.rotated(tf_unrotate) \
+		.translated(Vector2(0, -offset - tf_up)) \
+		.rotated(tf_rotate) \
+		.translated(Vector2(0, offset))
+
+
 func _on_collider_mouse_entered() -> void:
 	var parent = self.get_parent()
 
 	if parent is Hand:
-		self.get_node("scale_container/hover_outline").show()
+		if parent.clicked_card == null:
+			self.get_node("scale_container/hover_outline").show()
 		parent.hover_timeout = 0
 		parent.hovered_card = self
 	elif parent is Shop:
