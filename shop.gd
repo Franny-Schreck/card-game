@@ -5,9 +5,9 @@ const CARDS_PER_ROW = 3
 
 const INITIAL_SELECTION_SIZE = CARDS_PER_ROW
 
-const COL_WIDTH = 90
+const COL_WIDTH = 130
 
-const ROW_HEIGHT = 130
+const ROW_HEIGHT = 200
 
 var hand: Hand = null
 
@@ -62,6 +62,6 @@ func _process(_delta: float) -> void:
 
 		var col = i % CARDS_PER_ROW
 
-		var row: int = int(i / CARDS_PER_ROW)
+		var row: int = i / CARDS_PER_ROW
 		
 		self.selection[i].transform = Transform2D().translated(Vector2(col * COL_WIDTH, row * ROW_HEIGHT))
