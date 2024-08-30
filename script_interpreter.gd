@@ -1,3 +1,6 @@
+# Card Interpreter by Alexander Ripar:
+# https://github.com/AlexanderRipar/gd-card-lisp
+
 class_name ScriptInterpreter
 extends Node
 
@@ -59,27 +62,30 @@ class ScriptNodeGetAndSet extends ScriptNode:
 
 
 class ScriptNodeVariable extends ScriptNode:
+	var is_local: bool
+
+	var variable_name: String
+
 	static func create(token_: String, filename_: String, line_number_: int, line_offset_: int) -> ScriptNode:
-		return ScriptNodeVariable.new().init_helper(0, token_, filename_, line_number_, line_offset_)
+		assert(token_[0] == '%' || token_[0] == '$', "Unexpected variable name '" + token_ + "'. Should start with '$' or '%'")
+		var node = ScriptNodeVariable.new().init_helper(0, token_, filename_, line_number_, line_offset_)
+		node.is_local = token_.begins_with('%')
+		node.variable_name = token_.substr(1)
+		return node
 
 	func set_value(env, value: int) -> int:
-		if token[0] == '$':
-			env.global_vars[token.substr(1)] = value
-		elif token[0] == '%':
-			env.target_vars[token.substr(1)] = value
+		if is_local:
+			env.target_vars[variable_name] = value
 		else:
-			assert(false, "Unexpected variable name '" + token + "'. Should start with '$' or '%'")
+			env.global_vars[variable_name] = value
 		return value
 		
 
 	func evaluate(_args: Array[ScriptTree], env: ScriptEnvironment) -> int:
-		if token[0] == '$':
-			return env.global_vars[token.substr(1)]
-		elif token[0] == '%':
-			return env.target_vars[token.substr(1)]
+		if is_local:
+			return env.target_vars[variable_name]
 		else:
-			assert(false, "Unexpected variable name '" + token + "'. Should start with '$' or '%'")
-			return 0
+			return env.global_vars[variable_name]
 
 
 class ScriptNodeConstant extends ScriptNode:
