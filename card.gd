@@ -5,22 +5,55 @@ const MIN_DRAG_DISTANCE = 10
 
 const MIN_DRAG_TIME = 500
 
-var card_script: ScriptInterpreter.ScriptBlock
+const DEFAULT_CARD_USES = 3
+
+var card_script: Dictionary
 
 var click_position: Vector2
 
 var click_time: int = 0
 
+var remaining_uses: int
 
 
-static func create_from_script(card_script_: ScriptInterpreter.ScriptBlock) -> Card:
+
+static func create_from_script(card_script_: Dictionary) -> Card:
 	var scene = load("res://card.tscn")
 	var card: Card = scene.instantiate()
 	card.card_script = card_script_
-	card.get_node("scale_container/display_name").text = card_script_.display_name
-	card.get_node("scale_container/description_container/description").text = card_script_.description
-	card.get_node("scale_container/artwork").texture = load("res://assets/card_images/" + card_script_.image_path + ".png")
+	card.remaining_uses = int(card_script_.get("USES")) if card_script_.has("USES") else DEFAULT_CARD_USES
+	card.get_node("scale_container/display_name").text = card_script_["DISPLAYNAME"]
+	card.get_node("scale_container/description_container/description").text = card_script_["DESCRIPTION"]
+	card.get_node("scale_container/artwork").texture = load("res://assets/card_images/" + card_script_["IMAGE"] + ".png")
 	return card
+
+
+func is_applicable(env: ScriptInterpreter.ScriptEnvironment) -> bool:
+		env.self_object = self
+
+		if env.has_local != (card_script["TARGET"] == "local"):
+			return false
+
+		var conditions: Array[ScriptInterpreter.ScriptNode] = card_script["CONDITION"]
+
+		for condition in conditions:
+			if not condition.evaluate([], env):
+				return false
+
+		return true
+
+
+func apply(env: ScriptInterpreter.ScriptEnvironment) -> ScriptInterpreter.ScriptEnvironment:
+	env.self_object = self
+
+	var new_env = env.duplicate()
+
+	var effects: Array[ScriptInterpreter.ScriptNode] = card_script["EFFECT"]
+
+	for effect in effects:
+		effect.evaluate([], new_env)
+
+	return new_env
 
 
 func render_in_hand(index_in_hand: int, hand_size: int, enlarged_card_index: int, is_centered: bool) -> void:
@@ -52,6 +85,14 @@ func render_in_hand(index_in_hand: int, hand_size: int, enlarged_card_index: int
 		.translated(Vector2(0, offset))
 
 
+func get_card_container() -> CardContainer2D:
+	var parent = get_parent()
+	if parent is CardContainer2D:
+		return parent
+	else:
+		return null
+
+
 func _on_collider_mouse_entered() -> void:
 	var parent = self.get_parent()
 
@@ -61,6 +102,10 @@ func _on_collider_mouse_entered() -> void:
 		parent.hover_timeout = 0
 		parent.hovered_card = self
 	elif parent is Shop:
+		pass # TODO
+	elif parent is DrawPile:
+		pass # TODO
+	elif parent is DiscardPile:
 		pass # TODO
 	else:
 		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())
@@ -73,6 +118,10 @@ func _on_collider_mouse_exited() -> void:
 		self.get_node("scale_container/hover_outline").hide()
 		parent.hover_timeout = Hand.HOVER_EXIT_DELAY
 	elif parent is Shop:
+		pass # TODO
+	elif parent is DrawPile:
+		pass # TODO
+	elif parent is DiscardPile:
 		pass # TODO
 	else:
 		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())
@@ -105,5 +154,14 @@ func _on_collider_gui_input(event: InputEvent) -> void:
 	elif parent is Shop:
 		if event.is_action_pressed("mouse_left"):
 			parent.buy(self)
+	elif parent is DrawPile:
+		pass # TODO
+	elif parent is DiscardPile:
+		pass # TODO
+	elif parent is PickableCards:
+		if (parent.toggle_picked(self)):
+			self.get_node("scale_container/click_outline").show()
+		else:
+			self.get_node("scale_container/click_outline").hide()
 	else:
 		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())

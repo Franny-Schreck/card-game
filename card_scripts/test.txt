@@ -1,25 +1,28 @@
-NAME test-card
+{NAME} "test-card"
 
-DISPLAYNAME "I'm not a real card 👉👈"
+{DISPLAYNAME} "I'm not a real card 👉👈"
 
-DESCRIPTION "You die. Vrom dissees. Unvair"
+{DESCRIPTION} "You die. Vrom dissees. Unvair"
 
-IMAGE-PATH "regierung_smaller"
+{IMAGE} "regierung_smaller"
 
-TAGS
-	unlawful
-	blub
+{TAGS}
+	"lawless"
+	"faith"
 
-TARGET global
+{TARGET} "local"
 
-CONDITION (< $fl 7)
+{CONDITION}
+	(> $fl 3)
 
-EFFECT
-	(card-from-draw-pile 1 true)
-	(card-from 1 card-category-unlawful)
-	(setf * $fl (- $fl 3))
-	# (setf - $fl 3)
-	# (setf - $fl 3)
-	# (add-card-to-hand 1 !crime)
-	# (add-state 5 (setf - $fl 1))
-	# (setf + %industry 3)
+{EFFECT}
+	(setf - $fl 3)
+	# Choose one of three random cards from dicard pile; Move it to hand
+	# (card-put  <cards>)
+	# (card-take <count> <destination> <sources> <mode>)
+	# (card-pick <count> <out-of-count> <destination> <sources> <mode>)
+	# <destination> :- "hand" | "draw" | "discard"
+	# <count> :- int
+	# <out-of-count> :- int
+	# <sources> :- ( "card:*" ){1,*} | "category:*" | self | "hand" | "draw" | "discard"
+	# <mode> :- "top" | "bottom" | "random"

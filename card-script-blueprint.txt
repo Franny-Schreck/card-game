@@ -1,5 +1,17 @@
-NAME
-TAGS
-TARGET
-CONDITION
-EFFECT
+{NAME} ""
+
+{DISPLAYNAME} ""
+
+{DESCRIPTION} ""
+
+{IMAGE} ""
+
+{TAGS} ...
+
+{TARGET} "global" | "local"
+
+{CONDITION}
+	true
+
+{EFFECT}
+	()

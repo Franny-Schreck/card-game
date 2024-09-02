@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ssmj027r4qgp"]
+
+[ext_resource type="Script" path="res://card_picker.gd" id="1_f1cqt"]
+[ext_resource type="Script" path="res://pickable_cards.gd" id="1_v8ise"]
+[ext_resource type="FontFile" uid="uid://d3xfqxgsknq4o" path="res://assets/fonts/PixelOperator8.ttf" id="2_kgt0o"]
+
+[node name="card_picker" type="Node2D"]
+script = ExtResource("1_f1cqt")
+
+[node name="background_darkener" type="Panel" parent="."]
+z_index = 50
+offset_left = -29.0
+offset_top = -11.0
+offset_right = 1304.0
+offset_bottom = 742.0
+
+[node name="btn_confirm" type="Button" parent="."]
+z_index = 51
+offset_left = 556.0
+offset_top = 467.0
+offset_right = 669.0
+offset_bottom = 502.0
+theme_override_fonts/font = ExtResource("2_kgt0o")
+text = "Confirm"
+
+[node name="pickable_cards" type="Node2D" parent="."]
+z_index = 51
+position = Vector2(613, 361)
+script = ExtResource("1_v8ise")
+
+[connection signal="pressed" from="btn_confirm" to="." method="_on_btn_confirm_pressed"]

@@ -1,11 +1,18 @@
-NAME balia
-DISPLAYNAME "I'm the (COM)baila my asss"
-DESCRIPTION ""
-IMAGE-PATH ""
-TAGS
-TARGET district
-CONDITION true
-EFFECT
-	(card-from-draw-pile 1 true)
+{NAME} "balia"
+
+{DISPLAYNAME} "I'm the (COM)baila my asss"
+
+{DESCRIPTION} "uWu"
+
+{IMAGE} "regierung_smaller"
+
+# {TAGS}
+
+{TARGET} "local"
+
+{CONDITION} true
+
+{EFFECT}
+	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + $gp 3)
 	(setf - %contentment 2)

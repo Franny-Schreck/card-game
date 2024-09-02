@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://by6l74d3rajqa"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_oibvw"]
+[ext_resource type="Script" path="res://hand.gd" id="2_o7nvh"]
+[ext_resource type="Script" path="res://board.gd" id="3_1b2fl"]
+[ext_resource type="Script" path="res://shop.gd" id="3_2o8d3"]
+[ext_resource type="Script" path="res://card_factory.gd" id="4_gpflh"]
+[ext_resource type="Script" path="res://draw_pile.gd" id="4_sk7cc"]
+[ext_resource type="Script" path="res://script_interpreter.gd" id="4_v8tdk"]
+[ext_resource type="Script" path="res://card_container_2d.gd" id="5_4bk5t"]
+[ext_resource type="Texture2D" uid="uid://grfy04jdc75l" path="res://assets/DECIMA_map.png" id="7_qamot"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_oibvw")
+
+[node name="City" type="Sprite2D" parent="."]
+position = Vector2(310, 355)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_qamot")
+
+[node name="hand" type="Node2D" parent="."]
+position = Vector2(814, 707)
+script = ExtResource("2_o7nvh")
+
+[node name="draw_pile" type="Node2D" parent="."]
+script = ExtResource("4_sk7cc")
+
+[node name="discard_pile" type="Node2D" parent="."]
+script = ExtResource("5_4bk5t")
+
+[node name="board" type="Node2D" parent="."]
+script = ExtResource("3_1b2fl")
+
+[node name="district_1" type="Area2D" parent="board"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="board/district_1"]
+position = Vector2(20, 5)
+scale = Vector2(1.07435, 1)
+polygon = PackedVector2Array(225.252, 98, 261.553, 248, 329.502, 305, 445.851, 5)
+
+[node name="shop" type="Node2D" parent="."]
+position = Vector2(903, 166)
+script = ExtResource("3_2o8d3")
+
+[node name="restock_btn" type="Button" parent="shop"]
+offset_left = 178.0
+offset_top = -139.0
+offset_right = 209.0
+offset_bottom = -110.0
+
+[node name="card_factory" type="Node" parent="."]
+script = ExtResource("4_gpflh")
+
+[node name="script_interpreter" type="Node" parent="card_factory"]
+script = ExtResource("4_v8tdk")
+script_prefix = "card_scripts/"
+
+[connection signal="pressed" from="shop/restock_btn" to="shop" method="restock"]
