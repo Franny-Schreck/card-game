@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c020n5x7omlt7"]
+[gd_scene load_steps=8 format=3 uid="uid://c020n5x7omlt7"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_4b5jr"]
 [ext_resource type="Texture2D" uid="uid://76of3323kao3" path="res://assets/card_base.png" id="1_l6uaj"]
@@ -18,6 +18,9 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfq20"]
+bg_color = Color(0.21, 0.21, 0.21, 0.564706)
 
 [node name="card" type="Node2D"]
 script = ExtResource("1_4b5jr")
@@ -70,6 +73,14 @@ theme_override_fonts/font = ExtResource("4_v2txn")
 theme_override_font_sizes/font_size = 8
 text = "Look through your discard pile, you may put a card from your discard pile into your hand"
 autowrap_mode = 3
+
+[node name="disable_outline" type="Panel" parent="scale_container"]
+visible = false
+offset_left = -39.0
+offset_top = -58.0
+offset_right = 39.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfq20")
 
 [node name="collider" type="Control" parent="scale_container"]
 layout_mode = 3

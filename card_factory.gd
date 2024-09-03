@@ -13,6 +13,9 @@ var CARD_SCHEMA: Array[ScriptInterpreter.ScriptProperty] = [
 	ScriptInterpreter.ScriptProperty.create("TARGET", true, false, "global|local"),
 	ScriptInterpreter.ScriptProperty.create("CONDITION", true, true, "", true),
 	ScriptInterpreter.ScriptProperty.create("EFFECT", true, true, "", true),
+	ScriptInterpreter.ScriptProperty.create("SUPPRESS-DISCARD", false, false, "true|false"),
+	ScriptInterpreter.ScriptProperty.create("PLAY-COST", true, false, "[1-9][0-9]*"),
+	ScriptInterpreter.ScriptProperty.create("SHOP-COST", true, false, "[1-9][0-9]*"),
 ]
 
 var interpreter: ScriptInterpreter
@@ -29,6 +32,7 @@ func load_card_package() -> void:
 		ScriptInterpreter.CustomOperator.create("put-card", board._interp_card_put, 2),
 		ScriptInterpreter.CustomOperator.create("take-card", board._interp_card_take, 3),
 		ScriptInterpreter.CustomOperator.create("pick-card", board._interp_card_pick, 4),
+		ScriptInterpreter.CustomOperator.create("card-count", board._interp_card_count, 1),
 	])
 
 
@@ -51,13 +55,13 @@ func _ready() -> void:
 		if card_script_code == "":
 			var error: Error = FileAccess.get_open_error()
 			if error != OK:
-				print("Could not open card script file '", card_script_filepath, "' (Error ", error, ")")
+				printerr("Could not open card script file '", card_script_filepath, "' (Error ", error, ")")
 				continue
 
-		var card_script = interpreter.load_script(card_script_filename, card_script_code, CARD_SCHEMA)
+		var card_script: Dictionary = interpreter.load_script(card_script_filename, card_script_code, CARD_SCHEMA)
 
-		if card_script == null:
-			print("Could not load '", card_script_filename, "'. Continuing with other cards")
+		if card_script.size() == 0:
+			printerr("Could not load '", card_script_filename, "'. Continuing with other cards")
 			continue
 
 		var script_name = card_script["NAME"]
@@ -65,8 +69,6 @@ func _ready() -> void:
 		self.cards[script_name] = card_script
 
 		self.card_names.append(script_name)
-
-		print(card_script_filename, " -> ", script_name, " (", card_script["DISPLAYNAME"], ")")
 
 		if card_script.has("TAGS"):
 			for category in card_script["TAGS"]:

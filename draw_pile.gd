@@ -9,17 +9,19 @@ func post_ready() -> void:
 		add_card(card_factory.get_card())
 
 
-func add_card(card: Card) -> void:
-	super.add_card(card)
+func add_card(card: Card, position: int = -1) -> void:
+	super.add_card(card, position)
 	card.visible = false
-	if cards.size() <= MAX_RENDERED_CARDS:
-		var card_back: Sprite2D = get_node("card_back_" + str(cards.size() - 1))
-		card_back.visible = true
 
 
 func remove_card(card: Card) -> void:
 	super.remove_card(card)
 	card.visible = true
-	if cards.size() < MAX_RENDERED_CARDS:
-		var card_back: Sprite2D = get_node("card_back_" + str(cards.size()))
-		card_back.visible = false
+
+
+func _process(_delta: float) -> void:
+	var visible_card_back_count: int = min(cards.size(), MAX_RENDERED_CARDS)
+
+	for i in range(MAX_RENDERED_CARDS):
+		var card_back: Sprite2D = get_node("card_back_" + str(i))
+		card_back.visible = i < visible_card_back_count

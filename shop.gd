@@ -1,9 +1,9 @@
 class_name Shop
-extends Node2D
+extends CardContainer2D
 
 const CARDS_PER_ROW = 3
 
-const INITIAL_SELECTION_SIZE = CARDS_PER_ROW * 2
+const INITIAL_SELECTION_SIZE = 6
 
 const COL_WIDTH = 130
 
@@ -11,9 +11,10 @@ const ROW_HEIGHT = 200
 
 var hand: Hand
 
-var card_factory: CardFactory
+var card_positions: Dictionary
 
-var selection: Array[Card] = []
+var max_card_count: int = INITIAL_SELECTION_SIZE
+
 
 func _ready() -> void:
 	self.hand = self.get_parent().get_node("hand")
@@ -21,51 +22,46 @@ func _ready() -> void:
 
 
 func post_ready() -> void:
-	for i in range(INITIAL_SELECTION_SIZE):
-		self.selection.append(null)	
-
 	restock()
+
+
+func add_card(card: Card, _position: int = -1) -> void:
+	assert(_position == -1, "Shop.add_card does not support a non-default position argument")
+	super.add_card(card, _position)
+	card_positions[card] = cards.size() - 1
+
+
+func remove_card(card: Card) -> void:
+	super.remove_card(card)
+	card_positions.erase(card)
 
 
 # Replaces the shop's current selection with a newly generated one
 func restock() -> void:
-	for i in range(self.selection.size()):
-
-		if self.selection[i] != null:
-			self.remove_child(self.selection[i])
-			self.selection[i].queue_free()
-
-		var card = card_factory.get_card()
-		self.selection[i] = card
-		self.add_child(card)
-
-	print("Restocked " + str(self.selection.size()) + " cards")
+	while cards.size() != 0:
+		remove_card(cards[0])
+		
+	for i in range(max_card_count):
+		add_card(card_factory.get_card())
 
 
 func buy(card: Card) -> bool:
 	print("buying " + str(card))
-	var card_index = self.selection.find(card)
 
-	assert(card_index != -1, "Could not find card in shop's selection")
+	# TODO: Check price vs gp
 
-	self.selection[card_index] = null
+	remove_card(card)
+	hand.add_card(card)
 
-	self.remove_child(card)
-
-	self.hand.add_card(card)
-
-	return false # TODO
+	return true
 
 
 func _process(_delta: float) -> void:
-	assert(self.selection.size() % CARDS_PER_ROW == 0)
+	for card in cards:
+		var position: int = card_positions[card]
 
-	for i in range(self.selection.size()):
-		if self.selection[i] == null:
-			continue
+		var col = position % CARDS_PER_ROW
 
-		var col = i % CARDS_PER_ROW
+		var row: int = position / CARDS_PER_ROW
 
-		var row: int = i / CARDS_PER_ROW
-		
-		self.selection[i].transform = Transform2D().translated(Vector2(col * COL_WIDTH, row * ROW_HEIGHT))
+		card.transform = Transform2D().translated(Vector2(col * COL_WIDTH, row * ROW_HEIGHT))

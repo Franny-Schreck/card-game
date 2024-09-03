@@ -13,18 +13,34 @@ var click_position: Vector2
 
 var click_time: int = 0
 
+var suppress_discard: bool
+
 var remaining_uses: int
+
+var hover_outline: Panel
+
+var click_outline: Panel
+
+var disable_outline: Panel
 
 
 
 static func create_from_script(card_script_: Dictionary) -> Card:
 	var scene = load("res://card.tscn")
 	var card: Card = scene.instantiate()
+
 	card.card_script = card_script_
 	card.remaining_uses = int(card_script_.get("USES")) if card_script_.has("USES") else DEFAULT_CARD_USES
+	card.suppress_discard = card_script_.get("SUPPRESS-DISCARD") == "true" if card_script_.has("SUPPRESS-DISCARD") else false
+
 	card.get_node("scale_container/display_name").text = card_script_["DISPLAYNAME"]
 	card.get_node("scale_container/description_container/description").text = card_script_["DESCRIPTION"]
 	card.get_node("scale_container/artwork").texture = load("res://assets/card_images/" + card_script_["IMAGE"] + ".png")
+
+	card.hover_outline = card.get_node("scale_container/hover_outline")
+	card.click_outline = card.get_node("scale_container/click_outline")
+	card.disable_outline = card.get_node("scale_container/disable_outline")
+
 	return card
 
 
@@ -37,7 +53,7 @@ func is_applicable(env: ScriptInterpreter.ScriptEnvironment) -> bool:
 		var conditions: Array[ScriptInterpreter.ScriptNode] = card_script["CONDITION"]
 
 		for condition in conditions:
-			if not condition.evaluate([], env):
+			if not await condition.evaluate([], env):
 				return false
 
 		return true
@@ -51,9 +67,13 @@ func apply(env: ScriptInterpreter.ScriptEnvironment) -> ScriptInterpreter.Script
 	var effects: Array[ScriptInterpreter.ScriptNode] = card_script["EFFECT"]
 
 	for effect in effects:
-		effect.evaluate([], new_env)
+		await effect.evaluate([], new_env)
 
 	return new_env
+
+
+func discard_on_play() -> bool:
+	return not suppress_discard
 
 
 func render_in_hand(index_in_hand: int, hand_size: int, enlarged_card_index: int, is_centered: bool) -> void:
@@ -93,12 +113,19 @@ func get_card_container() -> CardContainer2D:
 		return null
 
 
+func reset() -> void:
+	hover_outline.hide()
+	click_outline.hide()
+	disable_outline.hide()
+	transform = Transform2D()
+
+
 func _on_collider_mouse_entered() -> void:
-	var parent = self.get_parent()
+	var parent = get_parent()
 
 	if parent is Hand:
 		if parent.clicked_card == null:
-			self.get_node("scale_container/hover_outline").show()
+			hover_outline.show()
 		parent.hover_timeout = 0
 		parent.hovered_card = self
 	elif parent is Shop:
@@ -107,15 +134,18 @@ func _on_collider_mouse_entered() -> void:
 		pass # TODO
 	elif parent is DiscardPile:
 		pass # TODO
+	elif parent is PickableCards:
+		if parent.curr_pick_count < parent.required_pick_count or parent.required_pick_count == 1:
+			hover_outline.show()
 	else:
 		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())
 
 
 func _on_collider_mouse_exited() -> void:
-	var parent = self.get_parent()
+	var parent = get_parent()
 
 	if parent is Hand:
-		self.get_node("scale_container/hover_outline").hide()
+		hover_outline.hide()
 		parent.hover_timeout = Hand.HOVER_EXIT_DELAY
 	elif parent is Shop:
 		pass # TODO
@@ -123,6 +153,8 @@ func _on_collider_mouse_exited() -> void:
 		pass # TODO
 	elif parent is DiscardPile:
 		pass # TODO
+	elif parent is PickableCards:
+		hover_outline.hide()
 	else:
 		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())
 
@@ -159,9 +191,10 @@ func _on_collider_gui_input(event: InputEvent) -> void:
 	elif parent is DiscardPile:
 		pass # TODO
 	elif parent is PickableCards:
-		if (parent.toggle_picked(self)):
-			self.get_node("scale_container/click_outline").show()
-		else:
-			self.get_node("scale_container/click_outline").hide()
+		if event.is_action_pressed("mouse_left"):
+			if (parent.toggle_picked(self)):
+				self.get_node("scale_container/click_outline").show()
+			else:
+				self.get_node("scale_container/click_outline").hide()
 	else:
 		assert(false, "Invalid parent of Card. Expected Hand or Shop but got " + parent.get_class())

@@ -1,6 +1,8 @@
 {NAME} "balia"
+{PLAY-COST} "5"
+{SHOP-COST} "2"
 
-{DISPLAYNAME} "I'm the (COM)baila my asss"
+{DISPLAYNAME} "Balia"
 
 {DESCRIPTION} "uWu"
 
@@ -13,6 +15,9 @@
 {CONDITION} true
 
 {EFFECT}
+	(if (< (card-count "draw") 1)
+		(put-card "draw" (take-card -1 "discard" "random"))
+		())
 	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + $gp 3)
 	(setf - %contentment 2)
