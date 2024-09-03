@@ -1,6 +1,8 @@
 class_name District
 extends Node2D
 
+const CHANGE_LIST_FADE_OFFSET = Vector2(0, 50)
+
 var board: Board
 
 var curr_environment: Dictionary = {
@@ -13,6 +15,9 @@ var highlight: Polygon2D
 
 var change_list: Label
 
+var change_list_position: Vector2
+
+var hide_change_list_tween: Tween
 
 func _ready() -> void:
 	prev_environment = curr_environment
@@ -26,7 +31,13 @@ func _ready() -> void:
 	highlight.hide()
 	
 	change_list = get_node("change_list")
+
+	change_list_position = change_list.position
+
+	change_list.position += CHANGE_LIST_FADE_OFFSET
+	change_list.modulate = Color(0.5, 0.5, 0.5, 0)
 	change_list.hide()
+
 
 
 func _on_district_mouse_entered() -> void:
@@ -34,11 +45,15 @@ func _on_district_mouse_entered() -> void:
 	if board.hand.clicked_card != null:
 		if await board.hand.clicked_card.is_applicable(board.script_environment()):
 			highlight.show()
+	else:
+		_show_change_list(0)
 
 
 func _on_district_mouse_exited() -> void:
 	if board.active_district == self:
 		board.active_district = null
+	else:
+		_hide_change_list(0.1)
 	highlight.hide()
 
 
@@ -105,37 +120,43 @@ func apply_building_turn_effects(display_index: int) -> bool:
 
 	if changes.size() != 0:
 		# Do not await this, so it only affects the UI, withou delaying any effects
-		_show_change_list(change_text, 0.15 * pow(display_index, 0.75), 2.5)
+		var show_delay: float = 0.15 * pow(display_index, 0.75)
+		var hide_delay: float = show_delay + 2
+		change_list.text = change_text
+		_show_change_list(show_delay)
+		_hide_change_list(hide_delay)
 		curr_environment = env.local_vars
 		board.global_stats.curr_environment = env.global_vars
 	
 	return changes.size() != 0
 
 
-func _show_change_list(text: String, delay: float, duration: float) -> void:
-	change_list.text = text
+func _show_change_list(delay: float) -> void:
+
+	if hide_change_list_tween != null:
+		hide_change_list_tween.kill()
+		hide_change_list_tween = null
 
 	var tween = create_tween()
 
 	tween.tween_interval(delay)
 
-	tween.tween_callback(func():
-		change_list.show()
-		change_list.position = Vector2(0, 50)
-		change_list.modulate = Color(0.5, 0.5, 0.5, 0))
-	
-	tween.tween_property(change_list, "position", Vector2(0, 0), 0.3)
+	tween.tween_callback(change_list.show)
+
+	tween.tween_property(change_list, "position", change_list_position, 0.3)
 	tween.parallel().tween_property(change_list, "modulate", Color.WHITE, 0.25)
 
-	tween.tween_interval(duration)
 
-	tween.tween_property(change_list, "position", Vector2(0, 50), 0.3)
-	tween.parallel().tween_property(change_list, "modulate", Color(0.5, 0.5, 0.5, 0), 0.25)
+func _hide_change_list(delay: float) -> void:
+	var tween = create_tween()
 
-	tween.tween_callback(change_list.hide)
+	tween.tween_interval(delay)
 
-	#await get_tree().create_timer(delay).timeout
-	#change_list.text = text
-	#change_list.visible = true
-	#await get_tree().create_timer(duration).timeout
-	#change_list.visible = false
+	tween.tween_property(change_list, "position", change_list_position + CHANGE_LIST_FADE_OFFSET, 0.3)
+	tween.parallel().tween_property(change_list, "modulate", Color(0.5, 0.5, 0.5, 0), 0.3)
+
+	tween.tween_callback(func():
+		change_list.hide
+		hide_change_list_tween = null)
+
+	hide_change_list_tween = tween

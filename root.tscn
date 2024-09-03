@@ -103,7 +103,8 @@ polygon = PackedVector2Array(77, 47, 94, 19, 107, -7, 131, -48, 165, -111, 151, 
 texture = ExtResource("9_6cydv")
 script = ExtResource("9_dsncv")
 show_if = "(> %contentment 3)"
-turn_effects = "(setf + $fl 1)"
+turn_effects = "(setf + $fl 1)
+(setf - $gp 1)"
 
 [node name="change_list" type="Label" parent="board/leon_doro"]
 offset_left = -32.0
@@ -114,29 +115,27 @@ theme_override_fonts/font = ExtResource("8_04v0i")
 vertical_alignment = 1
 
 [node name="leon_bianco" type="Node2D" parent="board"]
-position = Vector2(223, 199)
 script = ExtResource("8_7dv2b")
 
 [node name="area" type="Area2D" parent="board/leon_bianco"]
 
 [node name="polygon" type="CollisionPolygon2D" parent="board/leon_bianco/area"]
-position = Vector2(-223, -199)
 polygon = PackedVector2Array(191, 124, 261, 108, 267, 138, 268, 156, 276, 183, 294, 225, 302, 245, 302, 252, 290, 257, 302, 281, 280, 302, 280, 306, 306, 327, 314, 329, 334, 341, 334, 344, 296, 369, 282, 369, 273, 361, 271, 358, 261, 343, 260, 340, 246, 320, 240, 312, 230, 296, 216, 275, 215, 270, 208, 262, 192, 237, 183, 219, 161, 185, 145, 162, 139, 150)
 
 [node name="elements" type="Node2D" parent="board/leon_bianco"]
-position = Vector2(8, 16)
 
 [node name="BoardItem" type="Sprite2D" parent="board/leon_bianco/elements"]
 texture = ExtResource("9_6cydv")
+offset = Vector2(231, 215)
 script = ExtResource("9_dsncv")
 show_if = "(> %contentment 3)"
 turn_effects = "(setf + $fl 1)"
 
 [node name="change_list" type="Label" parent="board/leon_bianco"]
-offset_left = -5.0
-offset_top = -10.0
-offset_right = 35.0
-offset_bottom = 13.0
+offset_left = 219.0
+offset_top = 214.0
+offset_right = 259.0
+offset_bottom = 237.0
 theme_override_fonts/font = ExtResource("8_04v0i")
 vertical_alignment = 1
 
@@ -386,6 +385,7 @@ offset_top = -7.0
 offset_right = 63.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("16_gigqh")
+text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="florin_icon" type="Sprite2D" parent="global_stats"]
@@ -398,6 +398,7 @@ offset_top = -7.0
 offset_right = -4.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("16_gigqh")
+text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="govpt_icon" type="Sprite2D" parent="global_stats"]

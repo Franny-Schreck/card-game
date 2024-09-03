@@ -17,6 +17,7 @@ var card_picker: CardPicker
 
 
 func _ready() -> void:
+	super._ready()
 	self.card_picker = get_parent()
 
 

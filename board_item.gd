@@ -3,7 +3,7 @@ extends Sprite2D
 
 @export var show_if: String
 
-@export var turn_effects: String
+@export_multiline var turn_effects: String
 
 var show_func: ScriptInterpreter.ScriptNode
 
@@ -25,7 +25,6 @@ func _ready() -> void:
 	change_indicator.texture = load("res://assets/god_hand.png")
 	change_indicator.offset = Vector2(35, 0)
 	change_indicator.visible = false
-	add_child(change_indicator)
 
 
 func post_ready() -> void:

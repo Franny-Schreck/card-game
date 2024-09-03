@@ -38,8 +38,8 @@ func _ready() -> void:
 
 
 func post_ready() -> void:
-	add_card(card_factory.get_card())
-	add_card(card_factory.get_card())
+	for i in range(3):
+		add_card(card_factory.get_card())
 
 
 func _input(event: InputEvent) -> void:
