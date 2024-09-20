@@ -3,25 +3,35 @@ extends CardContainer2D
 
 const MAX_RENDERED_CARDS = 5
 
-
-func post_ready() -> void:
-	for i in range(10):
-		add_card(card_factory.get_card())
+var _card_factory: CardFactory
 
 
-func add_card(card: Card, position: int = -1) -> void:
-	super.add_card(card, position)
-	card.visible = false
+func _on_card_attached(card: Card, _index: int) -> void:
+	card.hide()
 
 
-func remove_card(card: Card) -> void:
-	super.remove_card(card)
-	card.visible = true
+func _on_card_detached(card: Card, _index: int) -> void:
+	card.show()
 
 
-func _process(_delta: float) -> void:
+func _on_content_changed(cards: Array[Card]) -> void:
 	var visible_card_back_count: int = min(cards.size(), MAX_RENDERED_CARDS)
 
 	for i in range(MAX_RENDERED_CARDS):
 		var card_back: Sprite2D = get_node("card_back_" + str(i))
 		card_back.visible = i < visible_card_back_count
+
+
+func _ready() -> void:
+	super._ready()
+	_card_factory = get_parent().get_node("card_factory")
+	card_attached.connect(_on_card_attached)
+	card_detached.connect(_on_card_detached)
+	content_changed.connect(_on_content_changed)
+	
+	Root.connect_on_root_ready(self, _on_root_ready)
+
+
+func _on_root_ready() -> void:
+	for i in range(10):
+		add_card(await _card_factory.get_card_by_category("shop"))

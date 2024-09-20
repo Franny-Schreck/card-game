@@ -80,15 +80,44 @@ class _ScriptNodeIf extends ScriptNode:
 			return await args[2].evaluate([], env)
 
 
-class _ScriptNodeList extends ScriptNode:
+class _ScriptNodeEach extends ScriptNode:
 	static func create(_token: String) -> ScriptNode:
-		return _ScriptNodeList.new().init_helper(3)
+		return _ScriptNodeEach.new().init_helper(-1)
 
 	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
-		var result = []
-		for arg in args:
-			result.push_back(await arg.evaluate([], env))
+		var result: Variant = null
+
+		for arg: ScriptNode in args:
+			result = await arg.evaluate([], env)
+
 		return result
+
+
+class _ScriptNodeList extends ScriptNode:
+	static func create(_token: String) -> ScriptNode:
+		return _ScriptNodeList.new().init_helper(-1)
+
+	func evaluate_impl(args: Array[ScriptNode], _env: ScriptEnvironment) -> Variant:
+		return args
+
+
+class _ScriptNodeStep extends ScriptNode:
+	static func create(_token: String) -> ScriptNode:
+		return _ScriptNodeStep.new().init_helper(5)
+
+	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
+		var operator: ScriptNode = args[0]
+		var value = args[1]
+		var steps: Array[ScriptNode] = await args[2].evaluate([], env)
+		var results: Array[ScriptNode] = await args[3].evaluate([], env)
+		var fallback = args[4]
+		
+		assert(steps.size() == results.size())
+		for i in range(steps.size()):
+			if await operator.evaluate([value, steps[i]], env):
+				return await results[i].evaluate([], env)
+
+		return await fallback.evaluate([], env)
 
 
 class _ScriptNodeCount extends ScriptNode:
@@ -104,6 +133,16 @@ class _ScriptNodeCount extends ScriptNode:
 		else:
 			assert(false, "Unexpected argument type")
 			return null
+
+
+class _ScriptNodeContains extends ScriptNode:
+	static func create(_token: String) -> ScriptNode:
+		return _ScriptNodeContains.new().init_helper(2)
+
+	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
+		var haystack: Array = await args[0].evaluate([], env)
+		var needle: Variant = await args[1].evaluate([], env)
+		return haystack.has(needle)
 
 
 class _ScriptNodeShow extends ScriptNode:
@@ -131,9 +170,9 @@ class _ScriptNodeGetAndSet extends ScriptNode:
 		return _ScriptNodeGetAndSet.new().init_helper(3)
 
 	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
-		var operator = args[0].evaluate_self(env)
-		var variable_ref = args[1].evaluate_self(env)
-		var new_value = operator.evaluate(ScriptInterpreter._args_array([variable_ref, args[2]]), env)
+		var operator: ScriptNode = args[0].evaluate_self(env)
+		var variable_ref: ScriptNode = args[1].evaluate_self(env)
+		var new_value = await operator.evaluate([variable_ref, args[2]], env)
 		variable_ref.set_value(env, new_value)
 		return new_value
 
@@ -159,7 +198,7 @@ class _ScriptNodeVariable extends ScriptNode:
 			env.global_vars[variable_name] = value
 		return value
 
-	func evaluate_impl(_args: Array[ScriptNode], env: ScriptEnvironment) -> int:
+	func evaluate_impl(_args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
 		if is_local:
 			return env.local_vars[variable_name]
 		else:
@@ -216,7 +255,7 @@ class _ScriptNodeCompLessThanOrEqual extends ScriptNode:
 		return _ScriptNodeCompLessThanOrEqual.new().init_helper(2)
 
 	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> bool:
-		return await args[0].evaluate([], env) >= await args[1].evaluate([], env)
+		return await args[0].evaluate([], env) <= await args[1].evaluate([], env)
 
 
 class _ScriptNodeCompGreaterThan extends ScriptNode:
@@ -334,8 +373,8 @@ class ScriptEnvironment:
 		var env = ScriptEnvironment.new()
 
 		env.has_local = has_local_
-		env.local_vars = local_vars_
-		env.global_vars = global_vars_
+		env.local_vars = local_vars_.duplicate()
+		env.global_vars = global_vars_.duplicate()
 		env.self_object = self_object_
 
 		return env
@@ -348,9 +387,12 @@ class ScriptEnvironment:
 class _ParseState:
 	const BUILTIN_OPERATORS: Dictionary = {
 		"if" = _ScriptNodeIf,
+		"each" = _ScriptNodeEach,
 		"self" = _ScriptNodeSelf,
-		"." = _ScriptNodeList,
+		":" = _ScriptNodeList,
+		"step" = _ScriptNodeStep,
 		"count" = _ScriptNodeCount,
+		"contains" = _ScriptNodeContains,
 		"show" = _ScriptNodeShow,
 		"setf" = _ScriptNodeGetAndSet,
 		"set" = _ScriptNodeSet,

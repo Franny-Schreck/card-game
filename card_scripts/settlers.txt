@@ -1,0 +1,25 @@
+{NAME} "settlers"
+{PLAY-COST} 2
+{SHOP-COST} 5
+
+{DISPLAYNAME} "Settlers"
+
+{DESCRIPTION} "Draw 1 card. Look through 3 random cards in your discard pile, and choose a card from among them to put into your hand."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 60
+
+{TARGET} "local"
+
+{CONDITION}
+	(>= (card-count "discard") 3)
+
+{EFFECT} 
+	(if (< (card-count "draw") 1)
+		(put-card "draw" (take-card -1 "discard" "random"))
+		())
+	(put-card "hand" (take-card 1 "draw" "top"))
+	(put-card "hand" (pick-card 1 3 "discard" "random"))

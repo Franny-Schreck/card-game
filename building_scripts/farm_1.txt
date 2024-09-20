@@ -1,0 +1,10 @@
+{NAME} "farm_1"
+
+{DESCRIPTION} "Gain 1 contentment"
+
+{TYPE} "farm"
+
+{CONDITION} (>= %farm-level 1)
+
+{EFFECT}
+	(setf + %contentment 1)

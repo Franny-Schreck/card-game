@@ -1,0 +1,25 @@
+{NAME} "smuggling"
+{PLAY-COST} 2
+{SHOP-COST} 3
+
+{DISPLAYNAME} "Smuggling"
+
+{DESCRIPTION} "Discard current hand and draw a new hand, one card is a random [unlawful] card."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 60
+
+{TARGET} "global"
+
+{CONDITION} true
+
+{EFFECT}
+	(if (< (card-count "draw") 1)
+		(put-card "draw" (take-card -1 "discard" "random"))
+		())
+	(put-card "discard" (take-card -1 "hand" "top"))
+	(put-card "hand" (take-card 2 "draw" "top"))
+	(put-card "hand" (take-card 1 "category:lawless" "random"))

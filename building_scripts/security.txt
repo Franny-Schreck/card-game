@@ -1,0 +1,10 @@
+{NAME} "security"
+
+{DESCRIPTION} "Gain 1 contentment"
+
+{TYPE} "security"
+
+{CONDITION} (>= %security-level 1)
+
+{EFFECT}
+	(setf + %contentment 1)

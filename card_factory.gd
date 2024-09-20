@@ -1,39 +1,14 @@
 class_name CardFactory
-extends Node
+extends ScriptFactory
 
-@export var card_script_directory: String
+var _global_stats: GlobalStats
 
-var CARD_SCHEMA: Array[ScriptInterpreter.ScriptProperty] = [
-	ScriptInterpreter.ScriptProperty.create("NAME"),
-	ScriptInterpreter.ScriptProperty.create("DISPLAYNAME"),
-	ScriptInterpreter.ScriptProperty.create("DESCRIPTION"),
-	ScriptInterpreter.ScriptProperty.create("IMAGE"),
-	ScriptInterpreter.ScriptProperty.create("TAGS", false, true, "lawless|faith"),
-	ScriptInterpreter.ScriptProperty.create("USES", false, false, "[1-9][0-9]*"),
-	ScriptInterpreter.ScriptProperty.create("TARGET", true, false, "global|local"),
-	ScriptInterpreter.ScriptProperty.create("CONDITION", true, true, "", true),
-	ScriptInterpreter.ScriptProperty.create("EFFECT", true, true, "", true),
-	ScriptInterpreter.ScriptProperty.create("SUPPRESS-DISCARD", false, false, "true|false"),
-	ScriptInterpreter.ScriptProperty.create("PLAY-COST", true, false, "[1-9][0-9]*"),
-	ScriptInterpreter.ScriptProperty.create("SHOP-COST", true, false, "[1-9][0-9]*"),
-]
+var _categories: Dictionary
 
-var interpreter: ScriptInterpreter
-
-var card_names: Array[String]
-
-var cards: Dictionary
-
-var categories: Dictionary
-
-func load_card_package() -> void:
-	var board: Board = get_parent().get_node("board")
-	interpreter.define_operators([
-		ScriptInterpreter.CustomOperator.create("put-card", board._interp_card_put, 2),
-		ScriptInterpreter.CustomOperator.create("take-card", board._interp_card_take, 3),
-		ScriptInterpreter.CustomOperator.create("pick-card", board._interp_card_pick, 4),
-		ScriptInterpreter.CustomOperator.create("card-count", board._interp_card_count, 1),
-	])
+class Category:
+	var scripts: Array[Dictionary]
+	var frequencies: PackedFloat32Array
+	var total_frequency: float
 
 
 func create_environment(global_vars: Dictionary, target_vars: Variant) -> ScriptInterpreter.ScriptEnvironment:
@@ -41,59 +16,88 @@ func create_environment(global_vars: Dictionary, target_vars: Variant) -> Script
 	return ScriptInterpreter.ScriptEnvironment.create(target_vars != null, target_vars if target_vars != null else {}, global_vars)
 
 
-func _ready() -> void:
-	interpreter = get_node("script_interpreter")
-
-	load_card_package()
-
-	var actual_card_script_directory: String = card_script_directory + ('/' if not card_script_directory.ends_with('/') else '')
-
-	for card_script_filename in DirAccess.get_files_at(actual_card_script_directory):
-		var card_script_filepath: String = actual_card_script_directory + card_script_filename
-		var card_script_code: String = FileAccess.get_file_as_string(card_script_filepath)
-
-		if card_script_code == "":
-			var error: Error = FileAccess.get_open_error()
-			if error != OK:
-				printerr("Could not open card script file '", card_script_filepath, "' (Error ", error, ")")
-				continue
-
-		var card_script: Dictionary = interpreter.load_script(card_script_filename, card_script_code, CARD_SCHEMA)
-
-		if card_script.size() == 0:
-			printerr("Could not load '", card_script_filename, "'. Continuing with other cards")
-			continue
-
-		var script_name = card_script["NAME"]
-
-		self.cards[script_name] = card_script
-
-		self.card_names.append(script_name)
-
-		if card_script.has("TAGS"):
-			for category in card_script["TAGS"]:
-				if self.categories.has(category):
-					self.categories[category].append(card_script)
-				else:
-					self.categories[category] = [card_script]
-
-	print("Loaded ", self.cards.size(), " card script", "" if self.cards.size() == 1 else "s")
-
-
-func get_card() -> Card:
-	var index: int = randi_range(0, cards.size() - 1)
-	return Card.create_from_script(cards.get(card_names[index]))
-
-
 func get_card_by_category(category_name: String) -> Card:
-	var cards_in_category = categories.get(category_name)
+	var category: Category = _categories[category_name]
 	
-	if cards_in_category == null:
-		return null
-		
-	var index: int = randi_range(0, cards_in_category.size() - 1)
-	return Card.create_from_script(cards_in_category[index])
+	var n: float = randf_range(0.0, category.total_frequency)
+	
+	for i in range(category.frequencies.size()):
+		n -= category.frequencies[i]
+		if n <= 0:
+			return await Card.create_from_script(category.scripts[i])
+
+	return await Card.create_from_script(category.scripts.back())
 
 
 func get_card_by_name(card_name: String) -> Card:
-	return Card.create_from_script(cards.get(card_name))
+	return await Card.create_from_script(_scripts.get(card_name))
+
+
+func get_script_by_name(card_name: String) -> Dictionary:
+	return _scripts[card_name]
+
+
+func _ready() -> void:
+	super._ready()
+	
+	_global_stats = get_node("/root/root/global_stats")
+
+	var env: ScriptInterpreter.ScriptEnvironment = create_environment(_global_stats.curr_environment, null)
+
+	for script in _scripts.values():
+		if not script.has("TAGS"):
+			continue
+
+		for tag in script["TAGS"]:
+			var category: Category = _categories.get(tag)
+
+			if category == null:
+				category = Category.new()
+				_categories[tag] = category
+
+			category.scripts.append(script)
+
+			var frequency: float = await _get_script_frequency_for_tag(script, tag, env)
+			category.frequencies.append(frequency)
+			category.total_frequency += frequency
+
+	get_node("/root/root/board").environment_changed.connect(_on_environment_changed)
+
+
+func _get_script_frequency_for_tag(script: Dictionary, tag: String, env: ScriptInterpreter.ScriptEnvironment) -> float:
+	env.global_vars["TAG"] = tag
+	var frequency_func: ScriptInterpreter.ScriptNode = script["FREQUENCY"]
+	return float(await frequency_func.evaluate([], env))
+
+
+func _get_schema() -> Array[ScriptInterpreter.ScriptProperty]:
+	return [
+		ScriptInterpreter.ScriptProperty.create("NAME"),
+		ScriptInterpreter.ScriptProperty.create("DISPLAYNAME"),
+		ScriptInterpreter.ScriptProperty.create("DESCRIPTION"),
+		ScriptInterpreter.ScriptProperty.create("IMAGE"),
+		ScriptInterpreter.ScriptProperty.create("TAGS", false, true, "lawless|faith|sticky|keep-on-play|shop"),
+		ScriptInterpreter.ScriptProperty.create("USES", false, false, "[1-9][0-9]*"),
+		ScriptInterpreter.ScriptProperty.create("TARGET", true, false, "global|local"),
+		ScriptInterpreter.ScriptProperty.create("CONDITION", true, true, "", true),
+		ScriptInterpreter.ScriptProperty.create("EFFECT", true, true, "", true),
+		ScriptInterpreter.ScriptProperty.create("PLAY-COST", true, false, "", true),
+		ScriptInterpreter.ScriptProperty.create("SHOP-COST", true, false, "", true),
+		ScriptInterpreter.ScriptProperty.create("ON-TURN-START", false, true, "", true),
+		ScriptInterpreter.ScriptProperty.create("ON-TURN-END", false, true, "", true),
+		ScriptInterpreter.ScriptProperty.create("FREQUENCY", true, false, "", true),
+	]
+
+
+func _on_environment_changed() -> void:
+	var env: ScriptInterpreter.ScriptEnvironment = create_environment(_global_stats.curr_environment, null)
+
+	for tag: String in _categories.keys():
+		var category: Category = _categories[tag]
+
+		category.total_frequency = 0
+
+		for i in range(category.scripts.size()):
+			var frequency: float = await _get_script_frequency_for_tag(category.scripts[i], tag, env)
+			category.frequencies[i] = frequency
+			category.total_frequency += frequency

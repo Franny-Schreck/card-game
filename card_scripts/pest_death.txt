@@ -1,0 +1,24 @@
+{NAME} "pest_death"
+{PLAY-COST} 2
+{SHOP-COST} 2
+
+{DISPLAYNAME} "DEATH"
+
+{DESCRIPTION} "People are dying. Lose 3 Florin and every district 5 contentment"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(put-card "hand" (take-card 1 "card:pest_death" "top"))
+	(setf - $fl 3)
+	(setf - %contentment 5)

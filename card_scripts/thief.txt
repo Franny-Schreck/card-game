@@ -1,0 +1,30 @@
+{NAME} "thief"
+{PLAY-COST} 2
+{SHOP-COST} 1
+
+{DISPLAYNAME} "Thief"
+
+{DESCRIPTION} "Discards one random other card from your hand"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "lawless" "sticky"
+
+{FREQUENCY} 30
+
+{TARGET} "global"
+
+{USES} "1"
+
+{CONDITION}
+	(> (card-count "hand") 1)
+
+{EFFECT}
+	(put-card "discard" (take-card 1 "hand" "random"))
+
+{ON-TURN-START}
+	(if (< (rng 0 100) (* 10 (card-attr self "age")))
+		(each
+			(put-card "discard" self)
+			(put-card "discard" (take-card 1 "hand" "random")))
+		())

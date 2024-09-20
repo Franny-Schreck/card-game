@@ -1,0 +1,118 @@
+CardContainer
+	"hand" - The Hand CardContainer.
+	"draw" - The DrawPile CardContainer.
+	"discard" - The DiscardPile CardContainer.
+
+
+CardGenerator
+	"card:*"     - A single card with the given name. This can also be used as
+				   an array, to indicate multiple specific cards.
+	"category:*" - Cards from the given category. A category consists of all
+				   cards that have the given name in their {TAGS}.
+
+
+put-card <destination> <cards>
+
+	Adds <cards> into <destination>, calling add_card for each of them, in the
+	order they were given in.
+
+	Returns null.
+
+	<cards> - Either an array of Cards or a single Card
+	<destination> One of the CardContainer strings
+
+
+take-card <count> <source> <mode>
+
+	Takes <count> cards from <source>.
+	Taken cards are *NOT* removed from <source> via detach_card, meaning that
+	the resulting array can be discarded, leaving the cards in place.
+
+	Returns the taken cards as an array.
+	
+	<count> - The number of cards to be taken. If there are fewer cards in
+			  <source>, all available cards are taken.
+
+	<source> - One of the CardContainer or CardGenerator strings.
+	
+	<mode> - Indicates how cards shall be taken from <source>:
+		"random" - Takes random cards
+		"top" - Takes the top cards
+		"bottom" - Takes the bottom cards
+
+
+pick-card <count> <out-of-count> <source> <mode>
+
+	Shows a modal UI in which the player can pick <count> cards from a
+	selection of <out-of-count> cards.
+	Cards that are not picked are returned to <source>.
+	Picked cards are *NOT* removed from <source> via detach_card, meaning that
+	the resulting array can be discarded, leaving the cards in place.
+
+	Returns the taken cards as an array.
+	
+	<count> - The number of cards to be picked. This must be less than or equal
+			  to <out-of-count>.
+
+	<out-of-count> - The number of cards from which to pick. This must be
+					 greater than or equal to <count>. If there are fewer than
+					 <out-of-count> cards in <source>, only that many cards are
+					 available for picking. If there fewer than <count> cards
+					 available, only that many cards can be picked.
+
+	<source> - One of the CardContainer or CardGenerator strings or an array
+			   of only "card:*" CardGenerators.
+	
+	<mode> - Indicates how cards shall be taken from <source>:
+		"random" - Takes random cards
+		"top" - Takes the top cards
+		"bottom" - Takes the bottom cards
+
+
+card-count <source>
+
+	Counts the number of cards in <source>.
+	
+	Returns the count as an int.
+	
+	<source> - One of the CardContainer strings.
+
+
+card-attr <card> <attribute>
+
+	Retrieves the <attribute> value from the given <card>.
+
+	Returns the attribute's value, as defined for the particular attribute.
+
+	<card> - A Card object, whose attributes are to be read.
+
+	<attribute> - The attribute to be read:
+		"tags" - Returns the card's {TAGS} as a string array.
+
+
+modify-prices <rounds> <callback>
+
+	Modifies the prices of cards in the shop for <rounds> rounds by invoking
+	<callback>.
+
+	Returns null.
+
+	<rounds> - The number of rounds for which the callback will be active.
+			   Positive numbers indicate the respective number of rounds, with
+			   1 indicating just the current round.
+			   -1 indicates that the callback will be active indefinitely.
+
+	<callback> - A pure function that is invoked whenever a card's price is
+				 updated.
+				 Returns the amount of discount to be applied to the card.
+				 This is invoked with the usual global environment at the point
+				 when the price is calculated. The local environment is however
+				 distinct from the one for {CONDITION} or {EFFECT} and includes
+				 the following:
+					 %price         - The card's unmodified price, as returned
+									  by the card's {SHOP-PRICE} function.
+					 %card          - the Card object which is being modified.
+					 %buy-count     - The number of cards bought so far this
+									  round.
+					 %restock-count - The number of restocks bought so far this
+									  round.

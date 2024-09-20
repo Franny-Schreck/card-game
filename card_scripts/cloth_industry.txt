@@ -1,0 +1,21 @@
+{NAME} "cloth-industry"
+{PLAY-COST} 3
+{SHOP-COST} 4
+
+{DISPLAYNAME} "Cloth Industry"
+
+{DESCRIPTION} "All cards in the shop this round cost 2 Florin less"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 80
+
+{TARGET} "local"
+
+{CONDITION} true
+
+{EFFECT}
+	(modify-prices 1 2)
+	(setf + %cloth-industry-level 1)

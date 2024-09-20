@@ -1,0 +1,26 @@
+{NAME} "taxation"
+{PLAY-COST} 4
+{SHOP-COST} 4
+
+{DISPLAYNAME} "Taxation"
+
+{DESCRIPTION} "Gain 1-5 Florin and lose 1-5 Contentment. The amount is inversely dependent on District's wealth"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 80
+
+{TARGET} "local"
+
+{CONDITION} true
+
+{EFFECT}
+	(setf + $fl (step <= %income (: 5 10 15 20) (: 5 4 3 2) 1))
+	(setf - %contentment (step <= %income (: 5 10 15 20) (: 5 4 3 2) 1))
+	(setf + %taxation-level 1)
+	# TODO: Create new taxation card
+	(if (> %taxation-level 5)
+		(replace-card "taxation" "church")
+		())

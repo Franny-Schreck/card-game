@@ -1,0 +1,11 @@
+{NAME} "farm_2"
+
+{DESCRIPTION} "Gain 1 contentment"
+
+{TYPE} "farm"
+
+{CONDITION} (>= %farm-level 2)
+
+{EFFECT}
+	(setf + %contentment 1)
+	(setf + $gp 1)

@@ -1,0 +1,11 @@
+{NAME} "hospital"
+
+{DESCRIPTION} "Gain 2 contentment, and lose 1 Florin"
+
+{TYPE} "hospital"
+
+{CONDITION} (>= %sanitation-level 2)
+
+{EFFECT}
+	(setf + %contentment 2)
+	(setf - $fl 1)

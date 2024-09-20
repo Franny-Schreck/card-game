@@ -1,0 +1,24 @@
+{NAME} "pest_mice"
+{PLAY-COST} 3
+{SHOP-COST} 2
+
+{DISPLAYNAME} "MICE!!!"
+
+{DESCRIPTION} "A plague of mice has descended upon the city. You lose 3 Florin and every district 5 contentment."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(put-card "hand" (take-card 1 "card:pest_lice" "top"))
+	(setf - $fl 3)
+	(setf - %contentment 5)

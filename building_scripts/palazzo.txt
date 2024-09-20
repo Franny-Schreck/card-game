@@ -1,0 +1,11 @@
+{NAME} "palazzo"
+
+{DESCRIPTION} "Lose 1 Florin"
+
+{TYPE} "palazzo"
+
+{CONDITION} (>= %palazzo-level 1)
+
+{EFFECT}
+	(setf + $gp 1)
+	(setf - $fl 1)

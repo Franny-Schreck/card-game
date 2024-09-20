@@ -1,0 +1,25 @@
+{NAME} "influence"
+{PLAY-COST} 4
+{SHOP-COST} 5
+
+{DISPLAYNAME} "Influence"
+
+{DESCRIPTION} "Lose 10 fl. Gain 2 gp and 1 contentment."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 70
+
+{TARGET} "local"
+
+{CONDITION}
+	(>= $fl 10)
+
+{EFFECT}
+	(setf - $fl 10)
+	(setf + $gp 2)
+	(setf + %contentment 1)
+	(setf + %palazzo-level 1)
+	# Increase amount of cards in the shop

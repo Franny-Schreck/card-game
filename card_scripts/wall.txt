@@ -1,0 +1,23 @@
+{NAME} "wall"
+{PLAY-COST} 5
+{SHOP-COST} 3
+
+{DISPLAYNAME} "Security"
+
+{DESCRIPTION} "Draw 1 Card."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 70
+
+{TARGET} "local"
+
+{CONDITION} true
+
+{EFFECT}
+	(if (< (card-count "draw") 1)
+		(put-card "draw" (take-card -1 "discard" "random"))
+		())
+	(setf + %security-level 1)

@@ -1,6 +1,12 @@
+class_name Root
 extends Node2D
 
+signal root_ready
+
+
 func _ready() -> void:
-	for child in get_children():
-		if "post_ready" in child:
-			child.post_ready()
+	root_ready.emit()
+
+
+static func connect_on_root_ready(node: Node, on_root_ready: Callable) -> void:
+	node.get_node('/root/root').root_ready.connect(on_root_ready)

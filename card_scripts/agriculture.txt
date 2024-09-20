@@ -1,0 +1,24 @@
+{NAME} "farm"
+{PLAY-COST} 1
+{SHOP-COST} 2
+
+{DISPLAYNAME} "Agriculture"
+
+{DESCRIPTION} "Gain 1 governance point and 2 contentment, lose 2 florin."
+
+{IMAGE} "agriculture"
+
+{TAGS} "shop"
+
+{FREQUENCY} 80
+
+{TARGET} "local"
+
+{CONDITION}
+	(>= $fl 2)
+
+{EFFECT}
+	(setf - $fl 2)
+	(setf + $gp 1)
+	(setf + %contentment 2)
+	(setf + %farm-level 1)

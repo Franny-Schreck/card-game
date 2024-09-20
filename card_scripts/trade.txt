@@ -1,0 +1,22 @@
+{NAME} "trade"
+{PLAY-COST} 5
+{SHOP-COST} 3
+
+{DISPLAYNAME} "Trade routes"
+
+{DESCRIPTION} "+3 Florin. Cards from the shop cost 1 Florin less this round."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 70
+
+{TARGET} "local"
+
+{CONDITION} true
+
+{EFFECT}
+	(setf + $fl 3)
+	(modify-prices 1 1)
+	(setf + %trade-level 1)

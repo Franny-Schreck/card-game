@@ -1,0 +1,10 @@
+{NAME} "well"
+
+{DESCRIPTION} "Gain 1 contentment"
+
+{TYPE} "well"
+
+{CONDITION} (>= %sanitation-level 1)
+
+{EFFECT}
+	(setf + %contentment 1)

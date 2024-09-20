@@ -1,0 +1,23 @@
+{NAME} "church"
+{PLAY-COST} 2
+{SHOP-COST} 5
+
+{DISPLAYNAME} "Church"
+
+{DESCRIPTION} "Lose 10 Florin, and gain 5 governance points. The amount of churches in the city influences the amount of [Faith] cards in the shop"
+
+{IMAGE} "agriculture"
+
+{TAGS} "shop" "faith"
+
+{FREQUENCY} 60
+
+{TARGET} "local"
+
+{CONDITION}
+	(>= $fl 10)
+
+{EFFECT}
+	(setf - $fl 10)
+	(setf + $gp 5)
+	(setf + %church-level 1)

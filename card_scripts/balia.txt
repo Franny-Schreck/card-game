@@ -1,16 +1,18 @@
 {NAME} "balia"
-{PLAY-COST} "5"
-{SHOP-COST} "2"
+{PLAY-COST} 1
+{SHOP-COST} 2
 
 {DISPLAYNAME} "Balia"
 
-{DESCRIPTION} "uWu"
+{DESCRIPTION} "Draw 1 card, gain 3 government points, and lose 2 contentment"
 
 {IMAGE} "regierung_smaller"
 
-# {TAGS}
+{TAGS} "shop"
 
 {TARGET} "local"
+
+{FREQUENCY} 50
 
 {CONDITION} true
 

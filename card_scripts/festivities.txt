@@ -1,0 +1,22 @@
+{NAME} "festivities"
+{PLAY-COST} 5
+{SHOP-COST} 7
+
+{DISPLAYNAME} "Festivities"
+
+{DESCRIPTION} "Increases contentment by 10, Lose 10 Florin."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 30
+
+{TARGET} "global"
+
+{CONDITION}
+	(>= $fl 30)
+
+{EFFECT}
+	# (setf + %contentment 10) TODO!
+	(setf - $fl 10)

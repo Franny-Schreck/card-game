@@ -1,0 +1,10 @@
+{NAME} "other_industry_2"
+
+{DESCRIPTION} "Gain 1 Florin"
+
+{TYPE} "trade"
+
+{CONDITION} (>= %industry-level 2)
+
+{EFFECT}
+	(setf + $fl 1)

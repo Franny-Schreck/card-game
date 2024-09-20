@@ -1,0 +1,22 @@
+{NAME} "welfare"
+{PLAY-COST} 5
+{SHOP-COST} 7
+
+{DISPLAYNAME} "Welfare"
+
+{DESCRIPTION} "Gain 5 contentment, lose 2 Florin for the next 5 rounds"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 60
+
+{TARGET} "local"
+
+{CONDITION} 
+	(>= $fl 3)
+
+{EFFECT}
+	(setf + %contentment 5)
+	(async 5 (setf - $fl 2))

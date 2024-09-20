@@ -1,0 +1,21 @@
+{NAME} "squittino"
+{PLAY-COST} 3
+{SHOP-COST} 4
+
+{DISPLAYNAME} "Squittino"
+
+{DESCRIPTION} "Lose 5 contentment, gain 2 Florin. If played on a district containing an administrative building increase governance points by 3."
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 50
+
+{TARGET} "local"
+
+{CONDITION} true
+
+{EFFECT}
+	(setf - %contentment 5)
+	(setf + $fl 2)

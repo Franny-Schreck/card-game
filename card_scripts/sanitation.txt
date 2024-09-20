@@ -1,0 +1,23 @@
+{NAME} "sanitation"
+{PLAY-COST} 1
+{SHOP-COST} 2
+
+{DISPLAYNAME} "Sanitation"
+
+{DESCRIPTION} "Lose 3 Florin, gain 5 contentment. When played, creates a well and later a hospital."
+
+{IMAGE} "regierung_smaller"
+
+{TARGET} "local"
+
+{TAGS} "shop"
+
+{FREQUENCY} 70
+
+{CONDITION}
+	(>= $fl 3)
+
+{EFFECT}
+	(setf - $fl 3)
+	(setf + %contentment 5)
+	(setf + %sanitation-level 1)
