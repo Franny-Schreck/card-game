@@ -6,6 +6,8 @@ class ScriptCallback:
 	var remaining_turns: int
 	var callback: ScriptInterpreter.ScriptNode
 
+var _card_dumpster: CardContainer2D
+
 var active_district: District = null
 
 var _districts: Array[District]
@@ -105,6 +107,7 @@ func play(card: Card) -> bool:
 
 
 func _ready() -> void:
+	_card_dumpster = get_node("/root/root/card_dumpster")
 	card_factory = get_node("/root/root/card_factory")
 	global_stats = get_node("/root/root/global_stats")
 	hand = get_node("/root/root/hand")
@@ -152,6 +155,7 @@ func _on_btn_end_turn_pressed() -> void:
 	var on_turn_end_env: ScriptInterpreter.ScriptEnvironment = card_factory.create_environment(global_stats.curr_environment, null)
 	for card: Card in hand._cards:
 		on_turn_end_env = await card.on_turn_end(on_turn_end_env)
+
 	global_stats.curr_environment = on_turn_end_env.global_vars
 
 	# Discard hand and redraw from draw pile
@@ -215,9 +219,9 @@ func _on_btn_end_turn_pressed() -> void:
 	_year_events()
 	
 	if global_stats.curr_environment["fl"] < 0:
-		global_stats.curr_environment["gp"] -= global_stats.curr_environment["fl"]
+		global_stats.curr_environment["gp"] += global_stats.curr_environment["fl"]
 		global_stats.curr_environment["fl"] = 0
-		
+
 	if global_stats.curr_environment["gp"] <= 0:
 		pass # TODO: Game over
 
@@ -343,11 +347,7 @@ func _interp_card_put(args: Array[ScriptInterpreter.ScriptNode], env: ScriptInte
 	elif destination_name == "discard":
 		destination = discard_pile
 	elif destination_name == "void":
-		for card: Card in actual_cards:
-			if card.get_card_container() != null:
-				await card.checkpoint_transform().run_void_animation()
-				card.get_card_container().detach_card(card)
-		return
+		destination = _card_dumpster
 	else:
 		assert(false, "Unknown destination name " + destination_name)
 
@@ -449,8 +449,12 @@ func _interp_all_districts(args: Array[ScriptInterpreter.ScriptNode], _env: Scri
 	return null
 
 
-func _interp_play_animation(_args: Array[ScriptInterpreter.ScriptNode], env: ScriptInterpreter.ScriptEnvironment) -> Variant:
-	print(env.self_object, ": Playing animation from script")
-	await env.self_object.run_play_animation(1.3)
-	print(env.self_object, ": Played animation from script")
+func _interp_animate_play(args: Array[ScriptInterpreter.ScriptNode], env: ScriptInterpreter.ScriptEnvironment) -> Variant:
+	var card: Card = await args[0].evaluate([], env)
+	await card.checkpoint_transform().run_play_animation(1.3)
+	return null
+
+
+func _interp_reset_play_costs(_args: Array[ScriptInterpreter.ScriptNode], _env: ScriptInterpreter.ScriptEnvironment) -> Variant:
+	hand.reset_extra_play_cost(-1)
 	return null

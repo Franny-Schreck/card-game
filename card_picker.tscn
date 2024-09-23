@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://d3xfqxgsknq4o" path="res://assets/fonts/PixelOperator8.ttf" id="2_kgt0o"]
 
 [node name="card_picker_root" type="Node2D"]
+z_index = 100
 position = Vector2(599, 285)
 
 [node name="background_darkener" type="Panel" parent="."]

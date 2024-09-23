@@ -2,6 +2,7 @@ CardContainer
 	"hand" - The Hand CardContainer.
 	"draw" - The DrawPile CardContainer.
 	"discard" - The DiscardPile CardContainer.
+	"void" - Removes the given cards from play.
 
 
 CardGenerator
@@ -98,10 +99,24 @@ all-districts <callback>
 	District stats can be accessed as usual using the '%' prefix from inside
 	<callback>.
 
-	Returns null
+	Returns null.
 
 	<callback> - A script node which will run in the context of every district.
 				 The node's result value will be discarded.
+
+
+animate-play <card>
+
+	Runs the on-play animation for the given card.
+	
+	Returns null.
+	
+	<card> - The card whose play animation will be run 
+
+
+reset-play-costs
+
+	Resets the play costs of all cards in the hand.
 
 
 modify-prices <rounds> <callback>

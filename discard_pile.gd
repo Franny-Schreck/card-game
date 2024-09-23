@@ -18,3 +18,7 @@ func _on_card_attached(card: Card, index: int) -> void:
 		true,
 		0.75
 	)
+	
+	await card._animation_complete
+	
+	card.set_extra_play_cost(0)

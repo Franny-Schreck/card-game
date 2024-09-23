@@ -33,6 +33,10 @@ func get_card_by_name(card_name: String) -> Card:
 	return await Card.create_from_script(_scripts.get(card_name))
 
 
+func has_card_with_name(card_name: String) -> bool:
+	return _scripts.has(card_name)
+
+
 func get_script_by_name(card_name: String) -> Dictionary:
 	return _scripts[card_name]
 

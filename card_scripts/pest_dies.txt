@@ -1,6 +1,6 @@
 {NAME} "pest_dies"
-{PLAY-COST} 2
-{SHOP-COST} 2
+{PLAY-COST} -1
+{SHOP-COST} 0
 
 {DISPLAYNAME} "DEATH"
 
@@ -21,8 +21,8 @@
 {ON-TURN-END}
 	(if (!= (card-attr self "age") 0)
 		(each
+			(animate-play self)
 			(setf - $fl (max 0 (- 10 $total-sanitation-level)))
-			animate-play
 			(put-card "void" self)
 			(all-districts (setf - %contentment (max 0 (- 5 %sanitation-level))))
 		)

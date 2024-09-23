@@ -48,8 +48,9 @@ func _ready() -> void:
 	_change_indicator.visible = false
 	_change_indicator.position = Vector2(25, 0) + _calc_right_image_edge() * scale
 	_change_indicator.scale = Vector2.ONE / scale
+	_change_indicator.z_index = 20
 	add_child(_change_indicator)
-	
+
 	texture = null
 
 	_board = get_node("/root/root/board")
@@ -79,7 +80,8 @@ func _get_district() -> District:
 
 	return parent
 
-#TODO!!!
+# TODO: Do this nicely for all images, irrespective of image size vs. actual
+#       sprite size and position
 func _calc_right_image_edge() -> Vector2:
 	var image: Image = _self_sprite.texture.get_image()
 

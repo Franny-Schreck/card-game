@@ -34,6 +34,12 @@ var _card_click_time: int
 var _extra_play_cost: int
 
 
+func reset_extra_play_cost(to: int) -> void:
+	_extra_play_cost = to
+	for card in _cards:
+		card.set_extra_play_cost(_extra_play_cost)
+
+
 func _ready() -> void:
 	super._ready()
 	board = get_parent().get_node("board")
@@ -58,11 +64,13 @@ func _input(event: InputEvent) -> void:
 	if self.clicked_card == null:
 		return
 
-	if event.is_action_released("mouse_left") and not _is_card_click(event) or event.is_action_pressed("mouse_left"):
+	if (event.is_action_released("mouse_left") and not _is_card_click(event)) or event.is_action_pressed("mouse_left"):
 		clicked_card.set_clicked(false)
 		board.play(clicked_card)
 		clicked_card = null
-
+		_redraw(_cards)
+	elif event.is_action_pressed("mouse_right"):
+		clicked_card = null
 		_redraw(_cards)
 
 
@@ -82,7 +90,7 @@ func _redraw(cards: Array[Card]) -> void:
 		)
 
 		card.set_clicked(card == clicked_card)
-		card.set_hovered(card == hovered_card and clicked_card == null)
+		card.set_hovered(card == hovered_card and card._base_play_cost != -1 and clicked_card == null)
 
 		card.z_index = 1
 
@@ -111,7 +119,7 @@ func _on_card_detached(card: Card, _index: int) -> void:
 
 
 func _on_card_input(card: Card, event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left") and hovered_card == card:
+	if event.is_action_pressed("mouse_left") and hovered_card == card and card._base_play_cost != -1:
 		clicked_card = card
 		_card_click_position = event.global_position
 		_card_click_time = Time.get_ticks_msec()
@@ -138,9 +146,7 @@ func _is_card_click(event: InputEvent) -> bool:
 
 
 func _on_new_turn() -> void:
-	_extra_play_cost = 0
-	for card in _cards:
-		card.set_extra_play_cost(_extra_play_cost)
+	reset_extra_play_cost(0)
 
 
 func _on_card_played() -> void:

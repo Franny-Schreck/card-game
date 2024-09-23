@@ -23,3 +23,4 @@
 	(put-card "discard" (take-card -1 "hand" "top"))
 	(put-card "hand" (take-card 2 "draw" "top"))
 	(put-card "hand" (take-card 1 "category:lawless" "random"))
+	reset-play-costs

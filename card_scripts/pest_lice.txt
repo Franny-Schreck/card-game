@@ -1,6 +1,6 @@
 {NAME} "pest_lice"
-{PLAY-COST} 2
-{SHOP-COST} 2
+{PLAY-COST} -1
+{SHOP-COST} 0
 
 {DISPLAYNAME} "LICE"
 
@@ -21,7 +21,7 @@
 {ON-TURN-END}
 	(if (!= (card-attr self "age") 0)
 		(each
-			animate-play
+			(animate-play self)
 			(put-card "void" self)
 			(put-card "hand" (take-card 1 "card:pest_dies" "top"))
 			# TODO: Global contentment change (setf - %contentment 5)

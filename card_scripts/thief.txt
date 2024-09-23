@@ -23,9 +23,10 @@
 	(put-card "discard" (take-card 1 "hand" "random"))
 
 {ON-TURN-START}
-	(if (< (rng 0 100) (* 10 (card-attr self "age")))
+	(if (< (rng 0 100) 100)#(* 10 (card-attr self "age")))
 		(each
-			animate-play
+			(animate-play self)
 			(put-card "void" self)
-			(put-card "discard" (take-card 1 "hand" "random")))
+			# (put-card "discard" (take-card 1 "hand" "random"))
+		)
 		())

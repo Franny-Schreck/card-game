@@ -5,9 +5,9 @@ class PriceModifier:
 	var remaining_turns: int
 	var callback: ScriptInterpreter.ScriptNode
 
-const CARDS_PER_ROW = 3
+const CARDS_PER_COL = 2
 
-const SELECTION_SIZE = 6
+const MAX_SELECTION_SIZE = 6
 
 const COL_WIDTH = 130
 
@@ -35,6 +35,8 @@ var _cards_bought_this_turn: int
 
 var _restocks_this_turn: int
 
+var _selection_size: int
+
 
 func _ready() -> void:
 	super._ready()
@@ -52,17 +54,20 @@ func _ready() -> void:
 	card_input.connect(_on_card_input)
 	card_mouse.connect(_on_card_mouse)
 
+	_selection_size = 2
+
 	Root.connect_on_root_ready(self, _on_root_ready)
 
 	_board.new_turn.connect(_on_new_turn)
 	_board.environment_changed.connect(_on_environment_changed)
 	
-	for index in range(SELECTION_SIZE):
-		var col: int = index % CARDS_PER_ROW
+	for index in range(MAX_SELECTION_SIZE):
+		var row: int = index % CARDS_PER_COL
 
-		var row: int = index / CARDS_PER_ROW
+		var col: int = 2 - index / CARDS_PER_COL
 
 		var hbox: HBoxContainer = HBoxContainer.new()
+		hbox.visible = false
 		hbox.alignment = BoxContainer.ALIGNMENT_CENTER
 		hbox.size = Vector2(100, 0)
 		hbox.position = Vector2(col * COL_WIDTH - 50, row * ROW_HEIGHT + ROW_HEIGHT / 2 - 15)
@@ -87,7 +92,7 @@ func _on_root_ready() -> void:
 func _restock() -> void:
 	detach_all_cards()
 
-	for i in range(SELECTION_SIZE):
+	for i in range(_selection_size):
 		add_card(await _card_factory.get_card_by_category("shop"))
 
 
@@ -104,6 +109,14 @@ func _on_new_turn() -> void:
 
 	_restocks_this_turn = 0
 	_cards_bought_this_turn = 0
+
+	var shop_level: int = 0
+	
+	for var_name: String in _global_stats.curr_environment.keys():
+		if var_name.begins_with("total-") and var_name.ends_with("-level"):
+			shop_level += _global_stats.curr_environment[var_name] / 3
+
+	_selection_size = min(6, 2 + shop_level)
 
 	_restock()
 
@@ -144,9 +157,9 @@ func _redraw(cards: Array[Card]) -> void:
 	for card in cards:
 		var index: int = _card_positions[card]
 
-		var col: int = index % CARDS_PER_ROW
+		var row: int = index % CARDS_PER_COL
 
-		var row: int = index / CARDS_PER_ROW
+		var col: int = 2 - index / CARDS_PER_COL
 
 		card.transform = Transform2D().translated(Vector2(col * COL_WIDTH, row * ROW_HEIGHT))
 

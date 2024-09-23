@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=3 uid="uid://by6l74d3rajqa"]
+[gd_scene load_steps=196 format=3 uid="uid://by6l74d3rajqa"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_oibvw"]
 [ext_resource type="Script" path="res://hand.gd" id="2_o7nvh"]
@@ -193,6 +193,8 @@
 [ext_resource type="Texture2D" uid="uid://nyjb15howvil" path="res://assets/state layer art/industry_other/tailor.png" id="166_3xcys"]
 [ext_resource type="Texture2D" uid="uid://n2p2eamtlap" path="res://assets/state layer art/government/loggia dei lanzi.png" id="168_t7pfk"]
 [ext_resource type="Texture2D" uid="uid://c1qxw5b1y34uk" path="res://assets/state layer art/government/mercato nuovo.png" id="170_t02bp"]
+[ext_resource type="Script" path="res://debug_console.gd" id="194_pwuel"]
+[ext_resource type="Script" path="res://card_dumpster.gd" id="195_023qy"]
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_oibvw")
@@ -1996,5 +1998,17 @@ _script_directory = "res://card_scripts"
 script = ExtResource("45_0quvh")
 _script_directory = "res://building_scripts"
 
+[node name="debug_console" type="LineEdit" parent="."]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 258.0
+offset_bottom = 37.0
+script = ExtResource("194_pwuel")
+
+[node name="card_dumpster" type="Node2D" parent="."]
+script = ExtResource("195_023qy")
+
 [connection signal="pressed" from="board/btn_end_turn" to="board" method="_on_btn_end_turn_pressed"]
 [connection signal="pressed" from="shop/restock_btn" to="shop" method="_on_restock_btn_pressed"]
+[connection signal="gui_input" from="debug_console" to="debug_console" method="_on_gui_input"]
+[connection signal="text_submitted" from="debug_console" to="debug_console" method="_on_text_submitted"]

@@ -78,9 +78,16 @@ func animate_to(to_global_position: Vector2, to_scale: Vector2, to_rotation: flo
 		_old_scale = to_scale
 		_old_rotation = to_rotation
 
+	if get_card_name() == "thief":
+		print(self, ": Animating ", "FORCE" if force_completion else "", "(to = ", to_global_position, ", from = ", _old_global_position, ", duration = ", duration, ")")
+
 	if _tween != null and _tween.is_running():
 		if _force_tween_completion:
+			if get_card_name() == "thief":
+				print("Awaiting previous animation")
 			await _animation_complete
+			if get_card_name() == "thief":
+				print("Awaited previous animation")
 		else:
 			duration = max(duration, _tween_duration - _tween.get_total_elapsed_time())
 			_tween.kill()
@@ -92,13 +99,14 @@ func animate_to(to_global_position: Vector2, to_scale: Vector2, to_rotation: flo
 
 	visible = to_visibility
 
-	z_index = 100
+	z_index = 70
 
 	_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(self, "global_position", to_global_position, duration).from(_old_global_position)
 	_tween.tween_property(self, "scale", to_scale, duration).from(_old_scale)
 	_tween.tween_property(self, "rotation", to_rotation, duration).from(_old_rotation)
-	_tween.chain().tween_callback(_emit_animation_complete).set_delay(hold)
+	if force_completion:
+		_tween.chain().tween_callback(_emit_animation_complete).set_delay(hold)
 
 	global_position = _old_global_position
 	scale = _old_scale
@@ -108,6 +116,8 @@ func animate_to(to_global_position: Vector2, to_scale: Vector2, to_rotation: flo
 
 
 func _emit_animation_complete() -> void:
+	if get_card_name() == "thief":
+		print("Animation complete")
 	_force_tween_completion = false
 	checkpoint_transform()
 	_animation_complete.emit()
@@ -115,11 +125,6 @@ func _emit_animation_complete() -> void:
 
 func run_play_animation(hold: float = 0.3) -> Signal:
 	animate_to(Vector2(500, 400), Vector2(2, 2), 0, true, 0.5, hold, true)
-	return _animation_complete
-
-
-func run_void_animation() -> Signal:
-	animate_to(Vector2(get_viewport_rect().size.x + 50, -20), Vector2(0.2, 0.2), 50, true, 0.5, 0.0, true)
 	return _animation_complete
 
 
@@ -163,14 +168,12 @@ func play(env: ScriptInterpreter.ScriptEnvironment) -> ScriptInterpreter.ScriptE
 
 	new_env.global_vars["gp"] -= get_play_cost()
 
-	var play_animation_complete: Signal = run_play_animation()
+	run_play_animation()
 
 	var effects: Array[ScriptInterpreter.ScriptNode] = _card_script["EFFECT"]
 
 	for effect in effects:
 		await effect.evaluate([], new_env)
-
-	await play_animation_complete
 
 	return new_env
 
@@ -243,7 +246,7 @@ func shop_cost(env: ScriptInterpreter.ScriptEnvironment) -> int:
 
 func set_extra_play_cost(extra_play_cost: int) -> void:
 	_extra_play_cost = extra_play_cost
-	_play_cost_label.text = str(_base_play_cost + extra_play_cost)
+	_play_cost_label.text = str(_base_play_cost + extra_play_cost) if _base_play_cost != -1 else "-"
 
 
 func increment_age() -> void:
@@ -284,7 +287,6 @@ func reset_graphics() -> void:
 	set_clicked(false)
 	set_hovered(false)
 	set_disabled(false)
-	z_index = 0
 
 
 func _load_from_script(card_script: Dictionary) -> void:

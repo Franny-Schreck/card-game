@@ -1,6 +1,6 @@
 {NAME} "pest_mice"
-{PLAY-COST} 3
-{SHOP-COST} 2
+{PLAY-COST} -1
+{SHOP-COST} 0
 
 {DISPLAYNAME} "MICE!!!"
 
@@ -19,7 +19,7 @@
 {EFFECT} ()
 
 {ON-TURN-END}
-			animate-play
+			(animate-play self)
 			(put-card "void" self)
 			(put-card "hand" (take-card 1 "card:pest_lice" "top"))
 			# TODO: Global contentment change (setf - %contentment 5)
