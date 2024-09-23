@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Lose 10 fl. Gain 2 gp and 1 contentment."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "influence"
 
 {TAGS} "shop"
 

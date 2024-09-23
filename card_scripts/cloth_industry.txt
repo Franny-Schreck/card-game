@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "All cards in the shop this round cost 2 Florin less"
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "cloth-industry"
 
 {TAGS} "shop"
 

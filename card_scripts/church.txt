@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Lose 10 Florin, and gain 5 governance points. The amount of churches in the city influences the amount of [Faith] cards in the shop"
 
-{IMAGE} "agriculture"
+{IMAGE} "church"
 
 {TAGS} "shop" "faith"
 

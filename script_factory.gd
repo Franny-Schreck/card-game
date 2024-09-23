@@ -62,5 +62,7 @@ func _load_custom_operators() -> void:
 		ScriptInterpreter.CustomOperator.create("replace-card", board._interp_replace_card, 2),
 		ScriptInterpreter.CustomOperator.create("rng", board._interp_random, 2),
 		ScriptInterpreter.CustomOperator.create("async", board._interp_recurring_effect, 2),
+		ScriptInterpreter.CustomOperator.create("all-districts", board._interp_all_districts, 1),
+		ScriptInterpreter.CustomOperator.create("animate-play", board._interp_play_animation, 0),
 		ScriptInterpreter.CustomOperator.create("modify-prices", shop._interp_add_price_modifier, 2),
 	])

@@ -1,0 +1,30 @@
+{NAME} "pest_dies"
+{PLAY-COST} 2
+{SHOP-COST} 2
+
+{DISPLAYNAME} "DEATH"
+
+{DESCRIPTION} "People are dying. Lose 3 Florin and every district 5 contentment"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(if (!= (card-attr self "age") 0)
+		(each
+			(setf - $fl (max 0 (- 10 $total-sanitation-level)))
+			animate-play
+			(put-card "void" self)
+			(all-districts (setf - %contentment (max 0 (- 5 %sanitation-level))))
+		)
+		())
+	# TODO: Global contentment change (setf - %contentment 5)

@@ -19,6 +19,8 @@
 {EFFECT} ()
 
 {ON-TURN-END}
-	(put-card "hand" (take-card 1 "card:pest_lice" "top"))
-	(setf - $fl 3)
-	(setf - %contentment 5)
+			animate-play
+			(put-card "void" self)
+			(put-card "hand" (take-card 1 "card:pest_lice" "top"))
+			# TODO: Global contentment change (setf - %contentment 5)
+			(setf - $fl 3)

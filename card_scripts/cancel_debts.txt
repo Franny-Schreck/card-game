@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Play only if you have at least 15 Florin. Improves contentment by 10, but the district won't gain or lose any Florin for the next 5 rounds."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "cancel-debts"
 
 {TAGS} "shop"
 

@@ -122,7 +122,7 @@ func _ready() -> void:
 	_change_list.position += CHANGE_LIST_FADE_OFFSET
 	_change_list.modulate = Color(0.5, 0.5, 0.5, 0)
 	_change_list.hide()
-	
+
 	_board.new_turn.connect(_on_new_turn)
 
 

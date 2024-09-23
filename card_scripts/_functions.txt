@@ -90,6 +90,20 @@ card-attr <card> <attribute>
 		"tags" - Returns the card's {TAGS} as a string array.
 
 
+all-districts <callback>
+
+	Runs <callback> on every district. This can be called from local and global
+	cards.
+
+	District stats can be accessed as usual using the '%' prefix from inside
+	<callback>.
+
+	Returns null
+
+	<callback> - A script node which will run in the context of every district.
+				 The node's result value will be discarded.
+
+
 modify-prices <rounds> <callback>
 
 	Modifies the prices of cards in the shop for <rounds> rounds by invoking

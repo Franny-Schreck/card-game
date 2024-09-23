@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Draw 1 card and gain 3 governance points. When played, creates a guild center or government building."
 
-{IMAGE} "agriculture"
+{IMAGE} "bureaucracy"
 
 {TAGS} "shop"
 

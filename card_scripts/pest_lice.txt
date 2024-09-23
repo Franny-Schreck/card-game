@@ -19,6 +19,11 @@
 {EFFECT} ()
 
 {ON-TURN-END}
-	(put-card "hand" (take-card 1 "card:pest_death" "top"))
-	(setf - $fl 3)
-	(setf - %contentment 5)
+	(if (!= (card-attr self "age") 0)
+		(each
+			animate-play
+			(put-card "void" self)
+			(put-card "hand" (take-card 1 "card:pest_dies" "top"))
+			# TODO: Global contentment change (setf - %contentment 5)
+			(setf - $fl 3))
+		())

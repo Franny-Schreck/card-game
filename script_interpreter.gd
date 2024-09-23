@@ -321,7 +321,7 @@ class _ScriptNodeSub extends ScriptNode:
 	static func create(_token: String) -> ScriptNode:
 		return _ScriptNodeSub.new().init_helper(2)
 
-	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> int:
+	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
 		return await args[0].evaluate([], env) - await args[1].evaluate([], env)
 
 
@@ -329,8 +329,36 @@ class _ScriptNodeMul extends ScriptNode:
 	static func create(_token: String) -> ScriptNode:
 		return _ScriptNodeMul.new().init_helper(2)
 
-	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> int:
+	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
 		return await args[0].evaluate([], env) * await args[1].evaluate([], env)
+
+
+class _ScriptNodeMax extends ScriptNode:
+	static func create(_token: String) -> ScriptNode:
+		return _ScriptNodeMax.new().init_helper(-1)
+
+	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
+		assert(args.size() != 0, "No arguments given to max")
+		var max_arg = -INF
+		for arg: ScriptNode in args:
+			var evaluated_arg = await arg.evaluate([], env)
+			if evaluated_arg > max_arg:
+				max_arg = evaluated_arg
+		return max_arg
+
+
+class _ScriptNodeMin extends ScriptNode:
+	static func create(_token: String) -> ScriptNode:
+		return _ScriptNodeMin.new().init_helper(-1)
+
+	func evaluate_impl(args: Array[ScriptNode], env: ScriptEnvironment) -> Variant:
+		assert(args.size() != 0, "No arguments given to min")
+		var min_arg = INF
+		for arg: ScriptNode in args:
+			var evaluated_arg = await arg.evaluate([], env)
+			if evaluated_arg < min_arg:
+				min_arg = evaluated_arg
+		return min_arg
 
 
 class CustomOperator:
@@ -408,6 +436,8 @@ class _ParseState:
 		"+" = _ScriptNodeAdd,
 		"-" = _ScriptNodeSub,
 		"*" = _ScriptNodeMul,
+		"max" = _ScriptNodeMax,
+		"min" = _ScriptNodeMin,
 	}
 
 	var debug_script_name: String

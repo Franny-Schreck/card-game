@@ -69,29 +69,32 @@ func play(card: Card) -> bool:
 
 		global_stats.change_gp(-play_cost)
 
-		card_played.emit()
-
 		if card.discard_on_play():
 			_detached_card = card
 			hand.detach_card(card)
+			add_child(card)
 
 		var new_env: ScriptInterpreter.ScriptEnvironment = await card.play(env)
 
 		global_stats.curr_environment = new_env.global_vars
+
 		if active_district != null:
 			active_district.curr_environment = new_env.local_vars
 			active_district._on_card_played()
 
+		card_played.emit()
+
 		environment_changed.emit()
 
 		if not card.increment_play_count():
+			await card.run_void_animation()
 			var container: CardContainer2D = card.get_card_container()
 			if container != null:
 				container.detach_card(card)
 		elif _detached_card != null:
+			remove_child(_detached_card)
 			discard_pile.add_card(card)
-
-		_detached_card = null
+			_detached_card = null
 
 		return true
 
@@ -209,6 +212,15 @@ func _on_btn_end_turn_pressed() -> void:
 
 	is_skipped_turn = true
 
+	_year_events()
+	
+	if global_stats.curr_environment["fl"] < 0:
+		global_stats.curr_environment["gp"] -= global_stats.curr_environment["fl"]
+		global_stats.curr_environment["fl"] = 0
+		
+	if global_stats.curr_environment["gp"] <= 0:
+		pass # TODO: Game over
+
 	environment_changed.emit()
 
 
@@ -225,6 +237,17 @@ func _increment_card_ages() -> void:
 
 func _end_turn_cost() -> int:
 	return 0 if skipped_turn_count == 0 else skipped_turn_count + 2
+
+
+func _year_events() -> void:
+	var year: int = global_stats.curr_environment["year"]
+
+	if year == 1360 or year == 1430 or year == 1480 or year == 1530:
+		var replace_index: int = randi_range(0, hand.card_count() - 1)
+		var replaced_card: Card = hand._cards[replace_index]
+		hand.detach_card(replaced_card)
+		hand.add_card(await card_factory.get_card_by_name("pest_mice"))
+		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
 
 
 func _select_cards(count: int, sources, mode: String) -> Array[Card]:
@@ -319,6 +342,12 @@ func _interp_card_put(args: Array[ScriptInterpreter.ScriptNode], env: ScriptInte
 		destination = draw_pile
 	elif destination_name == "discard":
 		destination = discard_pile
+	elif destination_name == "void":
+		for card: Card in actual_cards:
+			if card.get_card_container() != null:
+				await card.checkpoint_transform().run_void_animation()
+				card.get_card_container().detach_card(card)
+		return
 	else:
 		assert(false, "Unknown destination name " + destination_name)
 
@@ -409,4 +438,19 @@ func _interp_replace_card(args: Array[ScriptInterpreter.ScriptNode], env: Script
 	if _detached_card != null and _detached_card.get_card_name() == old_card_name:
 		_detached_card.replace_script(new_script)
 
+	return null
+
+
+func _interp_all_districts(args: Array[ScriptInterpreter.ScriptNode], _env: ScriptInterpreter.ScriptEnvironment) -> Variant:
+	var callback: ScriptInterpreter.ScriptNode = args[0]
+	for district: District in _districts:
+		var local_env: ScriptInterpreter.ScriptEnvironment = card_factory.create_environment(global_stats.curr_environment, district.curr_environment)
+		callback.evaluate([], local_env)
+	return null
+
+
+func _interp_play_animation(_args: Array[ScriptInterpreter.ScriptNode], env: ScriptInterpreter.ScriptEnvironment) -> Variant:
+	print(env.self_object, ": Playing animation from script")
+	await env.self_object.run_play_animation(1.3)
+	print(env.self_object, ": Played animation from script")
 	return null
