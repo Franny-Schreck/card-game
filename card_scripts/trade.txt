@@ -4,9 +4,9 @@
 
 {DISPLAYNAME} "Trade routes"
 
-{DESCRIPTION} "+3 Florin. Cards from the shop cost 1 Florin less this round."
+{DESCRIPTION} "Gain 3 Florin and 2 Governance Points."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "trade"
 
 {TAGS} "shop"
 
@@ -14,9 +14,10 @@
 
 {TARGET} "local"
 
-{CONDITION} true
+{CONDITION}
+	(cond (!= %max-trade-level %trade-level) "There is no more space for trade-related buildings here")
 
 {EFFECT}
 	(setf + $fl 3)
-	(modify-prices 1 1)
+	(setf + $gp 3)
 	(setf + %trade-level 1)

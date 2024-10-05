@@ -14,6 +14,7 @@ var curr_environment: Dictionary = {
 	"total-security-level" = 0,
 	"total-industry-level" = 0,
 	"total-cloth-industry-level" = 0,
+	"total-public-level" = 0,
 	"year" = 1350,
 }
 
@@ -23,7 +24,11 @@ var _board: Board
 
 var _florin_count: Label
 
+var _florin_container: Node2D
+
 var _govpt_count: Label
+
+var _govpt_container: Node2D
 
 var _year: Label
 
@@ -55,9 +60,11 @@ func get_fl() -> int:
 
 
 func _ready() -> void:
-	_board = get_parent().get_node("board")
-	_florin_count = get_node("florin_count")
-	_govpt_count = get_node("govpt_count")
+	_board = get_node("/root/root/board")
+	_florin_container = get_node("florin")
+	_florin_count = _florin_container.get_node("florin_count")
+	_govpt_container = get_node("govpt")
+	_govpt_count = _govpt_container.get_node("govpt_count")
 	_year = _board.get_node("year_counter")
 	prev_environment = curr_environment
 	_board.environment_changed.connect(_on_environment_changed)
@@ -70,9 +77,24 @@ func _update_year_label() -> void:
 
 
 func _on_environment_changed() -> void:
-	_florin_count.text = str(curr_environment["fl"])
-	_govpt_count.text = str(curr_environment["gp"])
+	var old_florin_count: String = _florin_count.text
+	var new_florin_count: String = str(curr_environment["fl"])
+	_florin_count.text = new_florin_count
+
+	if old_florin_count != new_florin_count:
+		var tween = create_tween()
+		tween.tween_property(_florin_container, "scale", Vector2(1.3, 1.3), 0.4)
+		tween.tween_property(_florin_container, "scale", Vector2(1.0, 1.0), 0.4)
+
+	var old_govpt_count: String = _govpt_count.text
+	var new_govpt_count: String = str(curr_environment["gp"])
+	_govpt_count.text = new_govpt_count
 	
+	if old_govpt_count != new_govpt_count:
+		var tween = create_tween()
+		tween.tween_property(_govpt_container, "scale", Vector2(1.3, 1.3), 0.4)
+		tween.tween_property(_govpt_container, "scale", Vector2(1.0, 1.0), 0.4)
+
 	var church_level: int = 0
 	var taxation_level: int = 0
 	var bureaucracy_level: int = 0
@@ -83,6 +105,7 @@ func _on_environment_changed() -> void:
 	var security_level: int = 0
 	var industry_level: int = 0
 	var cloth_industry_level: int = 0
+	var public_level: int = 0
 	
 	for district: District in _board._districts:
 		church_level += district.curr_environment["church-level"]
@@ -95,6 +118,9 @@ func _on_environment_changed() -> void:
 		security_level += district.curr_environment["security-level"]
 		industry_level += district.curr_environment["industry-level"]
 		cloth_industry_level += district.curr_environment["cloth-industry-level"]
+		public_level += district.curr_environment["public-level"]
+		
+	print("san ", sanitation_level)
 
 	curr_environment["total-church-level"] = church_level
 	curr_environment["total-taxation-level"] = taxation_level
@@ -106,8 +132,9 @@ func _on_environment_changed() -> void:
 	curr_environment["total-security-level"] = security_level
 	curr_environment["total-industry-level"] = industry_level
 	curr_environment["total-cloth-industry-level"] = cloth_industry_level
+	curr_environment["total-public-level"] = public_level
 
 
 func _on_new_turn() -> void:
-	curr_environment["year"] += 10
+	curr_environment["year"] += 5
 	_update_year_label()

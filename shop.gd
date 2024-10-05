@@ -13,7 +13,7 @@ const COL_WIDTH = 130
 
 const ROW_HEIGHT = 220
 
-var _hand: Hand
+var _discard_pile: DiscardPile
 
 var _global_stats: GlobalStats
 
@@ -22,6 +22,8 @@ var _board: Board
 var _card_factory: CardFactory
 
 var _restock_btn: Button
+
+var _restock_cost_label: Label
 
 var _card_positions: Dictionary
 
@@ -41,11 +43,13 @@ var _selection_size: int
 func _ready() -> void:
 	super._ready()
 
-	_hand = get_node("/root/root/hand")
+	_discard_pile = get_node("/root/root/discard_pile")
 	_board = get_node("/root/root/board")
 	_card_factory = get_node("/root/root/card_factory")
 	_global_stats = get_node("/root/root/global_stats")
 	_restock_btn = get_node("restock_btn")
+	_restock_cost_label = get_node("restock_cost")
+	_restock_cost_label.text = str(-_calc_restock_price())
 
 	card_moved.connect(_on_card_moved)
 	card_attached.connect(_on_card_attached)
@@ -54,7 +58,7 @@ func _ready() -> void:
 	card_input.connect(_on_card_input)
 	card_mouse.connect(_on_card_mouse)
 
-	_selection_size = 2
+	_selection_size = 1
 
 	Root.connect_on_root_ready(self, _on_root_ready)
 
@@ -109,14 +113,16 @@ func _on_new_turn() -> void:
 
 	_restocks_this_turn = 0
 	_cards_bought_this_turn = 0
+	
+	_restock_cost_label.text = str(-_calc_restock_price())
 
 	var shop_level: int = 0
 	
 	for var_name: String in _global_stats.curr_environment.keys():
-		if var_name.begins_with("total-") and var_name.ends_with("-level"):
-			shop_level += _global_stats.curr_environment[var_name] / 3
+		if var_name.begins_with("total-") and var_name.ends_with("-level") and not var_name == "total-taxation-level":
+			shop_level += _global_stats.curr_environment[var_name] / 4
 
-	_selection_size = min(6, 2 + shop_level)
+	_selection_size = min(6, 1 + shop_level)
 
 	_restock()
 
@@ -146,7 +152,7 @@ func _on_card_input(card: Card, event: InputEvent) -> void:
 		_cards_bought_this_turn += 1
 		_global_stats.change_fl(-int(_card_price_labels[_card_positions[card]].text))
 		_update_all_card_prices()
-		_hand.add_card(card)
+		_discard_pile.add_card(card)
 
 
 func _on_card_mouse(card: Card, is_entered: bool) -> void:
@@ -177,6 +183,8 @@ func _on_restock_btn_pressed() -> void:
 	_restock()
 	_restocks_this_turn += 1
 	_toggle_restock_btn()
+	_restock_cost_label.text = str(-_calc_restock_price())
+	
 
 
 func _update_all_card_prices() -> void:

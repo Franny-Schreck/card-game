@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Lose 3 Florin, gain 5 contentment. When played, creates a well and later a hospital."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "sanitation"
 
 {TARGET} "local"
 
@@ -16,6 +16,7 @@
 
 {CONDITION}
 	(>= $fl 3)
+	(cond (!= %max-sanitation-level %sanitation-level) "There is no more space for sanitary institutions here")
 
 {EFFECT}
 	(setf - $fl 3)

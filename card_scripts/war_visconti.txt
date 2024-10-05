@@ -1,0 +1,25 @@
+{NAME} "war_visconti"
+{PLAY-COST} -1
+{SHOP-COST} 0
+
+{DISPLAYNAME} "Visconti"
+
+{DESCRIPTION} "Filippo Visconti is trying to invade the city, instigated by the exiled Albizzi family. You lose Governance Points and each district 1 contentment."
+
+{IMAGE} "war"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(animate-play self)
+	(put-card "void" self)
+	(setf - $gp (max 0 (- 7 $total-security-level)))
+	(all-districts (setf - %contentment 1))

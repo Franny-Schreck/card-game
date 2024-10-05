@@ -1,10 +1,10 @@
 {NAME} "trade_2"
 
-{DESCRIPTION} "Gain 1 Florin"
+{DESCRIPTION} "Lose 1 Governance Point"
 
 {TYPE} "trade"
 
 {CONDITION} (>= %trade-level 2)
 
 {EFFECT}
-	(setf + $fl 1)
+	(setf - $gp 1)

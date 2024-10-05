@@ -16,6 +16,7 @@
 
 {CONDITION}
 	(>= $fl 10)
+	(cond (!= %max-church-level %church-level) "There is no more space for a big church here")
 
 {EFFECT}
 	(setf - $fl 10)

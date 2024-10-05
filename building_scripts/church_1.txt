@@ -1,0 +1,11 @@
+{NAME} "church_1"
+
+{DESCRIPTION} "Gain 1 contentment and lose 2 Florin"
+
+{TYPE} "church"
+
+{CONDITION} (>= %church-level 1)
+
+{EFFECT}
+	(setf + %contentment 1)
+	(setf - $fl 2)

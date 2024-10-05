@@ -1,0 +1,11 @@
+{NAME} "hospital_2"
+
+{DESCRIPTION} "Gain 1 contentment, and lose 1 Governance Point"
+
+{TYPE} "hospital"
+
+{CONDITION} (>= %sanitation-level 3)
+
+{EFFECT}
+	(setf + %contentment 1)
+	(setf + $gp 1)

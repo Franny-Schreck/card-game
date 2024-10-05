@@ -1,0 +1,24 @@
+{NAME} "war_charles"
+{PLAY-COST} -1
+{SHOP-COST} 0
+
+{DISPLAYNAME} "Charles VIII"
+
+{DESCRIPTION} "Charles VIII of France, helped by Milan, is invading beyond the Alps. The League of Venice tries to stop him. You lose Florin and Governance Points."
+
+{IMAGE} "war"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(animate-play self)
+	(put-card "void" self)
+	(async 5 (setf - $fl (max 0 (- 7 $total-security-level))))

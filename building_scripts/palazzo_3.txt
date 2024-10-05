@@ -1,11 +1,10 @@
 {NAME} "palazzo_3"
 
-{DESCRIPTION} "Gain 1 Governance Point, and lose 1 Florin"
+{DESCRIPTION} "Lose 1 Florin"
 
 {TYPE} "palazzo"
 
 {CONDITION} (>= %palazzo-level 3)
 
 {EFFECT}
-	(setf + $gp 1)
 	(setf - $fl 1)

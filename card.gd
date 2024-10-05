@@ -6,6 +6,8 @@ class GPS:
 	var global_position: Vector2
 	var rotation: float
 
+const SIZE = Vector2(80, 120)
+
 const DEFAULT_CARD_USES = 3
 
 var _card_script: Dictionary
@@ -68,6 +70,10 @@ static func create_from_script(card_script: Dictionary) -> Card:
 	return card
 
 
+func get_size() -> Vector2:
+	return SIZE * scale * 1.5
+
+
 func replace_script(card_script: Dictionary) -> void:
 	_load_from_script(card_script)
 
@@ -78,16 +84,9 @@ func animate_to(to_global_position: Vector2, to_scale: Vector2, to_rotation: flo
 		_old_scale = to_scale
 		_old_rotation = to_rotation
 
-	if get_card_name() == "thief":
-		print(self, ": Animating ", "FORCE" if force_completion else "", "(to = ", to_global_position, ", from = ", _old_global_position, ", duration = ", duration, ")")
-
 	if _tween != null and _tween.is_running():
 		if _force_tween_completion:
-			if get_card_name() == "thief":
-				print("Awaiting previous animation")
 			await _animation_complete
-			if get_card_name() == "thief":
-				print("Awaited previous animation")
 		else:
 			duration = max(duration, _tween_duration - _tween.get_total_elapsed_time())
 			_tween.kill()
@@ -116,8 +115,6 @@ func animate_to(to_global_position: Vector2, to_scale: Vector2, to_rotation: flo
 
 
 func _emit_animation_complete() -> void:
-	if get_card_name() == "thief":
-		print("Animation complete")
 	_force_tween_completion = false
 	checkpoint_transform()
 	_animation_complete.emit()
@@ -126,6 +123,10 @@ func _emit_animation_complete() -> void:
 func run_play_animation(hold: float = 0.3) -> Signal:
 	animate_to(Vector2(500, 400), Vector2(2, 2), 0, true, 0.5, hold, true)
 	return _animation_complete
+
+
+func is_global() -> bool:
+	return _card_script["TARGET"] == "global"
 
 
 func has_transform_checkpoint() -> bool:
@@ -149,7 +150,7 @@ func is_playable(env: ScriptInterpreter.ScriptEnvironment) -> bool:
 
 		env.self_object = self
 
-		if env.has_local != (_card_script["TARGET"] == "local"):
+		if env.has_local == is_global():
 			return false
 
 		var conditions: Array[ScriptInterpreter.ScriptNode] = _card_script["CONDITION"]
@@ -270,6 +271,9 @@ func set_disabled(state: bool) -> void:
 	_disable_outline.visible = state
 
 
+func set_play_cost_highlight(state: bool) -> void:
+	_play_cost_label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7, 1.0) if state else Color(1.0, 1.0, 1.0, 1.0))
+
 func is_disabled() -> bool:
 	return _is_disabled
 
@@ -287,6 +291,7 @@ func reset_graphics() -> void:
 	set_clicked(false)
 	set_hovered(false)
 	set_disabled(false)
+	set_play_cost_highlight(false)
 
 
 func _load_from_script(card_script: Dictionary) -> void:

@@ -16,10 +16,10 @@
 
 {CONDITION}
 	(>= $fl 10)
+	(cond (!= %max-palazzo-level %palazzo-level) "There is no more space for fancy palazzos here")
 
 {EFFECT}
 	(setf - $fl 10)
-	(setf + $gp 2)
+	(setf + $gp 3)
 	(setf + %contentment 1)
 	(setf + %palazzo-level 1)
-	# Increase amount of cards in the shop

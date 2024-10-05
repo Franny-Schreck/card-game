@@ -1,0 +1,10 @@
+{NAME} "pos_contentment"
+
+{DESCRIPTION} ""
+
+{TYPE} ""
+
+{CONDITION} (>= %contentment 5)
+
+{EFFECT}
+	(setf + $gp 1)

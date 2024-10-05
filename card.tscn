@@ -66,22 +66,6 @@ theme_override_font_sizes/font_size = 8
 text = "Probe"
 vertical_alignment = 1
 
-[node name="play_cost_container" type="Node2D" parent="scale_container"]
-position = Vector2(-42, -57.3333)
-scale = Vector2(1.5, 1.5)
-
-[node name="play_cost_icon" type="Sprite2D" parent="scale_container/play_cost_container"]
-position = Vector2(3.55556, 3.11111)
-texture = ExtResource("4_g31dm")
-
-[node name="play_cost_label" type="Label" parent="scale_container/play_cost_container"]
-offset_right = 9.0
-offset_bottom = 8.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_v2txn")
-theme_override_font_sizes/font_size = 8
-text = "1"
-
 [node name="description_container" type="Node2D" parent="scale_container"]
 scale = Vector2(0.5, 0.5)
 
@@ -103,6 +87,22 @@ offset_top = -58.0
 offset_right = 39.0
 offset_bottom = 58.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jfq20")
+
+[node name="play_cost_container" type="Node2D" parent="scale_container"]
+position = Vector2(-42, -57.3333)
+scale = Vector2(1.5, 1.5)
+
+[node name="play_cost_icon" type="Sprite2D" parent="scale_container/play_cost_container"]
+position = Vector2(3.55556, 3.11111)
+texture = ExtResource("4_g31dm")
+
+[node name="play_cost_label" type="Label" parent="scale_container/play_cost_container"]
+offset_right = 9.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_v2txn")
+theme_override_font_sizes/font_size = 8
+text = "1"
 
 [node name="collider" type="Control" parent="scale_container"]
 layout_mode = 3

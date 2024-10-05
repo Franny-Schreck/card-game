@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Draw 1 card, gain 3 government points, and lose 2 contentment"
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "balia"
 
 {TAGS} "shop"
 

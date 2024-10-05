@@ -1,0 +1,10 @@
+{NAME} "neg_contentment2"
+
+{DESCRIPTION} ""
+
+{TYPE} ""
+
+{CONDITION} (<= %contentment -10)
+
+{EFFECT}
+	(setf - $gp 5)

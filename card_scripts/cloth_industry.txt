@@ -14,7 +14,8 @@
 
 {TARGET} "local"
 
-{CONDITION} true
+{CONDITION}
+	(cond (!= %max-cloth-industry-level %cloth-industry-level) "There is no more space for cloth-related workshops here")
 
 {EFFECT}
 	(modify-prices 1 2)

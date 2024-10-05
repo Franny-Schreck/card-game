@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Draw 1 Card."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "security"
 
 {TAGS} "shop"
 
@@ -14,7 +14,8 @@
 
 {TARGET} "local"
 
-{CONDITION} true
+{CONDITION}
+	(cond (!= %max-security-level %security-level) "There is no more space for walls here")
 
 {EFFECT}
 	(if (< (card-count "draw") 1)

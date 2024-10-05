@@ -1,0 +1,25 @@
+{NAME} "war_saints"
+{PLAY-COST} -1
+{SHOP-COST} 0
+
+{DISPLAYNAME} "8 Saints War"
+
+{DESCRIPTION} "Pope Gregory XI is trying to expand into your land. With the help of Milan a peace treaty is negotiated. You lose Florin and Governance Points."
+
+{IMAGE} "war"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(animate-play self)
+	(put-card "void" self)
+	(setf - $fl (max 0 (- 7 $total-security-level)))
+	(setf - $gp (max 0 (- 7 $total-security-level)))

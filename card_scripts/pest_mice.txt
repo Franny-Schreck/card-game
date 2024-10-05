@@ -4,9 +4,9 @@
 
 {DISPLAYNAME} "MICE!!!"
 
-{DESCRIPTION} "A plague of mice has descended upon the city. You lose 3 Florin and every district 5 contentment."
+{DESCRIPTION} "A plague of mice has descended upon the city. You lose 3 Florin and every district 2 contentment."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "pest-mice"
 
 {TAGS} "sticky"
 
@@ -19,8 +19,8 @@
 {EFFECT} ()
 
 {ON-TURN-END}
-			(animate-play self)
-			(put-card "void" self)
-			(put-card "hand" (take-card 1 "card:pest_lice" "top"))
-			# TODO: Global contentment change (setf - %contentment 5)
-			(setf - $fl 3)
+	(animate-play self)
+	(put-card "void" self)
+	(put-card "hand" (take-card 1 "card:pest_lice" "top"))
+	(all-districts (setf - %contentment 2))
+	(setf - $fl 3)

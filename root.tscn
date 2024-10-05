@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=3 uid="uid://by6l74d3rajqa"]
+[gd_scene load_steps=242 format=3 uid="uid://by6l74d3rajqa"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_oibvw"]
 [ext_resource type="Script" path="res://hand.gd" id="2_o7nvh"]
@@ -53,14 +53,17 @@
 [ext_resource type="Texture2D" uid="uid://d0mt5qs663sh5" path="res://assets/state layer art/churches/pc_santapollinare_bue.png" id="26_8nw4o"]
 [ext_resource type="Texture2D" uid="uid://dogxlot3m6371" path="res://assets/state layer art/farms/unicorno_plot1.png" id="26_byybd"]
 [ext_resource type="Texture2D" uid="uid://cipc4hbgucd4q" path="res://assets/state layer art/guilds/guild_furriers skinners.png" id="26_dqbdn"]
+[ext_resource type="Texture2D" uid="uid://cgd2prwxtupfy" path="res://assets/state layer art/contentment/leon_doro_pos_cont.png" id="27_gjc6i"]
 [ext_resource type="Texture2D" uid="uid://bw7gylaxq18fg" path="res://assets/state layer art/churches/pc_santo stefano della badia_bue.png" id="27_i3b3c"]
 [ext_resource type="Texture2D" uid="uid://dp2ejp7wm658w" path="res://assets/state layer art/palazzos/leon bianco_Palazzo Antinori.png" id="27_i6ghu"]
 [ext_resource type="Texture2D" uid="uid://4gwlovdj8n8q" path="res://assets/state layer art/farms/unicorno_plot2.png" id="27_tt2s1"]
 [ext_resource type="Texture2D" uid="uid://bnchriea1gikj" path="res://assets/state layer art/churches/pc_san piero maggiore_chiavi.png" id="28_06wwb"]
+[ext_resource type="Texture2D" uid="uid://m0w0h1yxsl4c" path="res://assets/state layer art/contentment/leon_doro_pos_cont2.png" id="28_fd2cc"]
 [ext_resource type="Texture2D" uid="uid://btegm72xdwu15" path="res://assets/state layer art/farms/unicorno_plot3.png" id="28_h1ey6"]
 [ext_resource type="Texture2D" uid="uid://dwjfhtvm0exve" path="res://assets/state layer art/sanitation/well4.png" id="28_wxttk"]
 [ext_resource type="Texture2D" uid="uid://cbe4s6xxrnpk4" path="res://assets/state layer art/churches/pc_santambrogio_chiavi.png" id="29_d7lpa"]
 [ext_resource type="Texture2D" uid="uid://dy2hq2uontih7" path="res://assets/state layer art/sanitation/well3.png" id="29_f1165"]
+[ext_resource type="Texture2D" uid="uid://d4cj645nalgrs" path="res://assets/state layer art/contentment/neg cont/leon_doro.png" id="29_hjc4a"]
 [ext_resource type="Texture2D" uid="uid://cwwi1rdv4swh6" path="res://assets/state layer art/guilds/guild_armorers and swordsmiths.png" id="29_u6wl5"]
 [ext_resource type="Texture2D" uid="uid://bdr30y5aq2q26" path="res://assets/state layer art/churches/pc_san benedetto_san benedetto.png" id="30_2mpbv"]
 [ext_resource type="Texture2D" uid="uid://fa57ql21u6il" path="res://assets/state layer art/guilds/guild_judges notaries.png" id="30_xdleb"]
@@ -96,15 +99,18 @@
 [ext_resource type="Texture2D" uid="uid://dvdwpbxh7aqmf" path="res://assets/state layer art/guilds/guild_bankers.png" id="42_m2ss8"]
 [ext_resource type="Texture2D" uid="uid://5pyc13owsffx" path="res://assets/state layer art/sanitation/well7.png" id="42_vo0pe"]
 [ext_resource type="Texture2D" uid="uid://m87fd4gy2ffs" path="res://assets/state layer art/guilds/guild_merchants.png" id="43_3yyy8"]
+[ext_resource type="Texture2D" uid="uid://cyv0wfepebthv" path="res://assets/state layer art/contentment/leon_bianco_pos_cont.png" id="43_f6djw"]
 [ext_resource type="Texture2D" uid="uid://durdcaxy11mom" path="res://assets/state layer art/security/drago_wall.png" id="43_hgbvb"]
 [ext_resource type="Texture2D" uid="uid://6hujflu40drp" path="res://assets/state layer art/guilds/guild_blacksmiths.png" id="44_2rten"]
 [ext_resource type="Texture2D" uid="uid://d0uok5tmerwna" path="res://assets/state layer art/sanitation/hospital_Ospizio di Orbatello.png" id="44_ck34l"]
+[ext_resource type="Texture2D" uid="uid://5j863y1nretu" path="res://assets/state layer art/contentment/leon_bianco_pos_cont2.png" id="44_tahey"]
 [ext_resource type="Script" path="res://building_factory.gd" id="45_0quvh"]
 [ext_resource type="Texture2D" uid="uid://c6p46jpp6nhcw" path="res://assets/state layer art/farms/leon nero_plot1.png" id="45_02ktq"]
 [ext_resource type="Texture2D" uid="uid://l4m310jkg5b4" path="res://assets/state layer art/guilds/guild_shoemakers.png" id="45_c43sb"]
 [ext_resource type="Texture2D" uid="uid://c6ip5bqqqhqb7" path="res://assets/state layer art/farms/leon nero_plot2.png" id="46_1l3d6"]
 [ext_resource type="Texture2D" uid="uid://dkevoqxbqs047" path="res://assets/state layer art/trade routes/drago_Porta san frediano.png" id="46_8fore"]
 [ext_resource type="Texture2D" uid="uid://dfixcqsh3c7v8" path="res://assets/state layer art/guilds/guild_stonemasons woodcrafters.png" id="46_os0mr"]
+[ext_resource type="Texture2D" uid="uid://b0bopeukp0r3j" path="res://assets/state layer art/contentment/neg cont/leon_bianco.png" id="47_0h2ok"]
 [ext_resource type="Texture2D" uid="uid://cw37psvrkukqm" path="res://assets/state layer art/farms/leon nero_plot3.png" id="47_1e3kb"]
 [ext_resource type="Texture2D" uid="uid://dveg7rbnwv2cm" path="res://assets/state layer art/sanitation/well8.png" id="47_3klxf"]
 [ext_resource type="Texture2D" uid="uid://mng8e07xy8gy" path="res://assets/state layer art/guilds/guild_saddlers.png" id="47_3mrgm"]
@@ -133,16 +139,21 @@
 [ext_resource type="Texture2D" uid="uid://chkumsonmj31l" path="res://assets/state layer art/palazzos/scala_Palazzo Torrigiani.png" id="57_ia20i"]
 [ext_resource type="Texture2D" uid="uid://m7841v4di2hi" path="res://assets/state layer art/palazzos/nicchio_Palazzo Lanfredini.png" id="57_stxfg"]
 [ext_resource type="Texture2D" uid="uid://b23jelbgxjqom" path="res://assets/state layer art/farms/vaio_plot1.png" id="57_xbeff"]
+[ext_resource type="Texture2D" uid="uid://bavtcj14qkxji" path="res://assets/state layer art/contentment/unicorno_pos_cont.png" id="58_7b4rn"]
 [ext_resource type="Texture2D" uid="uid://1t8kuumljb6h" path="res://assets/state layer art/farms/vaio_plot2.png" id="58_36ora"]
 [ext_resource type="Texture2D" uid="uid://ce1mim4gr23jm" path="res://assets/state layer art/palazzos/nicchio_Palazzo Machiavelli.png" id="58_kmrxc"]
 [ext_resource type="Texture2D" uid="uid://d0jp7j8m1cke7" path="res://assets/state layer art/farms/vaio_plot3.png" id="59_hmdjc"]
+[ext_resource type="Texture2D" uid="uid://ck50y5fq40ryk" path="res://assets/state layer art/contentment/unicorno_pos_cont2.png" id="59_q1cpn"]
 [ext_resource type="Texture2D" uid="uid://dgciahki3js3o" path="res://assets/state layer art/palazzos/scala_palazzo pitti.png" id="60_07ll6"]
 [ext_resource type="Texture2D" uid="uid://bl55m2g340jn7" path="res://assets/state layer art/palazzos/leon nero_Palazzo Corsi-Alberti.png" id="62_44xiv"]
+[ext_resource type="Texture2D" uid="uid://cqdpp67rbep26" path="res://assets/state layer art/contentment/neg cont/unicorno.png" id="63_f42g5"]
 [ext_resource type="Texture2D" uid="uid://bwx13gmpkolyj" path="res://assets/state layer art/industry_cloth/cloth_workshop5.png" id="64_7fknj"]
 [ext_resource type="Texture2D" uid="uid://s2f7mc2v2vw0" path="res://assets/state layer art/churches/pc_san donato vecchietti_leon rosso.png" id="64_dvs17"]
 [ext_resource type="Texture2D" uid="uid://ct4mgw1c06xui" path="res://assets/state layer art/farms/drago_plot2.png" id="65_eayi2"]
+[ext_resource type="Texture2D" uid="uid://cycbngvdde5t" path="res://assets/state layer art/contentment/drago_pos_cont.png" id="66_jeo0s"]
 [ext_resource type="Texture2D" uid="uid://cjf3xrwhthk3f" path="res://assets/state layer art/industry_other/baker.png" id="66_jnc87"]
 [ext_resource type="Texture2D" uid="uid://cuor7hltj48eb" path="res://assets/state layer art/industry_other/cobbler.png" id="67_f6fbx"]
+[ext_resource type="Texture2D" uid="uid://cesc0pxft18tu" path="res://assets/state layer art/contentment/drago_pos_cont2.png" id="67_gmpqq"]
 [ext_resource type="Texture2D" uid="uid://bml8gvawibu20" path="res://assets/state layer art/trade routes/scala_porta san niccolo.png" id="67_vd4ik"]
 [ext_resource type="Texture2D" uid="uid://dtcri8i8bf0tf" path="res://assets/state layer art/trade routes/scala_porta san miniato.png" id="68_1d7of"]
 [ext_resource type="Texture2D" uid="uid://c6d8c54fq6tv0" path="res://assets/state layer art/trade routes/scala_porta san giorgio.png" id="69_51576"]
@@ -156,45 +167,83 @@
 [ext_resource type="Texture2D" uid="uid://cjunhil7hdd8w" path="res://assets/state layer art/palazzos/chiavi_Palazzo Pazzi.png" id="76_fjaxg"]
 [ext_resource type="Texture2D" uid="uid://d2k2txp1g3yi6" path="res://assets/state layer art/government/gov1.png" id="76_h5pd0"]
 [ext_resource type="Texture2D" uid="uid://bne22edbw5wex" path="res://assets/state layer art/security/scala_security.png" id="77_m4avt"]
+[ext_resource type="Texture2D" uid="uid://b3tsfa5jrdl51" path="res://assets/state layer art/contentment/ferza_pos_cont.png" id="78_1hh4f"]
 [ext_resource type="Texture2D" uid="uid://wvedf1cj3xqa" path="res://assets/state layer art/security/nicchio_security.png" id="78_cfvdx"]
+[ext_resource type="Texture2D" uid="uid://bc5kahum6ajao" path="res://assets/state layer art/contentment/neg cont/drago.png" id="78_qttgk"]
+[ext_resource type="Texture2D" uid="uid://b63b2xiindbxq" path="res://assets/state layer art/contentment/ferza_pos_cont2.png" id="80_6kvkf"]
 [ext_resource type="Texture2D" uid="uid://dljle0fu17uuu" path="res://assets/state layer art/trade routes/leon nero_Porta della Giustizia.png" id="80_fahgb"]
 [ext_resource type="Texture2D" uid="uid://c4k8788lcdmuw" path="res://assets/state layer art/industry_other/potmaker.png" id="83_ue8pj"]
 [ext_resource type="Texture2D" uid="uid://becpgpcvsmmh5" path="res://assets/state layer art/industry_other/carpenter.png" id="84_yroov"]
 [ext_resource type="Texture2D" uid="uid://b8jvl7xntlstq" path="res://assets/state layer art/trade routes/bue_Porta Ghibellina.png" id="85_hlrow"]
 [ext_resource type="Texture2D" uid="uid://c213dxhpe8tn6" path="res://assets/state layer art/industry_cloth/cloth_workshop4.png" id="85_oh2xr"]
+[ext_resource type="Texture2D" uid="uid://da0cekcq4qdeq" path="res://assets/state layer art/contentment/neg cont/ferza_neg_cont.png" id="87_n5fh2"]
+[ext_resource type="Texture2D" uid="uid://eoakshiq62nh" path="res://assets/state layer art/contentment/neg cont/neg_con2.png" id="88_yw4mx"]
 [ext_resource type="Texture2D" uid="uid://7anphqwyay65" path="res://assets/state layer art/security/leon nero_security.png" id="92_pia2g"]
 [ext_resource type="Texture2D" uid="uid://gtc5ynomiql0" path="res://assets/state layer art/trade routes/chiavi_Porta a Pinti.png" id="94_mu0li"]
 [ext_resource type="Texture2D" uid="uid://dnvugq1743nmh" path="res://assets/state layer art/palazzos/vaio_Palazzo della Gherardesca.png" id="95_g25wa"]
 [ext_resource type="Texture2D" uid="uid://hviqxycbg4r6" path="res://assets/state layer art/trade routes/chiavi_Porta alla Croce.png" id="95_sb3cp"]
 [ext_resource type="Texture2D" uid="uid://t2jetowd3lbp" path="res://assets/state layer art/industry_cloth/cloth_workshop3.png" id="96_kxylr"]
+[ext_resource type="Texture2D" uid="uid://d171156q37ffd" path="res://assets/state layer art/contentment/soprarno_pos_cont.png" id="99_hbpkh"]
 [ext_resource type="Texture2D" uid="uid://dgywtcfd3uesf" path="res://assets/state layer art/security/bue_security.png" id="99_w41gj"]
+[ext_resource type="Texture2D" uid="uid://djd22escsjuy7" path="res://assets/state layer art/contentment/soprarno_pos_cont2.png" id="100_owxfp"]
 [ext_resource type="Texture2D" uid="uid://btp15owa4mvet" path="res://assets/state layer art/industry_other/blacksmith.png" id="102_x1dcm"]
 [ext_resource type="Texture2D" uid="uid://drmk5cb2fmaps" path="res://assets/state layer art/palazzos/drago sg_palazzo vettori.png" id="103_v1iub"]
 [ext_resource type="Texture2D" uid="uid://blpw6vc0ikekh" path="res://assets/state layer art/trade routes/vaio_Porta dei servi.png" id="105_hl0vu"]
+[ext_resource type="Texture2D" uid="uid://b0huq6pfrufiy" path="res://assets/state layer art/contentment/nicchio_pos_cont.png" id="109_6fbje"]
 [ext_resource type="Texture2D" uid="uid://b6i2l0sp4sl6h" path="res://assets/state layer art/industry_cloth/cloth_workshop11.png" id="109_fbqvj"]
+[ext_resource type="Texture2D" uid="uid://i481lml2bcgp" path="res://assets/state layer art/contentment/nicchio_pos_cont2.png" id="110_65lt2"]
 [ext_resource type="Texture2D" uid="uid://ctjr70yfnoewx" path="res://assets/state layer art/palazzos/leon rosso_Palazzo Gianfigliazzi.png" id="111_1hr54"]
 [ext_resource type="Texture2D" uid="uid://bokpvuqhww5b3" path="res://assets/state layer art/security/chiavi_security.png" id="111_pwshp"]
 [ext_resource type="Texture2D" uid="uid://777cqc0cvrfb" path="res://assets/state layer art/government/palazzo vecchio.png" id="113_d2jnc"]
+[ext_resource type="Texture2D" uid="uid://bn8snbobby3gd" path="res://assets/state layer art/contentment/neg cont/soprarno_neg_cont.png" id="113_jsvyq"]
 [ext_resource type="Texture2D" uid="uid://qcj70oxp82od" path="res://assets/state layer art/trade routes/drago sg_Porta San Gallo.png" id="113_yfy3j"]
 [ext_resource type="Texture2D" uid="uid://dx5nc47ucu1ak" path="res://assets/state layer art/government/uffizi.png" id="114_gl7c7"]
 [ext_resource type="Texture2D" uid="uid://ycvguyggt8j4" path="res://assets/state layer art/industry_cloth/cloth_workshop9.png" id="117_n7av4"]
 [ext_resource type="Texture2D" uid="uid://c4neh0m57m0oi" path="res://assets/state layer art/industry_other/broom.png" id="119_ag6ss"]
 [ext_resource type="Texture2D" uid="uid://b5h4msklgnk6m" path="res://assets/state layer art/security/vaio_security.png" id="122_mmwo0"]
 [ext_resource type="Texture2D" uid="uid://c5vyav5tvy1p" path="res://assets/state layer art/palazzos/leon rosso_Palazzo Rucellai.png" id="122_msgi4"]
+[ext_resource type="Texture2D" uid="uid://vmgctr2vd5hb" path="res://assets/state layer art/contentment/neg cont/nicchio.png" id="124_801ef"]
+[ext_resource type="Texture2D" uid="uid://c6vv16emaigq5" path="res://assets/state layer art/contentment/leon_nero_pos_contentment.png" id="125_h02u6"]
+[ext_resource type="Texture2D" uid="uid://5x7lad0bdn" path="res://assets/state layer art/contentment/leon_nero_pos_contentment2.png" id="126_uf3ff"]
 [ext_resource type="Texture2D" uid="uid://dkw4q4k683aed" path="res://assets/state layer art/security/drago sg_wall.png" id="131_o5taq"]
 [ext_resource type="Texture2D" uid="uid://cxh4mobakpt8b" path="res://assets/state layer art/industry_other/vegetables.png" id="135_faxn1"]
+[ext_resource type="Texture2D" uid="uid://n1ivm7v8k76y" path="res://assets/state layer art/contentment/bue_pos_cont.png" id="136_kcau4"]
 [ext_resource type="Texture2D" uid="uid://cheq3turptvws" path="res://assets/state layer art/government/bargello.png" id="136_wu2al"]
+[ext_resource type="Texture2D" uid="uid://col5ypckrtn8c" path="res://assets/state layer art/contentment/bue_pos_cont2.png" id="137_lxlxs"]
+[ext_resource type="Texture2D" uid="uid://bluto430rbnpk" path="res://assets/state layer art/contentment/neg cont/leon_nero_neg_cont.png" id="141_jlejp"]
 [ext_resource type="Texture2D" uid="uid://1eopu1vb76s1" path="res://assets/state layer art/security/vipera_wall.png" id="144_55mdp"]
 [ext_resource type="Texture2D" uid="uid://c3f5mdximob3k" path="res://assets/state layer art/security/carro_wall.png" id="144_v8las"]
 [ext_resource type="Texture2D" uid="uid://cfxhg3gr5c4xc" path="res://assets/state layer art/security/unicorno_wall.png" id="146_5ama5"]
+[ext_resource type="Texture2D" uid="uid://cl72vpk6wlaxg" path="res://assets/state layer art/contentment/chiavi_pos_cont.png" id="151_6l7w0"]
+[ext_resource type="Texture2D" uid="uid://buwmbba1ert6n" path="res://assets/state layer art/contentment/chiavi_pos_cont2.png" id="152_hchvk"]
+[ext_resource type="Texture2D" uid="uid://n7ppf3j52rg1" path="res://assets/state layer art/contentment/neg cont/bue.png" id="153_1rbxj"]
 [ext_resource type="Texture2D" uid="uid://d15op0xokwh57" path="res://assets/state layer art/security/leon rosso_wall.png" id="156_2e2ti"]
 [ext_resource type="Texture2D" uid="uid://c3eb4s26ljdxl" path="res://assets/state layer art/industry_other/dealer.png" id="156_yj6xn"]
 [ext_resource type="Texture2D" uid="uid://byh3xwyc8schf" path="res://assets/state layer art/industry_cloth/cloth_workshop8.png" id="159_fj67u"]
 [ext_resource type="Texture2D" uid="uid://nyjb15howvil" path="res://assets/state layer art/industry_other/tailor.png" id="166_3xcys"]
+[ext_resource type="Texture2D" uid="uid://c8ks2165cjjer" path="res://assets/state layer art/contentment/vaio_pos_cont.png" id="168_sbdii"]
 [ext_resource type="Texture2D" uid="uid://n2p2eamtlap" path="res://assets/state layer art/government/loggia dei lanzi.png" id="168_t7pfk"]
+[ext_resource type="Texture2D" uid="uid://bf2nojt7um7k2" path="res://assets/state layer art/contentment/vaio_pos_cont2.png" id="169_0karc"]
+[ext_resource type="Texture2D" uid="uid://byvyy7u2nvoo2" path="res://assets/state layer art/contentment/neg cont/chiavi.png" id="169_jbf8q"]
 [ext_resource type="Texture2D" uid="uid://c1qxw5b1y34uk" path="res://assets/state layer art/government/mercato nuovo.png" id="170_t02bp"]
+[ext_resource type="Texture2D" uid="uid://cepp73t0qgxkk" path="res://assets/state layer art/contentment/drago_sg_pos_cont.png" id="181_7knum"]
+[ext_resource type="Texture2D" uid="uid://ds7h46o26u2j3" path="res://assets/state layer art/contentment/drago_sg_pos_cont2.png" id="182_ofny7"]
+[ext_resource type="Texture2D" uid="uid://dk0gyljwwsusb" path="res://assets/state layer art/contentment/neg cont/vaio.png" id="185_bl65k"]
 [ext_resource type="Script" path="res://debug_console.gd" id="194_pwuel"]
 [ext_resource type="Script" path="res://card_dumpster.gd" id="195_023qy"]
+[ext_resource type="Texture2D" uid="uid://54ofgewdnfk6" path="res://assets/state layer art/contentment/carro_pos_cont.png" id="196_u3it6"]
+[ext_resource type="Texture2D" uid="uid://drpg7pskitkdw" path="res://assets/state layer art/contentment/carro_pos_cont2.png" id="197_rva6q"]
+[ext_resource type="Texture2D" uid="uid://wmdvudbl3cl3" path="res://assets/state layer art/contentment/neg cont/drago_sg.png" id="199_fvjsc"]
+[ext_resource type="Texture2D" uid="uid://dpx2jkchba8rx" path="res://assets/state layer art/contentment/vipera_pos_cont.png" id="203_opvga"]
+[ext_resource type="Texture2D" uid="uid://cksh7v1wh5728" path="res://assets/state layer art/contentment/vipera_pos_cont2.png" id="204_3sm37"]
+[ext_resource type="Texture2D" uid="uid://crqosg5lo1jdw" path="res://assets/state layer art/contentment/leon_rosso_pos_cont.png" id="214_nhdag"]
+[ext_resource type="Texture2D" uid="uid://cmlbjuao7ke7j" path="res://assets/state layer art/contentment/leon_rosso_pos_cont2.png" id="215_swc2k"]
+[ext_resource type="Texture2D" uid="uid://bfly3dwp85vw0" path="res://assets/state layer art/contentment/neg cont/vipera.png" id="220_da3ev"]
+[ext_resource type="Texture2D" uid="uid://dihag30he64kj" path="res://assets/state layer art/contentment/neg cont/leon_rosso.png" id="232_km44d"]
+
+[sub_resource type="Curve" id="Curve_fy6lf"]
+_data = [Vector2(0.00132275, 0), 0.0, 0.0, 0, 0, Vector2(0.93254, 1), 0.0, 0.0, 0, 0, Vector2(0.977513, 0.892201), 0.0, 0.0, 0, 0, Vector2(0.990741, 0.635538), 0.0, 0.0, 0, 0, Vector2(0.998677, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_oibvw")
@@ -207,6 +256,11 @@ texture = ExtResource("7_qamot")
 [node name="hand" type="Node2D" parent="."]
 position = Vector2(814, 707)
 script = ExtResource("2_o7nvh")
+
+[node name="play_arc" type="Line2D" parent="hand"]
+z_index = 4
+z_as_relative = false
+width_curve = SubResource("Curve_fy6lf")
 
 [node name="draw_pile" type="Node2D" parent="."]
 position = Vector2(1125, 642)
@@ -245,7 +299,7 @@ position = Vector2(0, 6)
 script = ExtResource("3_1b2fl")
 
 [node name="btn_end_turn" type="Button" parent="board"]
-offset_left = 1088.0
+offset_left = 1084.0
 offset_top = 543.0
 offset_right = 1202.0
 offset_bottom = 574.0
@@ -266,14 +320,27 @@ position = Vector2(1261, 558)
 texture = ExtResource("16_21r20")
 
 [node name="year_counter" type="Label" parent="board"]
-offset_left = 912.0
-offset_top = 34.0
-offset_right = 952.0
-offset_bottom = 57.0
+offset_left = 864.0
+offset_top = 22.0
+offset_right = 1020.0
+offset_bottom = 46.0
 theme_override_fonts/font = ExtResource("16_gigqh")
+theme_override_font_sizes/font_size = 24
+text = "3000 AD"
 
 [node name="leon_doro" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 1,
+"max-church-level": 0,
+"max-cloth-industry-level": 1,
+"max-farm-level": 3,
+"max-industry-level": 2,
+"max-palazzo-level": 2,
+"max-sanitation-level": 3,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/leon_doro"]
 position = Vector2(352, 140)
@@ -323,7 +390,7 @@ position = Vector2(438, 98)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("14_g56bo")
 script = ExtResource("9_dsncv")
-_script_name = "hospital"
+_script_name = "hospital_2"
 
 [node name="sanitation_ospedale san giovanni decollato" type="Sprite2D" parent="board/leon_doro/elements"]
 position = Vector2(341, 174)
@@ -376,6 +443,38 @@ texture = ExtResource("135_faxn1")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_2"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(389, 160)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("27_gjc6i")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(389, 160)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("28_fd2cc")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(361, 195)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("29_hjc4a")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(348, 213)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/leon_doro"]
 offset_left = 334.0
 offset_top = 181.0
@@ -386,6 +485,17 @@ vertical_alignment = 1
 
 [node name="leon_bianco" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 1,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 3,
+"max-industry-level": 2,
+"max-palazzo-level": 1,
+"max-sanitation-level": 2,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/leon_bianco"]
 
@@ -412,13 +522,13 @@ _script_name = "well"
 position = Vector2(298, 345)
 texture = ExtResource("12_163f8")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="church_santa maria" type="Sprite2D" parent="board/leon_bianco/elements"]
 position = Vector2(243, 278)
 texture = ExtResource("13_cl75v")
 script = ExtResource("9_dsncv")
-_script_name = "santa-maria"
+_script_name = "church_2"
 
 [node name="guild_tailors retailers" type="Sprite2D" parent="board/leon_bianco/elements"]
 position = Vector2(300, 355)
@@ -488,6 +598,38 @@ texture = ExtResource("39_1abow")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_2"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(235, 240)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("43_f6djw")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(235, 240)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("44_tahey")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(248, 283)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("47_0h2ok")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(237, 176)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/leon_bianco"]
 offset_left = 219.0
 offset_top = 214.0
@@ -498,6 +640,17 @@ vertical_alignment = 1
 
 [node name="unicorno" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 1,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 3,
+"max-industry-level": 1,
+"max-palazzo-level": 0,
+"max-sanitation-level": 2,
+"max-security-level": 1,
+"max-trade-level": 3
+}
 
 [node name="area" type="Area2D" parent="board/unicorno"]
 
@@ -517,13 +670,13 @@ _script_name = "hospital"
 position = Vector2(225, 340)
 texture = ExtResource("14_vyrdv")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="church_santa lucia dognissanti" type="Sprite2D" parent="board/unicorno/elements"]
 position = Vector2(134, 281)
 texture = ExtResource("15_eypi6")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="guild_stonemasons" type="Sprite2D" parent="board/unicorno/elements"]
 position = Vector2(218, 369)
@@ -599,6 +752,38 @@ texture = ExtResource("135_faxn1")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_1"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(144, 269)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("58_7b4rn")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(144, 269)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("59_q1cpn")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(200, 321)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("63_f42g5")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(140, 221)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/unicorno"]
 offset_left = 141.0
 offset_top = 292.0
@@ -609,6 +794,17 @@ vertical_alignment = 1
 
 [node name="drago" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 0,
+"max-church-level": 3,
+"max-cloth-industry-level": 3,
+"max-farm-level": 3,
+"max-industry-level": 1,
+"max-palazzo-level": 1,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 2
+}
 
 [node name="area" type="Area2D" parent="board/drago"]
 
@@ -670,21 +866,21 @@ _script_name = "farm_3"
 position = Vector2(124, 466)
 texture = ExtResource("16_00wwd")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="church_san frediano" type="Sprite2D" parent="board/drago/elements"]
 position = Vector2(163, 442)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("17_4x1nl")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_3"
 
 [node name="church_santa maria verzaia" type="Sprite2D" parent="board/drago/elements"]
 position = Vector2(85, 410)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("18_4u5eh")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="sanitation_well" type="Sprite2D" parent="board/drago/elements"]
 position = Vector2(121, 469)
@@ -719,6 +915,38 @@ texture = ExtResource("43_hgbvb")
 script = ExtResource("9_dsncv")
 _script_name = "security"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(120, 473)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("66_jeo0s")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(123, 462)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("67_gmpqq")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(112, 449)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("78_qttgk")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(101, 480)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/drago"]
 offset_left = 87.0
 offset_top = 423.0
@@ -729,6 +957,17 @@ vertical_alignment = 1
 
 [node name="ferza" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 1,
+"max-church-level": 2,
+"max-cloth-industry-level": 2,
+"max-farm-level": 3,
+"max-industry-level": 2,
+"max-palazzo-level": 1,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/ferza"]
 
@@ -787,14 +1026,14 @@ position = Vector2(212, 553)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("19_4ftv6")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="church_san pier ghattolino" type="Sprite2D" parent="board/ferza/elements"]
 position = Vector2(140, 612)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("20_qi8rr")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="sanitation_well" type="Sprite2D" parent="board/ferza/elements"]
 position = Vector2(138, 538)
@@ -829,6 +1068,38 @@ texture = ExtResource("76_h5pd0")
 script = ExtResource("9_dsncv")
 _script_name = "government"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(164, 604)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("78_1hh4f")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(165, 605)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("80_6kvkf")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(143, 614)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("87_n5fh2")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(159, 539)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/ferza"]
 offset_left = 136.0
 offset_top = 570.0
@@ -839,6 +1110,17 @@ vertical_alignment = 1
 
 [node name="santa_maria_soprarno" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 1,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 3,
+"max-industry-level": 3,
+"max-palazzo-level": 3,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 4
+}
 
 [node name="area" type="Area2D" parent="board/santa_maria_soprarno"]
 
@@ -907,13 +1189,13 @@ position = Vector2(310, 500)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("21_bkpr4")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="church_santa maria soprarno" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
 position = Vector2(400, 525)
 texture = ExtResource("22_dufhq")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="sanitation_well" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
 position = Vector2(350, 541)
@@ -975,6 +1257,38 @@ texture = ExtResource("60_07ll6")
 script = ExtResource("9_dsncv")
 _script_name = "palazzo_3"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(437, 584)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("99_hbpkh")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(397, 575)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("100_owxfp")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(371, 596)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("113_jsvyq")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(353, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/santa_maria_soprarno"]
 offset_left = 362.0
 offset_top = 547.0
@@ -985,6 +1299,17 @@ vertical_alignment = 1
 
 [node name="nicchio" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 0,
+"max-church-level": 1,
+"max-cloth-industry-level": 3,
+"max-farm-level": 0,
+"max-industry-level": 1,
+"max-palazzo-level": 2,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 2
+}
 
 [node name="area" type="Area2D" parent="board/nicchio"]
 
@@ -1033,7 +1358,7 @@ _script_name = "palazzo_2"
 position = Vector2(239, 459)
 texture = ExtResource("23_fdsl6")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="industry_cloth" type="Sprite2D" parent="board/nicchio/elements"]
 position = Vector2(250, 517)
@@ -1066,6 +1391,38 @@ texture = ExtResource("29_f1165")
 script = ExtResource("9_dsncv")
 _script_name = "well"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(247, 487)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("109_6fbje")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(245.5, 499.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("110_65lt2")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(209, 488)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("124_801ef")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(239, 487)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/nicchio"]
 offset_left = 208.0
 offset_top = 458.0
@@ -1076,6 +1433,17 @@ vertical_alignment = 1
 
 [node name="leon_nero" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 2,
+"max-church-level": 2,
+"max-cloth-industry-level": 2,
+"max-farm-level": 3,
+"max-industry-level": 1,
+"max-palazzo-level": 2,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 2
+}
 
 [node name="area" type="Area2D" parent="board/leon_nero"]
 
@@ -1109,7 +1477,7 @@ _script_name = "farm_3"
 position = Vector2(465, 463)
 texture = ExtResource("24_5hfbm")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="church_san firenze" type="Sprite2D" parent="board/leon_nero/elements"]
 z_index = 1
@@ -1117,7 +1485,7 @@ position = Vector2(438, 430)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("25_kgjp2")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="sanitation_well" type="Sprite2D" parent="board/leon_nero/elements"]
 position = Vector2(503, 475)
@@ -1172,7 +1540,7 @@ position = Vector2(392, 448)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("113_d2jnc")
 script = ExtResource("9_dsncv")
-_script_name = "government_2"
+_script_name = "government_3"
 
 [node name="industry_cloth" type="Sprite2D" parent="board/leon_nero/elements"]
 position = Vector2(416, 457)
@@ -1195,16 +1563,63 @@ texture = ExtResource("102_x1dcm")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_1"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(510, 479)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("125_h02u6")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/leon_nero/elements"]
+z_index = 1
+position = Vector2(501, 470)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("126_uf3ff")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/leon_nero/elements"]
+z_index = 1
+position = Vector2(489, 478)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("141_jlejp")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/leon_nero/elements"]
+z_index = 1
+position = Vector2(449, 481)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/leon_nero"]
-offset_left = 474.0
-offset_top = 466.0
-offset_right = 514.0
-offset_bottom = 489.0
+offset_left = 485.0
+offset_top = 471.0
+offset_right = 525.0
+offset_bottom = 494.0
 theme_override_fonts/font = ExtResource("8_04v0i")
 vertical_alignment = 1
 
 [node name="bue" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 1,
+"max-church-level": 1,
+"max-cloth-industry-level": 4,
+"max-farm-level": 1,
+"max-industry-level": 1,
+"max-palazzo-level": 1,
+"max-public-level": 0,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/bue"]
 
@@ -1217,7 +1632,7 @@ polygon = PackedVector2Array(653, 516, 654, 508, 656, 503, 678, 443, 652, 436, 6
 position = Vector2(420, 393)
 texture = ExtResource("26_8nw4o")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="farm_plot1" type="Sprite2D" parent="board/bue/elements"]
 position = Vector2(642.25, 457.75)
@@ -1230,7 +1645,7 @@ _script_name = "farm_1"
 position = Vector2(459, 408)
 texture = ExtResource("27_i3b3c")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="guild_armorers" type="Sprite2D" parent="board/bue/elements"]
 position = Vector2(401, 403)
@@ -1284,7 +1699,7 @@ position = Vector2(547, 414)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("51_og70r")
 script = ExtResource("9_dsncv")
-_script_name = "industry_3"
+_script_name = "industry_4"
 
 [node name="industry_cloth2" type="Sprite2D" parent="board/bue/elements"]
 position = Vector2(429, 413)
@@ -1300,6 +1715,38 @@ texture = ExtResource("119_ag6ss")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_1"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(513, 447)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("136_kcau4")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(514, 442)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("137_lxlxs")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(558, 436)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("153_1rbxj")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(539, 426)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/bue"]
 offset_left = 509.0
 offset_top = 406.0
@@ -1310,6 +1757,17 @@ vertical_alignment = 1
 
 [node name="chiavi" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 2,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 3,
+"max-industry-level": 2,
+"max-palazzo-level": 1,
+"max-sanitation-level": 2,
+"max-security-level": 1,
+"max-trade-level": 2
+}
 
 [node name="area" type="Area2D" parent="board/chiavi"]
 
@@ -1351,13 +1809,13 @@ position = Vector2(498, 369)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("28_06wwb")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="church_sant ambrogio" type="Sprite2D" parent="board/chiavi/elements"]
 position = Vector2(618, 364)
 texture = ExtResource("29_d7lpa")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="guild_judges notaries" type="Sprite2D" parent="board/chiavi/elements"]
 position = Vector2(445, 378)
@@ -1426,6 +1884,38 @@ texture = ExtResource("136_wu2al")
 script = ExtResource("9_dsncv")
 _script_name = "government"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(557, 316)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("151_6l7w0")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(557, 313)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("152_hchvk")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(545, 333)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("169_jbf8q")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(617, 278)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/chiavi"]
 offset_left = 558.0
 offset_top = 293.0
@@ -1436,6 +1926,17 @@ vertical_alignment = 1
 
 [node name="vaio" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 2,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 3,
+"max-industry-level": 1,
+"max-palazzo-level": 1,
+"max-sanitation-level": 3,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/vaio"]
 
@@ -1484,27 +1985,27 @@ position = Vector2(417, 361)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("30_2mpbv")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="church_san michele visdomini" type="Sprite2D" parent="board/vaio/elements"]
 position = Vector2(452, 284)
 texture = ExtResource("31_idjox")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="guild_vintners" type="Sprite2D" parent="board/vaio/elements"]
 position = Vector2(416, 367)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("35_2ujjm")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "guild_1"
 
 [node name="guild_locksmiths" type="Sprite2D" parent="board/vaio/elements"]
 position = Vector2(402, 369)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("36_84540")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "guild_2"
 
 [node name="sanitation_well" type="Sprite2D" parent="board/vaio/elements"]
 position = Vector2(528, 224)
@@ -1517,7 +2018,7 @@ _script_name = "well"
 position = Vector2(496, 240)
 texture = ExtResource("49_6c8rx")
 script = ExtResource("9_dsncv")
-_script_name = "hospital"
+_script_name = "hospital_2"
 
 [node name="sanitation_ospedale santa maria nuova" type="Sprite2D" parent="board/vaio/elements"]
 position = Vector2(501, 282)
@@ -1544,6 +2045,38 @@ texture = ExtResource("122_mmwo0")
 script = ExtResource("9_dsncv")
 _script_name = "security"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(493, 233)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("168_sbdii")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(493, 233)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("169_0karc")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(475, 226)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("185_bl65k")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(460, 250)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/vaio"]
 offset_left = 487.0
 offset_top = 175.0
@@ -1554,6 +2087,17 @@ vertical_alignment = 1
 
 [node name="drago_di san giovanni" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 2,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 2,
+"max-industry-level": 1,
+"max-palazzo-level": 1,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/drago_di san giovanni"]
 
@@ -1580,14 +2124,14 @@ _script_name = "farm_2"
 position = Vector2(308, 308)
 texture = ExtResource("32_wp170")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="church_santa maria nipotecosa" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
 position = Vector2(367, 366)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("33_ueixh")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="guild_wool" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
 position = Vector2(368, 380)
@@ -1643,6 +2187,38 @@ texture = ExtResource("156_yj6xn")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_1"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(403, 223)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("181_7knum")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(403, 223)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("182_ofny7")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(395, 297)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("199_fvjsc")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(363, 322)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/drago_di san giovanni"]
 offset_left = 337.0
 offset_top = 320.0
@@ -1653,6 +2229,18 @@ vertical_alignment = 1
 
 [node name="carro" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 5,
+"max-church-level": 1,
+"max-cloth-industry-level": 1,
+"max-farm-level": 0,
+"max-industry-level": 1,
+"max-palazzo-level": 0,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 0
+}
+_max_public_level = 1
 
 [node name="area" type="Area2D" parent="board/carro"]
 
@@ -1666,14 +2254,14 @@ position = Vector2(368, 403)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("34_csjnj")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="guild_bankers" type="Sprite2D" parent="board/carro/elements"]
 position = Vector2(366, 419)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("42_m2ss8")
 script = ExtResource("9_dsncv")
-_script_name = "guild_3"
+_script_name = "guild_4"
 
 [node name="guild_merchants" type="Sprite2D" parent="board/carro/elements"]
 position = Vector2(375, 422)
@@ -1694,14 +2282,14 @@ position = Vector2(379, 437)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("45_c43sb")
 script = ExtResource("9_dsncv")
-_script_name = "guild_2"
+_script_name = "guild_1"
 
 [node name="guild_saddlers" type="Sprite2D" parent="board/carro/elements"]
 position = Vector2(353, 444)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("47_3mrgm")
 script = ExtResource("9_dsncv")
-_script_name = "guild_1"
+_script_name = "guild_5"
 
 [node name="industry_cloth" type="Sprite2D" parent="board/carro/elements"]
 position = Vector2(344, 457)
@@ -1738,6 +2326,38 @@ texture = ExtResource("144_v8las")
 script = ExtResource("9_dsncv")
 _script_name = "security"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(359, 444)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("196_u3it6")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(359, 444)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("197_rva6q")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(365, 399)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("124_801ef")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(359, 452)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/carro"]
 offset_left = 339.0
 offset_top = 440.0
@@ -1748,6 +2368,18 @@ vertical_alignment = 1
 
 [node name="vipera" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 2,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 0,
+"max-industry-level": 2,
+"max-palazzo-level": 0,
+"max-sanitation-level": 1,
+"max-security-level": 1,
+"max-trade-level": 1
+}
+_max_public_level = 1
 
 [node name="area" type="Area2D" parent="board/vipera"]
 
@@ -1796,14 +2428,14 @@ position = Vector2(350, 357)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("35_6n04h")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="church_san apostoli" type="Sprite2D" parent="board/vipera/elements"]
 position = Vector2(311, 438)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("36_ien7c")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="guild_silk weavers" type="Sprite2D" parent="board/vipera/elements"]
 position = Vector2(348, 424)
@@ -1833,6 +2465,38 @@ texture = ExtResource("144_55mdp")
 script = ExtResource("9_dsncv")
 _script_name = "security"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(322, 401)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("203_opvga")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(322, 401)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("204_3sm37")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(343, 368)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("220_da3ev")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(323, 436)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/vipera"]
 offset_left = 298.0
 offset_top = 418.0
@@ -1843,6 +2507,17 @@ vertical_alignment = 1
 
 [node name="leon_rosso" type="Node2D" parent="board"]
 script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 2,
+"max-church-level": 2,
+"max-cloth-industry-level": 1,
+"max-farm-level": 0,
+"max-industry-level": 1,
+"max-palazzo-level": 2,
+"max-sanitation-level": 2,
+"max-security-level": 1,
+"max-trade-level": 1
+}
 
 [node name="area" type="Area2D" parent="board/leon_rosso"]
 
@@ -1863,14 +2538,14 @@ position = Vector2(269, 413)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("37_0mxvh")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_2"
 
 [node name="church_san donato vecchietti" type="Sprite2D" parent="board/leon_rosso/elements"]
 position = Vector2(330, 357)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("64_dvs17")
 script = ExtResource("9_dsncv")
-_script_name = "san-michele"
+_script_name = "church_1"
 
 [node name="guild_physicians" type="Sprite2D" parent="board/leon_rosso/elements"]
 position = Vector2(332, 399)
@@ -1935,6 +2610,38 @@ texture = ExtResource("66_jnc87")
 script = ExtResource("9_dsncv")
 _script_name = "other_industry_1"
 
+[node name="pos_contentment" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(277, 387)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("214_nhdag")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment"
+_has_change_indicator = false
+
+[node name="pos_contentment2" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(278, 389)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("215_swc2k")
+script = ExtResource("9_dsncv")
+_script_name = "pos_contentment2"
+_has_change_indicator = false
+
+[node name="neg_contentment" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(314, 380)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("232_km44d")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment"
+_has_change_indicator = false
+
+[node name="neg_contentment2" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(258, 384)
+scale = Vector2(2, 2)
+texture = ExtResource("88_yw4mx")
+script = ExtResource("9_dsncv")
+_script_name = "neg_contentment2"
+_has_change_indicator = false
+
 [node name="change_list" type="Label" parent="board/leon_rosso"]
 offset_left = 241.0
 offset_top = 374.0
@@ -1948,10 +2655,25 @@ position = Vector2(903, 166)
 script = ExtResource("3_2o8d3")
 
 [node name="restock_btn" type="Button" parent="shop"]
-offset_left = 178.0
-offset_top = -139.0
-offset_right = 209.0
-offset_bottom = -110.0
+offset_left = 201.0
+offset_top = -130.0
+offset_right = 305.0
+offset_bottom = -99.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+text = "Refresh"
+
+[node name="restock_cost" type="Label" parent="shop"]
+offset_left = 306.0
+offset_top = -122.0
+offset_right = 348.0
+offset_bottom = -106.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+text = "-0"
+horizontal_alignment = 2
+
+[node name="restock_cost_icon" type="Sprite2D" parent="shop"]
+position = Vector2(359, -115)
+texture = ExtResource("15_u5ufa")
 
 [node name="card_picker_root" parent="." instance=ExtResource("14_n350e")]
 visible = false
@@ -1960,34 +2682,40 @@ visible = false
 position = Vector2(736, 40)
 script = ExtResource("15_oif6q")
 
-[node name="florin_count" type="Label" parent="global_stats"]
+[node name="florin" type="Node2D" parent="global_stats"]
+position = Vector2(32, 0)
+
+[node name="florin_count" type="Label" parent="global_stats/florin"]
 custom_minimum_size = Vector2(48, 0)
-offset_left = 7.0
+offset_left = -25.0
 offset_top = -7.0
-offset_right = 55.0
+offset_right = 23.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("16_gigqh")
 text = "123"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="florin_icon" type="Sprite2D" parent="global_stats"]
-position = Vector2(67, 0)
+[node name="florin_icon" type="Sprite2D" parent="global_stats/florin"]
+position = Vector2(35, 0)
 texture = ExtResource("15_u5ufa")
 
-[node name="govpt_count" type="Label" parent="global_stats"]
+[node name="govpt" type="Node2D" parent="global_stats"]
+position = Vector2(-32, 0)
+
+[node name="govpt_count" type="Label" parent="global_stats/govpt"]
 custom_minimum_size = Vector2(48, 0)
-offset_left = -76.0
+offset_left = -44.0
 offset_top = -7.0
-offset_right = -28.0
+offset_right = 4.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("16_gigqh")
 text = "123"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="govpt_icon" type="Sprite2D" parent="global_stats"]
-position = Vector2(-16, 0)
+[node name="govpt_icon" type="Sprite2D" parent="global_stats/govpt"]
+position = Vector2(16, 0)
 texture = ExtResource("16_21r20")
 
 [node name="card_factory" type="Node" parent="."]

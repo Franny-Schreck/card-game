@@ -1,6 +1,6 @@
 {NAME} "palazzo"
 
-{DESCRIPTION} "Lose 1 Florin"
+{DESCRIPTION} "Gain 1 Governance Point and lose 1 Florin"
 
 {TYPE} "palazzo"
 

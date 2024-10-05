@@ -1,11 +1,11 @@
 {NAME} "public_space"
 
-{DESCRIPTION} "Gain 2 Florin, and lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 Florin, and lose 1 Governance Point"
 
 {TYPE} "public_space"
 
-{CONDITION} (>= %bureaucracy-level 1)
+{CONDITION} (>= %public-level 1)
 
 {EFFECT}
-	(setf + $fl 2)
+	(setf + $fl 1)
 	(setf - $gp 1)

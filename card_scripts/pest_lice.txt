@@ -4,9 +4,9 @@
 
 {DISPLAYNAME} "LICE"
 
-{DESCRIPTION} "bad lice, many sickness. Lose 3 Florin and every district 5 contentment"
+{DESCRIPTION} "bad lice, many sickness. Lose 3 Florin and every district 2 contentment"
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "pest-lice"
 
 {TAGS} "sticky"
 
@@ -24,6 +24,6 @@
 			(animate-play self)
 			(put-card "void" self)
 			(put-card "hand" (take-card 1 "card:pest_dies" "top"))
-			# TODO: Global contentment change (setf - %contentment 5)
+			(all-districts (setf - %contentment 2))
 			(setf - $fl 3))
 		())

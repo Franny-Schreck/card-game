@@ -1,6 +1,6 @@
 {NAME} "well"
 
-{DESCRIPTION} "Gain 1 contentment"
+{DESCRIPTION} "Gain 1 contentment, and lose 1 Governance Point"
 
 {TYPE} "well"
 
@@ -8,3 +8,4 @@
 
 {EFFECT}
 	(setf + %contentment 1)
+	(setf - $gp 1)

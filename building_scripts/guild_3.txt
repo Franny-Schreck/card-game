@@ -1,11 +1,10 @@
 {NAME} "guild_3"
 
-{DESCRIPTION} "Gain 2 Florin, and lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 Florin"
 
 {TYPE} "guild"
 
-{CONDITION} (>= %bureaucracy-level 2)
+{CONDITION} (>= %bureaucracy-level 3)
 
 {EFFECT}
-	(setf + $fl 2)
-	(setf - $gp 1)
+	(setf + $fl 1)

@@ -15,7 +15,8 @@
 {TARGET} "local"
 
 {CONDITION}
-	(>= $fl 2)
+	(cond (>= $fl 2) "Need at least two {fl}")
+	(cond (!= %max-farm-level %farm-level) "There is no more space for fields here")
 
 {EFFECT}
 	(setf - $fl 2)

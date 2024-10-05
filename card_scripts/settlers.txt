@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Draw 1 card. Look through 3 random cards in your discard pile, and choose a card from among them to put into your hand."
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "settlers"
 
 {TAGS} "shop"
 

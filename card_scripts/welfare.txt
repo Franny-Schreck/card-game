@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Gain 5 contentment, lose 2 Florin for the next 5 rounds"
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "welfare"
 
 {TAGS} "shop"
 

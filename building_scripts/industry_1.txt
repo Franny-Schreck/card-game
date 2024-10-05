@@ -1,6 +1,6 @@
 {NAME} "industry_1"
 
-{DESCRIPTION} "Gain 1 Florin"
+{DESCRIPTION} "Gain 1 Florin and lose 1 Governance Point"
 
 {TYPE} "trade"
 
@@ -8,3 +8,4 @@
 
 {EFFECT}
 	(setf + $fl 1)
+	(setf - $gp 1)

@@ -40,6 +40,8 @@ var _on_turn_start_callbacks: Array[ScriptCallback]
 
 var _detached_card: Card
 
+var _failed_play_conditions: Array[String]
+
 signal environment_changed
 
 signal card_played
@@ -89,10 +91,10 @@ func play(card: Card) -> bool:
 		environment_changed.emit()
 
 		if not card.increment_play_count():
-			await card.run_void_animation()
-			var container: CardContainer2D = card.get_card_container()
-			if container != null:
-				container.detach_card(card)
+			if _detached_card != null:
+				remove_child(_detached_card)
+				_detached_card = null
+			_card_dumpster.add_card(card)
 		elif _detached_card != null:
 			remove_child(_detached_card)
 			discard_pile.add_card(card)
@@ -246,11 +248,39 @@ func _end_turn_cost() -> int:
 func _year_events() -> void:
 	var year: int = global_stats.curr_environment["year"]
 
-	if year == 1360 or year == 1430 or year == 1480 or year == 1530:
+	if year == 1430 or year == 1480 or year == 1530:
 		var replace_index: int = randi_range(0, hand.card_count() - 1)
 		var replaced_card: Card = hand._cards[replace_index]
 		hand.detach_card(replaced_card)
 		hand.add_card(await card_factory.get_card_by_name("pest_mice"))
+		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
+	
+	if year == 1375:
+		var replace_index: int = randi_range(0, hand.card_count() - 1)
+		var replaced_card: Card = hand._cards[replace_index]
+		hand.detach_card(replaced_card)
+		hand.add_card(await card_factory.get_card_by_name("war_saints"))
+		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
+
+	if year == 1330 or year == 1340:
+		var replace_index: int = randi_range(0, hand.card_count() - 1)
+		var replaced_card: Card = hand._cards[replace_index]
+		hand.detach_card(replaced_card)
+		hand.add_card(await card_factory.get_card_by_name("war_visconti"))
+		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
+	
+	if year == 1495:
+		var replace_index: int = randi_range(0, hand.card_count() - 1)
+		var replaced_card: Card = hand._cards[replace_index]
+		hand.detach_card(replaced_card)
+		hand.add_card(await card_factory.get_card_by_name("war_charles"))
+		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
+
+	if year == 1525:
+		var replace_index: int = randi_range(0, hand.card_count() - 1)
+		var replaced_card: Card = hand._cards[replace_index]
+		hand.detach_card(replaced_card)
+		hand.add_card(await card_factory.get_card_by_name("war_cognac"))
 		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
 
 
@@ -458,3 +488,11 @@ func _interp_animate_play(args: Array[ScriptInterpreter.ScriptNode], env: Script
 func _interp_reset_play_costs(_args: Array[ScriptInterpreter.ScriptNode], _env: ScriptInterpreter.ScriptEnvironment) -> Variant:
 	hand.reset_extra_play_cost(-1)
 	return null
+
+
+func _interp_condition(args: Array[ScriptInterpreter.ScriptNode], env: ScriptInterpreter.ScriptEnvironment) -> bool:
+	if not await args[0].evaluate([], env):
+		_failed_play_conditions.append(await args[1].evaluate([], env))
+		return false
+
+	return true

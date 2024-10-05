@@ -6,7 +6,7 @@
 
 {DESCRIPTION} "Discards one random other card from your hand"
 
-{IMAGE} "regierung_smaller"
+{IMAGE} "thief"
 
 {TAGS} "lawless" "sticky"
 
@@ -27,6 +27,6 @@
 		(each
 			(animate-play self)
 			(put-card "void" self)
-			# (put-card "discard" (take-card 1 "hand" "random"))
+			(put-card "discard" (take-card 1 "hand" "random"))
 		)
 		())

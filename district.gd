@@ -3,12 +3,27 @@ extends Node2D
 
 const CHANGE_LIST_FADE_OFFSET = Vector2(0, 50)
 
+@export var _initial_environment: Dictionary = {
+	"max-church-level" = 0,
+	"max-bureaucracy-level" = 0,
+	"max-sanitation-level" = 0,
+	"max-farm-level" = 0,
+	"max-palazzo-level" = 0,
+	"max-trade-level" = 0,
+	"max-security-level" = 0,
+	"max-industry-level" = 0,
+	"max-cloth-industry-level" = 0,
+	"max-public-level" = 0,
+}
+
+@export var _max_public_level: int = 0
+
 var curr_environment: Dictionary = {
-	"contentment" = 5,
+	"contentment" = 4,
 	"no-income" = 0,
 	"income" = 0,
-	"church-level" = 0,
 	"taxation-level" = 0,
+	"church-level" = 0,
 	"bureaucracy-level" = 0,
 	"sanitation-level" = 0,
 	"farm-level" = 0,
@@ -17,6 +32,7 @@ var curr_environment: Dictionary = {
 	"security-level" = 0,
 	"industry-level" = 0,
 	"cloth-industry-level" = 0,
+	"public-level" = 0,
 }
 
 var prev_environment: Dictionary
@@ -98,6 +114,11 @@ func apply_building_turn_effects(display_index: int) -> bool:
 
 
 func _ready() -> void:
+	for var_name: String in _initial_environment.keys():
+		curr_environment[var_name] = _initial_environment[var_name]
+
+	curr_environment["max-public-level"] = _max_public_level
+
 	prev_environment = curr_environment
 
 	_board = get_parent()

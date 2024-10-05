@@ -3,6 +3,8 @@ extends Sprite2D
 
 @export var _script_name: String
 
+@export var _has_change_indicator: bool = true
+
 var _change_indicator: Sprite2D
 
 var _self_sprite: Sprite2D
@@ -43,13 +45,14 @@ func _ready() -> void:
 	_self_sprite.visible = false
 	add_child(_self_sprite)
 
-	_change_indicator = Sprite2D.new()
-	_change_indicator.texture = load("res://assets/god_hand.png")
-	_change_indicator.visible = false
-	_change_indicator.position = Vector2(25, 0) + _calc_right_image_edge() * scale
-	_change_indicator.scale = Vector2.ONE / scale
-	_change_indicator.z_index = 20
-	add_child(_change_indicator)
+	if _has_change_indicator:
+		_change_indicator = Sprite2D.new()
+		_change_indicator.texture = load("res://assets/god_hand.png")
+		_change_indicator.visible = false
+		_change_indicator.position = Vector2(25, 0) + _calc_right_image_edge() * scale
+		_change_indicator.scale = Vector2.ONE / scale
+		_change_indicator.z_index = 2
+		add_child(_change_indicator)
 
 	texture = null
 
@@ -131,4 +134,5 @@ func _on_environment_changed() -> void:
 		pass
 
 	_self_sprite.visible = _is_active
-	_change_indicator.visible = _is_active != _will_be_active
+	if _has_change_indicator:
+		_change_indicator.visible = _is_active != _will_be_active

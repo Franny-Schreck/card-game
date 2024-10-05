@@ -1,0 +1,25 @@
+{NAME} "war_cognac"
+{PLAY-COST} -1
+{SHOP-COST} 0
+
+{DISPLAYNAME} "League of Cognac"
+
+{DESCRIPTION} "Trying to free Italy of Habsburg & Papal influence with Venice (i.a.) the city is besieged. You lose 10 GPs and all districts 7 Contentment."
+
+{IMAGE} "war"
+
+{TAGS} "sticky"
+
+{FREQUENCY} 80
+
+{TARGET} "global"
+
+{CONDITION} false
+
+{EFFECT} ()
+
+{ON-TURN-END}
+	(animate-play self)
+	(put-card "void" self)
+	(setf - $gp 10)
+	(all-districts (setf - %contentment 7))

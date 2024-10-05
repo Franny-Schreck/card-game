@@ -79,6 +79,15 @@ card-count <source>
 	<source> - One of the CardContainer strings.
 
 
+animate-play <card>
+
+	Runs the on-play animation for the given card.
+	
+	Returns null.
+	
+	<card> - The card whose play animation will be run 
+
+
 card-attr <card> <attribute>
 
 	Retrieves the <attribute> value from the given <card>.
@@ -89,6 +98,11 @@ card-attr <card> <attribute>
 
 	<attribute> - The attribute to be read:
 		"tags" - Returns the card's {TAGS} as a string array.
+
+
+reset-play-costs
+
+	Resets the play costs of all cards in the hand.
 
 
 all-districts <callback>
@@ -103,20 +117,6 @@ all-districts <callback>
 
 	<callback> - A script node which will run in the context of every district.
 				 The node's result value will be discarded.
-
-
-animate-play <card>
-
-	Runs the on-play animation for the given card.
-	
-	Returns null.
-	
-	<card> - The card whose play animation will be run 
-
-
-reset-play-costs
-
-	Resets the play costs of all cards in the hand.
 
 
 modify-prices <rounds> <callback>

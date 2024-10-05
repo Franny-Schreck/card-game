@@ -1,0 +1,10 @@
+{NAME} "guild_5"
+
+{DESCRIPTION} "Gain 1 Florin"
+
+{TYPE} "guild"
+
+{CONDITION} (>= %bureaucracy-level 5)
+
+{EFFECT}
+	(setf + $fl 1)

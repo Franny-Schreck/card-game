@@ -1,0 +1,10 @@
+{NAME} "government_3"
+
+{DESCRIPTION} "Gain 1 Contentment"
+
+{TYPE} "government"
+
+{CONDITION} (>= %bureaucracy-level 3)
+
+{EFFECT}
+	(setf + %contentment 1)
