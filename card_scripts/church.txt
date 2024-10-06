@@ -4,11 +4,11 @@
 
 {DISPLAYNAME} "Church"
 
-{DESCRIPTION} "Lose 5 Florin and gain 5 Governance Points and 1 contentment. The amount of churches in the city influences the amount of [Faith] cards in the shop"
+{DESCRIPTION} "Lose 5 Florin, gain 5 Governance Points and 1 contentment. The amount of churches influences the amount of [Faith] cards in the shop"
 
 {IMAGE} "church"
 
-{TAGS} "shop" "faith"
+{TAGS} "shop"
 
 {FREQUENCY} 60
 

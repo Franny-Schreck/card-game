@@ -28,6 +28,8 @@ var _play_count: int
 
 var _total_play_count: int
 
+var _play_count_indicators: Array[Sprite2D]
+
 var _hover_outline: Panel
 
 var _click_outline: Panel
@@ -237,6 +239,10 @@ func get_card_name() -> String:
 
 func increment_play_count() -> bool:
 	_play_count += 1
+
+	for i in range(_play_count_indicators.size()):
+		_play_count_indicators[i].visible = _total_play_count - _play_count > i
+
 	return _play_count != _total_play_count
 
 
@@ -272,7 +278,8 @@ func set_disabled(state: bool) -> void:
 
 
 func set_play_cost_highlight(state: bool) -> void:
-	_play_cost_label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7, 1.0) if state else Color(1.0, 1.0, 1.0, 1.0))
+	_play_cost_label.set("theme_override_colors/font_color", Color(0.4, 0.4, 0.4, 1.0) if state else Color(0.0, 0.0, 0.0, 1.0))
+
 
 func is_disabled() -> bool:
 	return _is_disabled
@@ -298,11 +305,21 @@ func _load_from_script(card_script: Dictionary) -> void:
 	if card_script.has("TAGS"):
 		_tags.assign(card_script["TAGS"])
 
+	if card_script.has("BACKGROUND"):
+		get_node("scale_container/background").texture = load("res://assets/card backgrounds/" + card_script["BACKGROUND"] + ".png")
+
 	_card_script = card_script
 	_name = card_script["NAME"]
 	_total_play_count = int(card_script.get("USES")) if card_script.has("USES") else DEFAULT_CARD_USES
 	_suppress_discard = _tags.has("keep-on-play")
 	_is_sticky = _tags.has("sticky")
+
+	_play_count_indicators.append(get_node("scale_container/play_count_1"))
+	_play_count_indicators.append(get_node("scale_container/play_count_2"))
+	_play_count_indicators.append(get_node("scale_container/play_count_3"))
+
+	for i in range(_play_count_indicators.size()):
+		_play_count_indicators[i].visible = _total_play_count - _play_count > i
 
 	get_node("scale_container/display_name_container/display_name").text = card_script["DISPLAYNAME"]
 	get_node("scale_container/description_container/description").text = card_script["DESCRIPTION"]

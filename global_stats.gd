@@ -1,7 +1,7 @@
 class_name GlobalStats
 extends Node2D
 
-var curr_environment: Dictionary = {
+const INITIAL_ENVIRONMENT: Dictionary = {
 	"fl" = 25,
 	"gp" = 30,
 	"total-church-level" = 0,
@@ -18,6 +18,8 @@ var curr_environment: Dictionary = {
 	"year" = 1350,
 }
 
+var curr_environment: Dictionary = INITIAL_ENVIRONMENT.duplicate()
+
 var prev_environment: Dictionary
 
 var _board: Board
@@ -33,12 +35,10 @@ var _govpt_container: Node2D
 var _year: Label
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and not event.is_echo() and event.is_pressed():
-		if event.as_text_keycode() == "G":
-			change_gp(1)
-		elif event.as_text_keycode() == "F":
-			change_fl(1)
+func reset() -> void:
+	curr_environment = INITIAL_ENVIRONMENT.duplicate()
+	prev_environment = curr_environment
+	_update_year_label()
 
 
 func change_gp(delta: int) -> void:
@@ -66,10 +66,16 @@ func _ready() -> void:
 	_govpt_container = get_node("govpt")
 	_govpt_count = _govpt_container.get_node("govpt_count")
 	_year = _board.get_node("year_counter")
-	prev_environment = curr_environment
 	_board.environment_changed.connect(_on_environment_changed)
 	_board.new_turn.connect(_on_new_turn)
-	_update_year_label()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and not event.is_echo() and event.is_pressed():
+		if event.as_text_keycode() == "G":
+			change_gp(1)
+		elif event.as_text_keycode() == "F":
+			change_fl(1)
 
 
 func _update_year_label() -> void:

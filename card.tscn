@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c020n5x7omlt7"]
+[gd_scene load_steps=10 format=3 uid="uid://c020n5x7omlt7"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_4b5jr"]
 [ext_resource type="Texture2D" uid="uid://cvrrm22an8dsc" path="res://assets/card_base.png" id="1_l6uaj"]
 [ext_resource type="FontFile" uid="uid://dghd7hie6kewj" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_b67tl"]
-[ext_resource type="Texture2D" uid="uid://d38xoym5f2if3" path="res://assets/govpt_icon.png" id="4_g31dm"]
 [ext_resource type="FontFile" uid="uid://d3xfqxgsknq4o" path="res://assets/fonts/PixelOperator8.ttf" id="4_v2txn"]
+[ext_resource type="Texture2D" uid="uid://c76nj3bwlgoac" path="res://assets/govpot_icon_card.png" id="5_3uhb3"]
+[ext_resource type="Texture2D" uid="uid://cjtw055kru073" path="res://assets/play_count.png" id="6_t1eu6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mravh"]
 bg_color = Color(0.823467, 0.517873, 0.301618, 0.470588)
@@ -94,13 +95,15 @@ scale = Vector2(1.5, 1.5)
 
 [node name="play_cost_icon" type="Sprite2D" parent="scale_container/play_cost_container"]
 position = Vector2(3.55556, 3.11111)
-texture = ExtResource("4_g31dm")
+texture = ExtResource("5_3uhb3")
 
 [node name="play_cost_label" type="Label" parent="scale_container/play_cost_container"]
-offset_right = 9.0
-offset_bottom = 8.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_v2txn")
+offset_left = -0.888889
+offset_top = -0.444443
+offset_right = 8.11111
+offset_bottom = 7.55556
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_b67tl")
 theme_override_font_sizes/font_size = 8
 text = "1"
 
@@ -111,6 +114,18 @@ offset_left = -39.0
 offset_top = -58.0
 offset_right = 39.0
 offset_bottom = 58.0
+
+[node name="play_count_1" type="Sprite2D" parent="scale_container"]
+position = Vector2(-34, -28.6667)
+texture = ExtResource("6_t1eu6")
+
+[node name="play_count_2" type="Sprite2D" parent="scale_container"]
+position = Vector2(-34, -18.6667)
+texture = ExtResource("6_t1eu6")
+
+[node name="play_count_3" type="Sprite2D" parent="scale_container"]
+position = Vector2(-34, -8.66667)
+texture = ExtResource("6_t1eu6")
 
 [connection signal="gui_input" from="scale_container/collider" to="." method="_on_collider_gui_input"]
 [connection signal="mouse_entered" from="scale_container/collider" to="." method="_on_collider_mouse_entered"]

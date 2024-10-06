@@ -40,6 +40,12 @@ var _restocks_this_turn: int
 var _selection_size: int
 
 
+func reset() -> void:
+	_selection_size = 1
+	
+	_restock()
+
+
 func _ready() -> void:
 	super._ready()
 
@@ -90,7 +96,7 @@ func _ready() -> void:
 
 
 func _on_root_ready() -> void:
-	_restock()
+	reset()
 
 
 func _restock() -> void:

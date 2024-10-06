@@ -10,9 +10,13 @@
 
 {TAGS} "sticky"
 
+{BACKGROUND} "pest_base"
+
 {FREQUENCY} 80
 
 {TARGET} "global"
+
+{USES} "1"
 
 {CONDITION} false
 

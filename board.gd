@@ -39,13 +39,15 @@ var discard_pile: DiscardPile
 
 var shop: Shop
 
-var card_picker: CardPicker
+var _card_picker: CardPicker
 
-var turn_skip_cost: Label
+var _game_over_screen: GameOverScreen
 
-var turn_skip_icon: Sprite2D
+var _turn_skip_cost: Label
 
-var btn_end_turn: Button
+var _turn_skip_icon: Sprite2D
+
+var _btn_end_turn: Button
 
 var is_skipped_turn: bool = true
 
@@ -123,6 +125,32 @@ func play(card: Card) -> bool:
 		return false
 
 
+func reset() -> void:
+	for district: District in _districts:
+		district.reset()
+
+	var initial_deck: Array[String] = INITIAL_DECK.duplicate()
+	initial_deck.shuffle()
+
+	hand.detach_all_cards()
+	
+	draw_pile.detach_all_cards()
+	
+	discard_pile.detach_all_cards()
+
+	for card_name in initial_deck:
+		draw_pile.add_card(await card_factory.get_card_by_name(card_name))
+
+	for i in range(3):
+		hand.add_card(draw_pile._cards.back())
+		
+	shop.reset()
+	
+	global_stats.reset()
+
+	environment_changed.emit()
+
+
 func _ready() -> void:
 	_card_dumpster = get_node("/root/root/card_dumpster")
 	card_factory = get_node("/root/root/card_factory")
@@ -131,10 +159,11 @@ func _ready() -> void:
 	draw_pile = get_node("/root/root/draw_pile")
 	discard_pile = get_node("/root/root/discard_pile")
 	shop = get_node("/root/root/shop")
-	card_picker = get_node("/root/root/card_picker_root/card_picker")
-	turn_skip_cost = get_node("turn_skip_cost")
-	turn_skip_icon = get_node("turn_skip_icon")
-	btn_end_turn = get_node("btn_end_turn")
+	_card_picker = get_node("/root/root/card_picker_root/card_picker")
+	_game_over_screen = get_node("/root/root/game_over_screen")
+	_turn_skip_cost = get_node("turn_skip_cost")
+	_turn_skip_icon = get_node("turn_skip_icon")
+	_btn_end_turn = get_node("btn_end_turn")
 	
 	for child in get_children():
 		if child is District:
@@ -146,30 +175,21 @@ func _ready() -> void:
 
 
 func _on_root_ready() -> void:
-	var initial_deck: Array[String] = INITIAL_DECK.duplicate()
-	initial_deck.shuffle()
-	for card_name in initial_deck:
-		draw_pile.add_card(await card_factory.get_card_by_name(card_name))
-
-	for i in range(3):
-		hand.add_card(draw_pile._cards.back())
-
-
-	environment_changed.emit()
+	reset()
 
 
 func _update_end_turn_btn() -> void:
 	var cost: int = _end_turn_cost()
 
-	btn_end_turn.disabled = cost > global_stats.curr_environment["gp"]
-	turn_skip_cost.text = str(-cost)
-	turn_skip_cost.visible = cost != 0
-	turn_skip_icon.visible = cost != 0
-	btn_end_turn.text = "Skip Turn" if is_skipped_turn else "Next Turn"
+	_btn_end_turn.disabled = cost > global_stats.curr_environment["gp"]
+	_turn_skip_cost.text = str(-cost)
+	_turn_skip_cost.visible = cost != 0
+	_turn_skip_icon.visible = cost != 0
+	_btn_end_turn.text = "Skip Turn" if is_skipped_turn else "Next Turn"
 
 
 func _on_btn_end_turn_pressed() -> void:
-	btn_end_turn.disabled = true
+	_btn_end_turn.disabled = true
 
 	# Handle repeated skipped turns
 	if is_skipped_turn:
@@ -249,7 +269,7 @@ func _on_btn_end_turn_pressed() -> void:
 		global_stats.curr_environment["fl"] = 0
 
 	if global_stats.curr_environment["gp"] <= 0:
-		pass # TODO: Game over
+		_game_over_screen.show_game_over("GAME OVER", "You are chased out of the city after losing control over your government", true)
 
 	environment_changed.emit()
 
@@ -278,34 +298,32 @@ func _year_events() -> void:
 		hand.detach_card(replaced_card)
 		hand.add_card(await card_factory.get_card_by_name("pest_mice"))
 		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
-	
-	if year == 1375:
+	elif year == 1375:
 		var replace_index: int = randi_range(0, hand.card_count() - 1)
 		var replaced_card: Card = hand._cards[replace_index]
 		hand.detach_card(replaced_card)
 		hand.add_card(await card_factory.get_card_by_name("war_saints"))
 		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
-
-	if year == 1330 or year == 1340:
+	elif year == 1330 or year == 1340:
 		var replace_index: int = randi_range(0, hand.card_count() - 1)
 		var replaced_card: Card = hand._cards[replace_index]
 		hand.detach_card(replaced_card)
 		hand.add_card(await card_factory.get_card_by_name("war_visconti"))
 		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
-	
-	if year == 1495:
+	elif year == 1495:
 		var replace_index: int = randi_range(0, hand.card_count() - 1)
 		var replaced_card: Card = hand._cards[replace_index]
 		hand.detach_card(replaced_card)
 		hand.add_card(await card_factory.get_card_by_name("war_charles"))
 		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
-
-	if year == 1525:
+	elif year == 1525:
 		var replace_index: int = randi_range(0, hand.card_count() - 1)
 		var replaced_card: Card = hand._cards[replace_index]
 		hand.detach_card(replaced_card)
 		hand.add_card(await card_factory.get_card_by_name("war_cognac"))
 		draw_pile.add_card(replaced_card, randi_range(0, draw_pile.card_count()))
+	elif year == 1650:
+		_game_over_screen.show_game_over("VICTORY", "You reached the year 1650 without being deposed", true)
 
 
 func _select_cards(count: int, sources, mode: String) -> Array[Card]:
@@ -376,7 +394,7 @@ func _replace_cards_by_name(container: CardContainer2D, old_card_name: String, n
 
 
 func _display_card_pick_dialog(cards: Array[Card], pick_count: int) -> Array[Card]:
-	return await card_picker.pick_cards(cards, pick_count)
+	return await _card_picker.pick_cards(cards, pick_count)
 
 
 func _interp_card_put(args: Array[ScriptInterpreter.ScriptNode], env: ScriptInterpreter.ScriptEnvironment) -> Variant:

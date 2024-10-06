@@ -8,6 +8,8 @@
 
 {IMAGE} "thief"
 
+{BACKGROUND} "lawless_base"
+
 {TAGS} "lawless" "sticky"
 
 {FREQUENCY} 30

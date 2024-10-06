@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhv4cvc1vcbif"
-path="res://.godot/imported/lawless_base.png-6f0754a10fa07b083b3490ab3b867328.ctex"
+uid="uid://dkdccfbcssknk"
+path="res://.godot/imported/faith_base.png-bb67fd5acd94e6664dd9aca161604106.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lawless_base.png"
-dest_files=["res://.godot/imported/lawless_base.png-6f0754a10fa07b083b3490ab3b867328.ctex"]
+source_file="res://assets/card backgrounds/faith_base.png"
+dest_files=["res://.godot/imported/faith_base.png-bb67fd5acd94e6664dd9aca161604106.ctex"]
 
 [params]
 

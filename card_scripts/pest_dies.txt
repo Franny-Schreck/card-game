@@ -8,11 +8,15 @@
 
 {IMAGE} "pest-dies"
 
+{BACKGROUND} "pest_base"
+
 {TAGS} "sticky"
 
 {FREQUENCY} 80
 
 {TARGET} "global"
+
+{USES} "1"
 
 {CONDITION} false
 

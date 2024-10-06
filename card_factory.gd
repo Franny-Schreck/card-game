@@ -94,6 +94,7 @@ func _get_schema() -> Array[ScriptInterpreter.ScriptProperty]:
 		ScriptInterpreter.ScriptProperty.create("IMAGE"),
 		ScriptInterpreter.ScriptProperty.create("TAGS", false, true, "lawless|faith|sticky|keep-on-play|shop"),
 		ScriptInterpreter.ScriptProperty.create("USES", false, false, "[1-9][0-9]*"),
+		ScriptInterpreter.ScriptProperty.create("BACKGROUND", false, false),
 		ScriptInterpreter.ScriptProperty.create("TARGET", true, false, "global|local"),
 		ScriptInterpreter.ScriptProperty.create("CONDITION", true, true, "", true),
 		ScriptInterpreter.ScriptProperty.create("EFFECT", true, true, "", true),

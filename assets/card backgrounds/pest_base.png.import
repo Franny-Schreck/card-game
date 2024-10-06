@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkdccfbcssknk"
-path="res://.godot/imported/faith_base.png-dde19ec76b580799500ededa68c55a56.ctex"
+uid="uid://yqy7smcw22rt"
+path="res://.godot/imported/pest_base.png-6cbf21c52aa82ef24b80bbfbd386d36c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/faith_base.png"
-dest_files=["res://.godot/imported/faith_base.png-dde19ec76b580799500ededa68c55a56.ctex"]
+source_file="res://assets/card backgrounds/pest_base.png"
+dest_files=["res://.godot/imported/pest_base.png-6cbf21c52aa82ef24b80bbfbd386d36c.ctex"]
 
 [params]
 

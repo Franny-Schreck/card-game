@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yqy7smcw22rt"
-path="res://.godot/imported/pest_base.png-11f5204dc21155796f2a32c517db9396.ctex"
+uid="uid://bhv4cvc1vcbif"
+path="res://.godot/imported/lawless_base.png-c16907f36863201796ec5b97bbe4e87d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pest_base.png"
-dest_files=["res://.godot/imported/pest_base.png-11f5204dc21155796f2a32c517db9396.ctex"]
+source_file="res://assets/card backgrounds/lawless_base.png"
+dest_files=["res://.godot/imported/lawless_base.png-c16907f36863201796ec5b97bbe4e87d.ctex"]
 
 [params]
 

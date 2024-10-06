@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgr082g4mpjk6"
-path="res://.godot/imported/war_base.png-937447d1d36b137a217ac4a920b21553.ctex"
+uid="uid://c76nj3bwlgoac"
+path="res://.godot/imported/govpot_icon_card.png-3f04833bad717bcb1b529e0bc6f262ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/war_base.png"
-dest_files=["res://.godot/imported/war_base.png-937447d1d36b137a217ac4a920b21553.ctex"]
+source_file="res://assets/govpot_icon_card.png"
+dest_files=["res://.godot/imported/govpot_icon_card.png-3f04833bad717bcb1b529e0bc6f262ff.ctex"]
 
 [params]
 

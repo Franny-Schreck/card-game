@@ -7,5 +7,4 @@
 {CONDITION} (>= %trade-level 2)
 
 {EFFECT}
-	(setf + $gp 1)
 	(setf - %contentment 1)

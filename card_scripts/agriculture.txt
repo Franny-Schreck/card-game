@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Agriculture"
 
-{DESCRIPTION} "Gain 3 governance point and 3 contentment, lose 1 florin."
+{DESCRIPTION} "Gain 3 governance point and 1 contentment, lose 1 florin."
 
 {IMAGE} "agriculture"
 
@@ -21,5 +21,5 @@
 {EFFECT}
 	(setf - $fl 1)
 	(setf + $gp 3)
-	(setf + %contentment 3)
+	(setf + %contentment 1)
 	(setf + %farm-level 1)

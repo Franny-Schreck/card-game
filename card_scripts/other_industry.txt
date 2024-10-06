@@ -21,4 +21,4 @@
 	(setf + $fl 4)
 	(setf + %contentment 2)
 	(modify-prices 1 2)
-	(setf + %industry-level 1)
+	(show (setf + %industry-level 1) "ind")

@@ -8,6 +8,8 @@
 
 {IMAGE} "pilgrims"
 
+{BACKGROUND} "faith_base"
+
 {TAGS} "shop" "faith"
 
 {FREQUENCY} 

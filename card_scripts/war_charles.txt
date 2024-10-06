@@ -10,6 +10,8 @@
 
 {TAGS} "sticky"
 
+{BACKGROUND} "war_base"
+
 {FREQUENCY} 80
 
 {TARGET} "global"

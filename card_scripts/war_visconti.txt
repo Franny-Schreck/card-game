@@ -8,6 +8,8 @@
 
 {IMAGE} "war"
 
+{BACKGROUND} "war_base"
+
 {TAGS} "sticky"
 
 {FREQUENCY} 80
