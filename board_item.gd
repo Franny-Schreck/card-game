@@ -7,7 +7,9 @@ extends Sprite2D
 
 var _change_indicator: Sprite2D
 
-var _self_sprite: Sprite2D
+var _description: Label
+
+var _self_sprite: TextureRect
 
 var _building_factory: BuildingFactory
 
@@ -40,10 +42,20 @@ func apply_turn_effects(_display_index: int, env: ScriptInterpreter.ScriptEnviro
 
 
 func _ready() -> void:
-	_self_sprite = Sprite2D.new()
+	_self_sprite = TextureRect.new()
+	_self_sprite.mouse_filter = Control.MOUSE_FILTER_PASS
+	_self_sprite.gui_input.connect(_on_click)
 	_self_sprite.texture = texture
 	_self_sprite.visible = false
+	_self_sprite.position = round((-texture.get_size() + Vector2(1.0, 1.0)) * 0.5)
 	add_child(_self_sprite)
+
+	_description = Label.new()
+	_description.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_description.add_theme_font_override("font", load("res://assets/fonts/PixelOperator8.ttf"))
+	_description.visible = false
+	_description.scale = Vector2.ONE / scale
+	add_child(_description)
 
 	if _has_change_indicator:
 		_change_indicator = Sprite2D.new()
@@ -73,6 +85,11 @@ func _on_root_ready() -> void:
 	_type = _script["TYPE"]
 	_condition = _script["CONDITION"]
 	_effect = _script["EFFECT"]
+	
+	if _script["DESCRIPTION"] != "":
+		_description.text = _script["DESCRIPTION"]
+	else:
+		_self_sprite.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func _get_district() -> District:
@@ -136,3 +153,9 @@ func _on_environment_changed() -> void:
 	_self_sprite.visible = _is_active
 	if _has_change_indicator:
 		_change_indicator.visible = _is_active != _will_be_active
+
+
+func _on_click(event: InputEvent) -> void:
+	if event is InputEventMouseButton and not event.is_echo() and not event.is_released() and _board.hand.clicked_card == null:
+		if _self_sprite.texture.get_image().get_pixel(event.position.x, event.position.y).a8 > 10:
+			_description.visible = not _description.visible
