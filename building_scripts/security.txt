@@ -1,11 +1,11 @@
 {NAME} "security"
 
-{DESCRIPTION} "Gain 1 contentment, and lose 1 Florin"
+{DESCRIPTION} "Gain 1 Governance Point, and lose 1 Florin"
 
 {TYPE} "security"
 
 {CONDITION} (>= %security-level 1)
 
 {EFFECT}
-	(setf - $fl 1)
+	(setf + $gp 1)
 	(setf + %contentment 1)

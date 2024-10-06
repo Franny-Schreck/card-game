@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Agriculture"
 
-{DESCRIPTION} "Gain 1 governance point and 2 contentment, lose 2 florin."
+{DESCRIPTION} "Gain 3 governance point and 3 contentment, lose 1 florin."
 
 {IMAGE} "agriculture"
 
@@ -15,11 +15,11 @@
 {TARGET} "local"
 
 {CONDITION}
-	(cond (>= $fl 2) "Need at least two {fl}")
+	(cond (>= $fl 1) "Need at least two {fl}")
 	(cond (!= %max-farm-level %farm-level) "There is no more space for fields here")
 
 {EFFECT}
-	(setf - $fl 2)
-	(setf + $gp 1)
-	(setf + %contentment 2)
+	(setf - $fl 1)
+	(setf + $gp 3)
+	(setf + %contentment 3)
 	(setf + %farm-level 1)

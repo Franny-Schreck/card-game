@@ -1,12 +1,11 @@
 {NAME} "government"
 
-{DESCRIPTION} "Gain 1 Governance Point, and lose 1 Florin and 1 Contentment"
+{DESCRIPTION} "Gain 1 Florin and lose 2 contentment"
 
 {TYPE} "government"
 
 {CONDITION} (>= %bureaucracy-level 1)
 
 {EFFECT}
-	(setf + $gp 1)
-	(setf - $fl 1)
-	(setf - %contentment 1)
+	(setf + $fl 1)
+	(setf - %contentment 2)

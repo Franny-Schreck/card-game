@@ -1,10 +1,10 @@
 {NAME} "other-industry"
-{PLAY-COST} 3
+{PLAY-COST} 2
 {SHOP-COST} 4
 
 {DISPLAYNAME} "Other Industry"
 
-{DESCRIPTION} "All cards in the shop this round cost 2 Florin less"
+{DESCRIPTION} "Gain 4 Florin and 2 contentment. All cards in the shop this round cost 2 Florin less"
 
 {IMAGE} "other industry"
 
@@ -18,5 +18,7 @@
 	(cond (!= %max-industry-level %industry-level) "There is no more space for industry-related buildings here")
 
 {EFFECT}
+	(setf + $fl 4)
+	(setf + %contentment 2)
 	(modify-prices 1 2)
 	(setf + %industry-level 1)

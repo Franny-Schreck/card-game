@@ -1,6 +1,6 @@
 {NAME} "guild_5"
 
-{DESCRIPTION} "Gain 1 Florin"
+{DESCRIPTION} "Gain 1 Florin, and lose 1 contentment"
 
 {TYPE} "guild"
 
@@ -8,3 +8,4 @@
 
 {EFFECT}
 	(setf + $fl 1)
+	(setf - %contentment 1)

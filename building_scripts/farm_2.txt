@@ -1,11 +1,10 @@
 {NAME} "farm_2"
 
-{DESCRIPTION} "Gain 1 contentment, and lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 Governance Point"
 
 {TYPE} "farm"
 
 {CONDITION} (>= %farm-level 2)
 
 {EFFECT}
-	(setf + %contentment 1)
-	(setf - $gp 1)
+	(setf + $gp 1)

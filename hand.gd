@@ -1,8 +1,6 @@
 class_name Hand
 extends CardContainer2D
 
-const IMPORTS = ["board"]
-
 const PLAY_ARC_POINT_COUNT = 20
 
 const ARC_ANGLE_BASE: float = 0.1
@@ -55,17 +53,8 @@ func _ready() -> void:
 	card_input.connect(_on_card_input)
 	card_mouse.connect(_on_card_mouse)
 	card_attached.connect(_on_card_attached)
-	
-	Root.connect_on_root_ready(self, _on_root_ready)
-	
 	board.new_turn.connect(_on_new_turn)
-
 	board.card_played.connect(_on_card_played)
-
-
-func _on_root_ready() -> void:
-	for i in range(3):
-		add_card(await board.card_factory.get_card_by_category("shop"))
 
 
 func _ease_out_cubic(t: float) -> float:

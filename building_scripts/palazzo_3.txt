@@ -1,10 +1,10 @@
 {NAME} "palazzo_3"
 
-{DESCRIPTION} "Lose 1 Florin"
+{DESCRIPTION} "Gain 1 contentment"
 
 {TYPE} "palazzo"
 
 {CONDITION} (>= %palazzo-level 3)
 
 {EFFECT}
-	(setf - $fl 1)
+	(setf + %contentment 1)

@@ -7,4 +7,4 @@
 {CONDITION} (<= %contentment -5)
 
 {EFFECT}
-	(setf - $gp 5)
+	(setf - $gp 2)

@@ -47,6 +47,8 @@ var _change_list_position: Vector2
 
 var _hide_change_list_tween: Tween
 
+var _card_played_this_turn: bool
+
 
 func apply_building_turn_effects(display_index: int) -> bool:
 	var env: ScriptInterpreter.ScriptEnvironment = _board.card_factory.create_environment(_board.global_stats.curr_environment.duplicate(), curr_environment.duplicate())
@@ -74,7 +76,6 @@ func apply_building_turn_effects(display_index: int) -> bool:
 					changes.erase(var_name)
 			else:
 				changes[var_name] = curr_value - prev_value
-			print("%", var_name, " changed")
 
 	for var_name in env.global_vars.keys():
 		var curr_value: int = env.global_vars[var_name]
@@ -87,7 +88,6 @@ func apply_building_turn_effects(display_index: int) -> bool:
 					changes.erase(var_name)
 			else:
 				changes[var_name] = curr_value - prev_value
-			print("$", var_name, " changed")
 
 	var change_text: String = ""
 
@@ -102,14 +102,14 @@ func apply_building_turn_effects(display_index: int) -> bool:
 	_change_list.text = change_text
 
 	if changes.size() != 0:
-		# Do not await this, so it only affects the UI, withou delaying any effects
+		# Do not await this, so it only affects the UI, without delaying any effects
 		var show_delay: float = 0.15 * pow(display_index, 0.75)
 		var hide_delay: float = show_delay + 2
 		_show_change_list(show_delay)
 		_hide_change_list(hide_delay)
 		curr_environment = env.local_vars
 		_board.global_stats.curr_environment = env.global_vars
-	
+
 	return changes.size() != 0
 
 
@@ -165,6 +165,7 @@ func _on_district_mouse_exited() -> void:
 
 func _on_card_played() -> void:
 	_highlight.hide()
+	_card_played_this_turn = true
 
 
 func _show_change_list(delay: float) -> void:
@@ -199,9 +200,12 @@ func _hide_change_list(delay: float) -> void:
 
 
 func _on_new_turn() -> void:
-	var no_income = curr_environment["no-income"]
-	if no_income != 0:
-		pass
-	no_income = max(0, no_income - 1)
-	curr_environment["no-income"] = no_income
-	prev_environment["no-income"] = no_income
+	if curr_environment["no-income"] > 0:
+		curr_environment["no-income"] -= 1
+		prev_environment["no-income"] -= 1
+
+	if not _card_played_this_turn:
+		curr_environment["contentment"] -= 1
+		prev_environment["contentment"] -= 1
+
+	_card_played_this_turn = false

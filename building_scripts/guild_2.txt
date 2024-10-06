@@ -1,10 +1,10 @@
 {NAME} "guild_2"
 
-{DESCRIPTION} "Lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 Governance Point"
 
 {TYPE} "guild"
 
 {CONDITION} (>= %bureaucracy-level 2)
 
 {EFFECT}
-	(setf - $gp 1)
+	(setf + $gp 1)

@@ -4,7 +4,7 @@
 
 {TYPE} "trade"
 
-{CONDITION} (>= %industry-level 1)
+{CONDITION} (>= %industry-level 2)
 
 {EFFECT}
 	(setf + $fl 1)

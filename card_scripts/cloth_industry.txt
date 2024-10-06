@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Cloth Industry"
 
-{DESCRIPTION} "All cards in the shop this round cost 2 Florin less"
+{DESCRIPTION} "Gain 5 Florin and 1 contentment. All cards in the shop this round cost 1 Florin less"
 
 {IMAGE} "cloth-industry"
 
@@ -18,5 +18,7 @@
 	(cond (!= %max-cloth-industry-level %cloth-industry-level) "There is no more space for cloth-related workshops here")
 
 {EFFECT}
-	(modify-prices 1 2)
+	(setf + $fl 5)
+	(setf + %contentment 1)
+	(modify-prices 1 1)
 	(setf + %cloth-industry-level 1)

@@ -1,6 +1,6 @@
 {NAME} "industry_3"
 
-{DESCRIPTION} "Gain 1 Florin"
+{DESCRIPTION} "Gain 2 Florin"
 
 {TYPE} "trade"
 

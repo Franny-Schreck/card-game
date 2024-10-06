@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Settlers"
 
-{DESCRIPTION} "Draw 1 card. Look through 3 random cards in your discard pile, and choose a card from among them to put into your hand."
+{DESCRIPTION} "Draw 1 card, gain 5 Florin and 1 Governance Point. Look through 3 random cards in your discard pile, and choose a card from among them to put into your hand."
 
 {IMAGE} "settlers"
 
@@ -17,6 +17,8 @@
 {CONDITION} true
 
 {EFFECT}
+	(setf + $fl 5)
+	(setf + $gp 1)
 	(if (!= (card-count "discard") 0)
 		(put-card "hand" (pick-card 1 3 "discard" "random"))
 		())

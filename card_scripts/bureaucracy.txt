@@ -1,10 +1,10 @@
 {NAME} "bureaucracy"
-{PLAY-COST} 2
+{PLAY-COST} 3
 {SHOP-COST} 4
 
 {DISPLAYNAME} "Bureaucracy"
 
-{DESCRIPTION} "Draw 1 card and gain 3 governance points. When played, creates a guild center or government building."
+{DESCRIPTION} "Draw 1 card and gain 1 Florin and 3 Governance Points. When played, creates a guild center or government building."
 
 {IMAGE} "bureaucracy"
 
@@ -25,4 +25,5 @@
 		())
 	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + $gp 3)
+	(setf + $fl 1)
 	(setf + %bureaucracy-level 1)

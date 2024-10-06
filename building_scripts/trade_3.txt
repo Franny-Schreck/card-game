@@ -1,6 +1,6 @@
 {NAME} "trade_3"
 
-{DESCRIPTION} "Gain 1 Contentment"
+{DESCRIPTION} "Lose 1 Contentment"
 
 {TYPE} "trade"
 

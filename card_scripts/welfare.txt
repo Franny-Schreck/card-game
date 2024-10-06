@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Welfare"
 
-{DESCRIPTION} "Gain 5 contentment, lose 2 Florin for the next 5 rounds"
+{DESCRIPTION} "Gain 7 contentment, lose 1 Florin for the next 5 rounds"
 
 {IMAGE} "welfare"
 
@@ -18,5 +18,5 @@
 	(>= $fl 3)
 
 {EFFECT}
-	(setf + %contentment 5)
-	(async 5 (setf - $fl 2))
+	(setf + %contentment 7)
+	(async 5 (setf - $fl 1))

@@ -1,10 +1,11 @@
 {NAME} "trade_2"
 
-{DESCRIPTION} "Lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 Governance Point and lose 1 contentment"
 
 {TYPE} "trade"
 
 {CONDITION} (>= %trade-level 2)
 
 {EFFECT}
-	(setf - $gp 1)
+	(setf + $gp 1)
+	(setf - %contentment 1)

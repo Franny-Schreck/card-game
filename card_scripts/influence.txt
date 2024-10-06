@@ -1,10 +1,10 @@
 {NAME} "influence"
 {PLAY-COST} 4
-{SHOP-COST} 5
+{SHOP-COST} 4
 
 {DISPLAYNAME} "Influence"
 
-{DESCRIPTION} "Lose 10 fl. Gain 2 gp and 1 contentment."
+{DESCRIPTION} "Lose 7 Florin. Gain 8 Governance Points and 3 contentment."
 
 {IMAGE} "influence"
 
@@ -15,11 +15,11 @@
 {TARGET} "local"
 
 {CONDITION}
-	(>= $fl 10)
+	(>= $fl 7)
 	(cond (!= %max-palazzo-level %palazzo-level) "There is no more space for fancy palazzos here")
 
 {EFFECT}
-	(setf - $fl 10)
-	(setf + $gp 3)
-	(setf + %contentment 1)
+	(setf - $fl 7)
+	(setf + $gp 8)
+	(setf + %contentment 3)
 	(setf + %palazzo-level 1)

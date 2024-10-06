@@ -20,6 +20,6 @@
 	(setf + $fl (step <= %income (: 5 10 15 20) (: 5 4 3 2) 1))
 	(setf - %contentment (step <= %income (: 5 10 15 20) (: 5 4 3 2) 1))
 	(setf + %taxation-level 1)
-	(if (> %taxation-level 5)
+	(if (> %taxation-level 0)
 		(replace-card "taxation" "new-taxation")
 		())

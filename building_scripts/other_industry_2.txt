@@ -1,11 +1,11 @@
 {NAME} "other_industry_2"
 
-{DESCRIPTION} "Gain 1 Florin and lose 2 Governance Points"
+{DESCRIPTION} "Gain 1 contentment and lose 1 Governance Point"
 
 {TYPE} "trade"
 
 {CONDITION} (>= %industry-level 2)
 
 {EFFECT}
-	(setf + $fl 1)
-	(setf - $gp 2)
+	(setf + %contentment 1)
+	(setf - $gp 1)

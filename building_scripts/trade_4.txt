@@ -1,10 +1,10 @@
 {NAME} "trade_4"
 
-{DESCRIPTION} "Gain 1 Florin"
+{DESCRIPTION} "Gain 2 Florin"
 
 {TYPE} "trade"
 
 {CONDITION} (>= %trade-level 4)
 
 {EFFECT}
-	(setf + $fl 1)
+	(setf + $fl 2)

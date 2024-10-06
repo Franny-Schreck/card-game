@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Sanitation"
 
-{DESCRIPTION} "Lose 3 Florin, gain 5 contentment. When played, creates a well and later a hospital."
+{DESCRIPTION} "Lose 1 Florin, gain 5 contentment. When played, creates a well and later a hospital."
 
 {IMAGE} "sanitation"
 
@@ -15,10 +15,10 @@
 {FREQUENCY} 70
 
 {CONDITION}
-	(>= $fl 3)
+	(>= $fl 1)
 	(cond (!= %max-sanitation-level %sanitation-level) "There is no more space for sanitary institutions here")
 
 {EFFECT}
-	(setf - $fl 3)
+	(setf - $fl 1)
 	(setf + %contentment 5)
 	(setf + %sanitation-level 1)

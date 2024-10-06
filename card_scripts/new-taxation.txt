@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Taxation"
 
-{DESCRIPTION} "Gain 2 Florin and lose 4 Contentment."
+{DESCRIPTION} "Gain 3 Florin and lose 3 contentment."
 
 {IMAGE} "new_taxation"
 
@@ -15,10 +15,6 @@
 {CONDITION} true
 
 {EFFECT}
-	(setf + $fl (step <= %income (: 5 10 15 20) (: 5 4 3 2) 1))
-	(setf - %contentment (step <= %income (: 5 10 15 20) (: 5 4 3 2) 1))
+	(setf + $fl 3)
+	(setf - %contentment 3)
 	(setf + %taxation-level 1)
-	# TODO: Create new taxation card
-	(if (> %taxation-level 5)
-		(replace-card "taxation" "church")
-		())

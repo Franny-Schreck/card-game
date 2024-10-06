@@ -1,11 +1,11 @@
 {NAME} "hospital"
 
-{DESCRIPTION} "Gain 1 contentment, and lose 2 Florin"
+{DESCRIPTION} "Gain 1 Governance Point and lose 1 Florin"
 
 {TYPE} "hospital"
 
 {CONDITION} (>= %sanitation-level 2)
 
 {EFFECT}
-	(setf + %contentment 1)
-	(setf - $fl 2)
+	(setf + $gp 1)
+	(setf - $fl 1)

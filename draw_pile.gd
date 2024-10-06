@@ -28,10 +28,3 @@ func _ready() -> void:
 	card_attached.connect(_on_card_attached)
 	card_detached.connect(_on_card_detached)
 	content_changed.connect(_on_content_changed)
-	
-	Root.connect_on_root_ready(self, _on_root_ready)
-
-
-func _on_root_ready() -> void:
-	for i in range(10):
-		add_card(await _card_factory.get_card_by_category("shop"))

@@ -37,6 +37,18 @@ func has_card_with_name(card_name: String) -> bool:
 	return _scripts.has(card_name)
 
 
+func replace_card_by_name(card_name: String, replace_with: Dictionary) -> void:
+	var old_script: Dictionary = _scripts[card_name]
+
+	_scripts[card_name] = replace_with
+
+	for category_name: String in old_script["TAGS"]:
+		var category: Category = _categories[category_name]
+		category.scripts[category.scripts.find(old_script)] = replace_with
+	
+	_on_environment_changed()
+
+
 func get_script_by_name(card_name: String) -> Dictionary:
 	return _scripts[card_name]
 

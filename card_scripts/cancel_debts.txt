@@ -1,10 +1,10 @@
 {NAME} "cancel-debts"
 {PLAY-COST} 5
-{SHOP-COST} 3
+{SHOP-COST} 2
 
 {DISPLAYNAME} "Cancel Debts"
 
-{DESCRIPTION} "Play only if you have at least 15 Florin. Improves contentment by 10, but the district won't gain or lose any Florin for the next 5 rounds."
+{DESCRIPTION} "Play only if you have at least 5 Florin. Improves contentment by 10, but the district won't gain or lose any Florin for the next 5 rounds."
 
 {IMAGE} "cancel-debts"
 
@@ -15,9 +15,10 @@
 {TARGET} "local"
 
 {CONDITION}
-	(>= $fl 15)
+	(>= $fl 5)
 
 {EFFECT}
+	(setf + %contentment 10)
 	(if (< %no-income 5)
 		(set %no-income 5)
 		())

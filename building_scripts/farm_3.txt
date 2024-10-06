@@ -1,10 +1,11 @@
 {NAME} "farm_3"
 
-{DESCRIPTION} "Gain 1 Florin"
+{DESCRIPTION} "Gain 1 Governance Point, lose 1 Florin"
 
 {TYPE} "farm"
 
 {CONDITION} (>= %farm-level 3)
 
 {EFFECT}
-	(setf + $fl 1)
+	(setf + $gp 1)
+	(setf - $fl 1)

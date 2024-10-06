@@ -6,6 +6,21 @@ class ScriptCallback:
 	var remaining_turns: int
 	var callback: ScriptInterpreter.ScriptNode
 
+const INITIAL_DECK: Array[String] = [
+	"farm",
+	"farm",
+	"other-industry",
+	"cloth-industry",
+	"sanitation",
+	"sanitation",
+	"sanitation",
+	"wall",
+	"wall",
+	"bureaucracy",
+	"smuggling",
+	"church",
+]
+
 var _card_dumpster: CardContainer2D
 
 var active_district: District = null
@@ -131,6 +146,15 @@ func _ready() -> void:
 
 
 func _on_root_ready() -> void:
+	var initial_deck: Array[String] = INITIAL_DECK.duplicate()
+	initial_deck.shuffle()
+	for card_name in initial_deck:
+		draw_pile.add_card(await card_factory.get_card_by_name(card_name))
+
+	for i in range(3):
+		hand.add_card(draw_pile._cards.back())
+
+
 	environment_changed.emit()
 
 
@@ -467,6 +491,8 @@ func _interp_replace_card(args: Array[ScriptInterpreter.ScriptNode], env: Script
 
 	if _detached_card != null and _detached_card.get_card_name() == old_card_name:
 		_detached_card.replace_script(new_script)
+
+	card_factory.replace_card_by_name(old_card_name, new_script)
 
 	return null
 

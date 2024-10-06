@@ -119,8 +119,6 @@ func _on_environment_changed() -> void:
 		industry_level += district.curr_environment["industry-level"]
 		cloth_industry_level += district.curr_environment["cloth-industry-level"]
 		public_level += district.curr_environment["public-level"]
-		
-	print("san ", sanitation_level)
 
 	curr_environment["total-church-level"] = church_level
 	curr_environment["total-taxation-level"] = taxation_level

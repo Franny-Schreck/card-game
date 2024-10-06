@@ -1,6 +1,6 @@
 {NAME} "hospital_2"
 
-{DESCRIPTION} "Gain 1 contentment, and lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 contentment, and lose 1 Florin"
 
 {TYPE} "hospital"
 
@@ -8,4 +8,4 @@
 
 {EFFECT}
 	(setf + %contentment 1)
-	(setf + $gp 1)
+	(setf - $fl 1)

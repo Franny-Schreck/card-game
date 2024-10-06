@@ -4,7 +4,7 @@
 
 {TYPE} ""
 
-{CONDITION} (>= %contentment 5)
+{CONDITION} (>= %contentment 10)
 
 {EFFECT}
 	(setf + $gp 1)

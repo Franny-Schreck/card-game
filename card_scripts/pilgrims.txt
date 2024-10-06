@@ -1,10 +1,10 @@
 {NAME} "pilgrims"
-{PLAY-COST} 1
-{SHOP-COST} 2
+{PLAY-COST} 2
+{SHOP-COST} 3
 
 {DISPLAYNAME} "Pilgrims"
 
-{DESCRIPTION} "The district loses 3 contentment and you gain 5 Florin."
+{DESCRIPTION} "The district loses 2 contentment and you gain 10 Florin."
 
 {IMAGE} "pilgrims"
 
@@ -18,5 +18,5 @@
 {CONDITION} true
 
 {EFFECT}
-	(setf + $fl 5)
-	(setf - %contentment 5)
+	(setf + $fl 10)
+	(setf - %contentment 2)

@@ -1,10 +1,10 @@
 {NAME} "trade"
-{PLAY-COST} 5
+{PLAY-COST} 3
 {SHOP-COST} 3
 
 {DISPLAYNAME} "Trade routes"
 
-{DESCRIPTION} "Gain 3 Florin and 2 Governance Points."
+{DESCRIPTION} "Gain 7 Florin and 4 Governance Points."
 
 {IMAGE} "trade"
 
@@ -18,6 +18,6 @@
 	(cond (!= %max-trade-level %trade-level) "There is no more space for trade-related buildings here")
 
 {EFFECT}
-	(setf + $fl 3)
-	(setf + $gp 3)
+	(setf + $fl 7)
+	(setf + $gp 4)
 	(setf + %trade-level 1)

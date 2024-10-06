@@ -1,6 +1,6 @@
 {NAME} "guild_1"
 
-{DESCRIPTION} "Gain 1 Florin and lose 1 Governance Point"
+{DESCRIPTION} "Gain 1 Florin and lose 2 contentment"
 
 {TYPE} "guild"
 
@@ -8,4 +8,4 @@
 
 {EFFECT}
 	(setf + $fl 1)
-	(setf - $gp 1)
+	(setf - %contentment 2)
