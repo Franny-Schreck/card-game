@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Cognac League"
 
-{DESCRIPTION} "Trying to free Italy of Habsburg & Papal influence with Venice (i.a.) the city is besieged. You lose 10 GPs and all districts 7 Contentment."
+{DESCRIPTION} "Trying to free Italy of Habsburg & Papal influence with Venice (i.a.) the city is besieged. You lose 30 GPs and all districts 15 Contentment."
 
 {IMAGE} "war"
 
@@ -25,7 +25,7 @@
 {ON-TURN-END}
 	(animate-play self)
 	(put-card "void" self)
-	(setf - $gp 10)
-	(all-districts (setf - %contentment 7))
+	(setf - $gp 30)
+	(all-districts (setf - %contentment 15))
 
 #Source: https://www.nzz.ch/schweiz/500-jahre-ewiger-frieden-zwischen-der-schweiz-und-frankreich-als-die-eidgenossenschaft-nach-westen-kippte-ld.118696

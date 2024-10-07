@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "MICE!!!"
 
-{DESCRIPTION} "A plague of mice has descended upon the city. You lose 5 Governance Points and every district 2 contentment."
+{DESCRIPTION} "A plague of mice has descended upon the city. You lose 5 Governance Points and every district 3 contentment."
 
 {IMAGE} "pest-mice"
 
@@ -26,7 +26,7 @@
 	(animate-play self)
 	(put-card "void" self)
 	(put-card "hand" (take-card 1 "card:pest_lice" "top"))
-	(all-districts (setf - %contentment 2))
+	(all-districts (setf - %contentment 3))
 	(setf - $gp 5)
 
 #Source: https://www.nationalgeographic.com/magazine/article/rats-are-an-inescapable-part-of-city-life

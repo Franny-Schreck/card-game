@@ -23,6 +23,6 @@
 {EFFECT}
 	(setf - $fl 5)
 	(setf + $gp 5)
-	(all-districts (setf + %contentment 5))
+	(all-districts (setf + %contentment 2))
 
 #Source: http://www.papalartifacts.com/the-medici-popes-on-papal-artifacts/

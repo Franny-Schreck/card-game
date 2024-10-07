@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "DEATH"
 
-{DESCRIPTION} "People are dying everywhere. Lose 3 Florin and every district 5 contentment"
+{DESCRIPTION} "People are dying everywhere. Lose Florin and every district contentment, depending on its sanitation level."
 
 {IMAGE} "pest-dies"
 
@@ -28,7 +28,7 @@
 			(animate-play self)
 			(setf - $fl (max 0 (- 20 $total-sanitation-level)))
 			(put-card "void" self)
-			(all-districts (setf - %contentment (max 0 (- 10 %sanitation-level))))
+			(all-districts (setf - %contentment (max 0 (- 15 %sanitation-level))))
 		)
 		())
 

@@ -17,5 +17,9 @@
 {CONDITION} true
 
 {EFFECT}
+	(if (> %bureaucracy-level 0)
+		(setf + $gp 3)
+		())
+		
 	(setf - %contentment 5)
 	(setf + $fl 2)

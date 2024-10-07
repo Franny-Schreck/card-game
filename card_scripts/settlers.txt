@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Settlers"
 
-{DESCRIPTION} "Draw 1 card, gain 5 Florin and 1 Governance Point. Look through 3 random cards in your discard pile, and choose a card from among them to put into your hand."
+{DESCRIPTION} "Draw 1 card, gain 5 Florin and 1 Governance Point. Look through 3 random cards in your discard pile, and choose a card to put into your hand."
 
 {IMAGE} "settlers"
 

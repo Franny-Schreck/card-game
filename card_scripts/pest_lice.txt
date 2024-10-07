@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "LICE"
 
-{DESCRIPTION} "Some sickness is spreading through lice, many people get sick. Lose 5 Florin and every district 5 contentment"
+{DESCRIPTION} "Some sickness is spreading through lice, many people get sick. Lose 5 Florin and every district 6 contentment"
 
 {IMAGE} "pest-lice"
 
@@ -28,7 +28,7 @@
 			(animate-play self)
 			(put-card "void" self)
 			(put-card "hand" (take-card 1 "card:pest_dies" "top"))
-			(all-districts (setf - %contentment 5))
+			(all-districts (setf - %contentment 6))
 			(setf - $fl 5))
 		())
 

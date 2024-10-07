@@ -12,7 +12,7 @@
 
 {TAGS} "shop"
 
-{FREQUENCY} 70
+{FREQUENCY} 30
 
 {CONDITION}
 	(>= $fl 1)
