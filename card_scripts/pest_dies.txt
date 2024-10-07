@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "DEATH"
 
-{DESCRIPTION} "People are dying. Lose 3 Florin and every district 5 contentment"
+{DESCRIPTION} "People are dying everywhere. Lose 3 Florin and every district 5 contentment"
 
 {IMAGE} "pest-dies"
 
@@ -16,7 +16,7 @@
 
 {TARGET} "global"
 
-{USES} "1"
+{USES} "0"
 
 {CONDITION} false
 

@@ -29,6 +29,8 @@ var _districts: Array[District]
 
 var card_factory: CardFactory
 
+var _building_factory: BuildingFactory
+
 var global_stats: GlobalStats
 
 var hand: Hand
@@ -126,6 +128,23 @@ func play(card: Card) -> bool:
 
 
 func reset() -> void:
+	card_factory.reset()
+
+	_building_factory.reset()
+
+	is_skipped_turn = true
+	skipped_turn_count = 0
+
+	_btn_end_turn.disabled = false
+
+	_on_turn_start_callbacks.clear()
+
+	_detached_card = null
+	
+	_failed_play_conditions.clear()
+
+	_card_picker.hide()
+
 	for district: District in _districts:
 		district.reset()
 
@@ -143,7 +162,7 @@ func reset() -> void:
 
 	for i in range(3):
 		hand.add_card(draw_pile._cards.back())
-		
+
 	shop.reset()
 	
 	global_stats.reset()
@@ -154,6 +173,7 @@ func reset() -> void:
 func _ready() -> void:
 	_card_dumpster = get_node("/root/root/card_dumpster")
 	card_factory = get_node("/root/root/card_factory")
+	_building_factory = get_node("/root/root/building_factory")
 	global_stats = get_node("/root/root/global_stats")
 	hand = get_node("/root/root/hand")
 	draw_pile = get_node("/root/root/draw_pile")

@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Reliquaries"
 
-{DESCRIPTION} "You draw a card, gain 4 Governance Points, and the district gains 3 contentment."
+{DESCRIPTION} "You draw a card, gain 2 Governance Points, and the district gains 3 contentment."
 
 {IMAGE} "reliquaries"
 
@@ -24,5 +24,5 @@
 		(put-card "draw" (take-card -1 "discard" "random"))
 		())
 	(put-card "hand" (take-card 1 "draw" "top"))
-	(setf + $gp 4)
+	(setf + $gp 2)
 	(setf + %contentment 3)

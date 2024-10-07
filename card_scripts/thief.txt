@@ -16,7 +16,7 @@
 
 {TARGET} "global"
 
-{USES} "1"
+{USES} "0"
 
 {CONDITION}
 	(> (card-count "hand") 1)

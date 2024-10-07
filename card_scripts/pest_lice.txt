@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "LICE"
 
-{DESCRIPTION} "bad lice, many sickness. Lose 3 Florin and every district 2 contentment"
+{DESCRIPTION} "Some sickness is spreading through lice, many people get sick. Lose 3 Florin and every district 2 contentment"
 
 {IMAGE} "pest-lice"
 
@@ -16,7 +16,7 @@
 
 {TARGET} "global"
 
-{USES} "1"
+{USES} "0"
 
 {CONDITION} false
 

@@ -147,10 +147,11 @@ func _on_environment_changed() -> void:
 	_is_active = await _calc_is_active()
 	_will_be_active = await _calc_will_be_active()
 
-	if _is_active:
-		pass
-
 	_self_sprite.visible = _is_active
+	
+	if not _is_active:
+		_description.visible = false
+
 	if _has_change_indicator:
 		_change_indicator.visible = _is_active != _will_be_active
 

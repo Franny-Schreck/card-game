@@ -16,6 +16,8 @@
 
 {TARGET} "global"
 
+{USES} "0"
+
 {CONDITION} false
 
 {EFFECT} ()

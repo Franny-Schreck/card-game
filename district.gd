@@ -206,10 +206,10 @@ func _ready() -> void:
 	_contentment_change_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_contentment_change_label.add_theme_font_override("font", font)
 
-	var contentment_change_icon: Label = Label.new()
+	var contentment_change_icon: TextureRect = TextureRect.new()
 	contentment_change_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	contentment_change_icon.text = "🙂"
-	contentment_change_icon.add_theme_font_override("font", font)
+	contentment_change_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	contentment_change_icon.texture = load("res://assets/contentment_icon.png")
 
 	_contentment_change_box = HBoxContainer.new()
 	_contentment_change_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -217,6 +217,26 @@ func _ready() -> void:
 	_contentment_change_box.add_child(_contentment_change_label)
 	_contentment_change_box.add_child(contentment_change_icon)
 	_change_list.add_child(_contentment_change_box)
+
+
+	_gp_change_label = Label.new()
+	_gp_change_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_gp_change_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_gp_change_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_gp_change_label.add_theme_font_override("font", font)
+	
+	var gp_change_icon: TextureRect = TextureRect.new()
+	gp_change_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	gp_change_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	gp_change_icon.texture = load("res://assets/govpt_icon.png")
+
+	_gp_change_box = HBoxContainer.new()
+	_gp_change_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_gp_change_box.alignment = BoxContainer.ALIGNMENT_END
+	_gp_change_box.hide()
+	_gp_change_box.add_child(_gp_change_label)
+	_gp_change_box.add_child(gp_change_icon)
+	_change_list.add_child(_gp_change_box)
 
 
 	_fl_change_label = Label.new()
@@ -238,25 +258,6 @@ func _ready() -> void:
 	_fl_change_box.add_child(fl_change_icon)
 	_change_list.add_child(_fl_change_box)
 
-
-	_gp_change_label = Label.new()
-	_gp_change_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_gp_change_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	_gp_change_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_gp_change_label.add_theme_font_override("font", font)
-	
-	var gp_change_icon: TextureRect = TextureRect.new()
-	gp_change_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	gp_change_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	gp_change_icon.texture = load("res://assets/govpt_icon.png")
-
-	_gp_change_box = HBoxContainer.new()
-	_gp_change_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_gp_change_box.alignment = BoxContainer.ALIGNMENT_END
-	_gp_change_box.hide()
-	_gp_change_box.add_child(_gp_change_label)
-	_gp_change_box.add_child(gp_change_icon)
-	_change_list.add_child(_gp_change_box)
 
 	_board.new_turn.connect(_on_new_turn)
 

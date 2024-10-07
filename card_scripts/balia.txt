@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Balia"
 
-{DESCRIPTION} "Draw 1 card, gain 5 government points, and lose 1 contentment"
+{DESCRIPTION} "Draw 1 card, gain 5 government points, and lose 2 contentment"
 
 {IMAGE} "balia"
 
@@ -22,4 +22,4 @@
 		())
 	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + $gp 5)
-	(setf - %contentment 1)
+	(setf - %contentment 2)

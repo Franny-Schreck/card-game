@@ -10,7 +10,10 @@ var _scripts: Dictionary
 var _script_names: Array[String]
 
 
-func _ready() -> void:
+func reset() -> void:
+	_scripts.clear()
+	_script_names.clear()
+
 	_interpreter = ScriptInterpreter.new()
 
 	_load_custom_operators()
@@ -43,6 +46,10 @@ func _ready() -> void:
 		_script_names.append(script_name)
 
 	print("Loaded ", _scripts.size(), " script", "" if _scripts.size() == 1 else "s", " from ", _script_directory)
+
+
+func _ready() -> void:
+	reset()
 
 
 func _get_schema() -> Array[ScriptInterpreter.ScriptProperty]:

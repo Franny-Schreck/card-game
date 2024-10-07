@@ -1,4 +1,4 @@
-[gd_scene load_steps=243 format=3 uid="uid://by6l74d3rajqa"]
+[gd_scene load_steps=244 format=3 uid="uid://by6l74d3rajqa"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_oibvw"]
 [ext_resource type="Script" path="res://hand.gd" id="2_o7nvh"]
@@ -241,6 +241,7 @@
 [ext_resource type="Texture2D" uid="uid://bfly3dwp85vw0" path="res://assets/state layer art/contentment/neg cont/vipera.png" id="220_da3ev"]
 [ext_resource type="Texture2D" uid="uid://dihag30he64kj" path="res://assets/state layer art/contentment/neg cont/leon_rosso.png" id="232_km44d"]
 [ext_resource type="Script" path="res://game_over_screen.gd" id="241_818q7"]
+[ext_resource type="AudioStream" uid="uid://yolyt8sjfier" path="res://assets/music/mauro-guliani-sonata-c-dur-pi-240824.mp3" id="242_txrxd"]
 
 [sub_resource type="Curve" id="Curve_fy6lf"]
 _data = [Vector2(0.00132275, 0), 0.0, 0.0, 0, 0, Vector2(0.93254, 1), 0.0, 0.0, 0, 0, Vector2(0.977513, 0.892201), 0.0, 0.0, 0, 0, Vector2(0.990741, 0.635538), 0.0, 0.0, 0, 0, Vector2(0.998677, 0), 0.0, 0.0, 0, 0]
@@ -2698,6 +2699,7 @@ script = ExtResource("45_0quvh")
 _script_directory = "res://building_scripts"
 
 [node name="debug_console" type="LineEdit" parent="."]
+visible = false
 offset_left = 16.0
 offset_top = 14.0
 offset_right = 258.0
@@ -2789,6 +2791,10 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("242_txrxd")
+autoplay = true
 
 [connection signal="pressed" from="board/btn_end_turn" to="board" method="_on_btn_end_turn_pressed"]
 [connection signal="pressed" from="shop/restock_btn" to="shop" method="_on_restock_btn_pressed"]

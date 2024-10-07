@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Influence"
 
-{DESCRIPTION} "Lose 7 Florin. Gain 8 Governance Points and 3 contentment."
+{DESCRIPTION} "Lose 7 Florin. Gain 3 Governance Points and 3 contentment."
 
 {IMAGE} "influence"
 
@@ -20,6 +20,6 @@
 
 {EFFECT}
 	(setf - $fl 7)
-	(setf + $gp 8)
+	(setf + $gp 3)
 	(setf + %contentment 3)
 	(setf + %palazzo-level 1)

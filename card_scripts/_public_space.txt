@@ -1,0 +1,23 @@
+{NAME} "public-space"
+{PLAY-COST} 5
+{SHOP-COST} 7
+
+{DISPLAYNAME} "Public Space"
+
+{DESCRIPTION} "Gain 5 contentment, lose 2 Florin for the next 5 rounds"
+
+{IMAGE} "regierung_smaller"
+
+{TAGS} "shop"
+
+{FREQUENCY} 60
+
+{TARGET} "local"
+
+{CONDITION} 
+	(>= $fl 3)
+	(cond (!= %max-public-level %public-level) "There is no more space for public spaces here")
+
+{EFFECT}
+	(setf + %public-level 1)
+	(async 5 (setf - $fl 2))

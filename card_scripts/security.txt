@@ -4,7 +4,7 @@
 
 {DISPLAYNAME} "Security"
 
-{DESCRIPTION} "Draw 1 Card, gain 4 Governance Points and 3 contentment."
+{DESCRIPTION} "Draw 1 Card, gain 2 Governance Points and 3 contentment."
 
 {IMAGE} "security"
 
@@ -18,7 +18,7 @@
 	(cond (!= %max-security-level %security-level) "There is no more space for walls here")
 
 {EFFECT}
-	(setf + $gp 4)
+	(setf + $gp 2)
 	(setf + %contentment 3)
 	(if (< (card-count "draw") 1)
 		(put-card "draw" (take-card -1 "discard" "random"))

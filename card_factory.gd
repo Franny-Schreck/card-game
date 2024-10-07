@@ -5,10 +5,44 @@ var _global_stats: GlobalStats
 
 var _categories: Dictionary
 
+var _is_initialized: bool
+
 class Category:
 	var scripts: Array[Dictionary]
 	var frequencies: PackedFloat32Array
 	var total_frequency: float
+
+
+func reset() -> void:
+	super.reset()
+
+	_categories.clear()
+
+	_global_stats = get_node("/root/root/global_stats")
+
+	var env: ScriptInterpreter.ScriptEnvironment = create_environment(_global_stats.curr_environment, null)
+
+	for script in _scripts.values():
+		if not script.has("TAGS"):
+			continue
+
+		for tag in script["TAGS"]:
+			var category: Category = _categories.get(tag)
+
+			if category == null:
+				category = Category.new()
+				_categories[tag] = category
+
+			category.scripts.append(script)
+
+			var frequency: float = await _get_script_frequency_for_tag(script, tag, env)
+			category.frequencies.append(frequency)
+			category.total_frequency += frequency
+
+	if not _is_initialized:
+		get_node("/root/root/board").environment_changed.connect(_on_environment_changed)
+
+	_is_initialized = true
 
 
 func create_environment(global_vars: Dictionary, target_vars: Variant) -> ScriptInterpreter.ScriptEnvironment:
@@ -54,30 +88,7 @@ func get_script_by_name(card_name: String) -> Dictionary:
 
 
 func _ready() -> void:
-	super._ready()
-	
-	_global_stats = get_node("/root/root/global_stats")
-
-	var env: ScriptInterpreter.ScriptEnvironment = create_environment(_global_stats.curr_environment, null)
-
-	for script in _scripts.values():
-		if not script.has("TAGS"):
-			continue
-
-		for tag in script["TAGS"]:
-			var category: Category = _categories.get(tag)
-
-			if category == null:
-				category = Category.new()
-				_categories[tag] = category
-
-			category.scripts.append(script)
-
-			var frequency: float = await _get_script_frequency_for_tag(script, tag, env)
-			category.frequencies.append(frequency)
-			category.total_frequency += frequency
-
-	get_node("/root/root/board").environment_changed.connect(_on_environment_changed)
+	reset()
 
 
 func _get_script_frequency_for_tag(script: Dictionary, tag: String, env: ScriptInterpreter.ScriptEnvironment) -> float:
@@ -93,7 +104,7 @@ func _get_schema() -> Array[ScriptInterpreter.ScriptProperty]:
 		ScriptInterpreter.ScriptProperty.create("DESCRIPTION"),
 		ScriptInterpreter.ScriptProperty.create("IMAGE"),
 		ScriptInterpreter.ScriptProperty.create("TAGS", false, true, "lawless|faith|sticky|keep-on-play|shop"),
-		ScriptInterpreter.ScriptProperty.create("USES", false, false, "[1-9][0-9]*"),
+		ScriptInterpreter.ScriptProperty.create("USES", false, false, "[0-9]+"),
 		ScriptInterpreter.ScriptProperty.create("BACKGROUND", false, false),
 		ScriptInterpreter.ScriptProperty.create("TARGET", true, false, "global|local"),
 		ScriptInterpreter.ScriptProperty.create("CONDITION", true, true, "", true),

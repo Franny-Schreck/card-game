@@ -1,0 +1,2048 @@
+[gd_scene load_steps=196 format=3 uid="uid://by6l74d3rajqa"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_oibvw"]
+[ext_resource type="Script" path="res://hand.gd" id="2_o7nvh"]
+[ext_resource type="Script" path="res://board.gd" id="3_1b2fl"]
+[ext_resource type="Script" path="res://shop.gd" id="3_2o8d3"]
+[ext_resource type="Script" path="res://card_factory.gd" id="4_gpflh"]
+[ext_resource type="Script" path="res://draw_pile.gd" id="4_sk7cc"]
+[ext_resource type="Texture2D" uid="uid://cvrrm22an8dsc" path="res://assets/card_base.png" id="5_2p0vc"]
+[ext_resource type="Script" path="res://discard_pile.gd" id="5_ltrcj"]
+[ext_resource type="Texture2D" uid="uid://drfqfj6eqnbof" path="res://assets/florence_map.png" id="7_qamot"]
+[ext_resource type="FontFile" uid="uid://d3xfqxgsknq4o" path="res://assets/fonts/PixelOperator8.ttf" id="8_04v0i"]
+[ext_resource type="Script" path="res://district.gd" id="8_7dv2b"]
+[ext_resource type="Script" path="res://board_item.gd" id="9_dsncv"]
+[ext_resource type="Texture2D" uid="uid://c16nfhvm6rqe2" path="res://assets/state layer art/farms/leon doro_plot1.png" id="11_fiw1a"]
+[ext_resource type="Texture2D" uid="uid://ca60ytkbj650f" path="res://assets/state layer art/churches/pc_san michele and gaetano_leon bianco.png" id="12_163f8"]
+[ext_resource type="Texture2D" uid="uid://bngh4y4okb8su" path="res://assets/state layer art/farms/leon doro_plot2.png" id="13_3a60b"]
+[ext_resource type="Texture2D" uid="uid://dttwo2dg2b3ua" path="res://assets/state layer art/churches/pc_santa maria novella_leon bianco_flipped.png" id="13_cl75v"]
+[ext_resource type="Texture2D" uid="uid://7pi25kqenuv8" path="res://assets/state layer art/sanitation/well10.png" id="13_u3xxm"]
+[ext_resource type="Texture2D" uid="uid://bcq3dx3eu24rj" path="res://assets/state layer art/farms/leon doro_plot3.png" id="14_5lxgr"]
+[ext_resource type="Texture2D" uid="uid://qag24pt86q6l" path="res://assets/state layer art/sanitation/hospital_Ospedale Bonifacio.png" id="14_g56bo"]
+[ext_resource type="PackedScene" uid="uid://ssmj027r4qgp" path="res://card_picker.tscn" id="14_n350e"]
+[ext_resource type="Texture2D" uid="uid://djqmlpfl7cvli" path="res://assets/state layer art/churches/pc_san paolo apostolo_ognisanti.png" id="14_vyrdv"]
+[ext_resource type="Texture2D" uid="uid://drblv8r6kcoss" path="res://assets/state layer art/sanitation/hospital_ospedale san giovanni decollato.png" id="15_ect87"]
+[ext_resource type="Texture2D" uid="uid://ghje60he0u0y" path="res://assets/state layer art/churches/pc_santa lucia_ognissanti.png" id="15_eypi6"]
+[ext_resource type="Script" path="res://global_stats.gd" id="15_oif6q"]
+[ext_resource type="Texture2D" uid="uid://c5klufjqbk01g" path="res://assets/florin_icon.png" id="15_u5ufa"]
+[ext_resource type="Texture2D" uid="uid://r25ht5me0x2p" path="res://assets/state layer art/churches/c_santa maria_drago.png" id="16_00wwd"]
+[ext_resource type="Texture2D" uid="uid://pmpf57e2to82" path="res://assets/state layer art/sanitation/hospital_Officina perfume-pharmaceutical of Santa Maria Novella.png" id="16_3rccs"]
+[ext_resource type="Texture2D" uid="uid://d38xoym5f2if3" path="res://assets/govpt_icon.png" id="16_21r20"]
+[ext_resource type="FontFile" uid="uid://dghd7hie6kewj" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="16_gigqh"]
+[ext_resource type="Texture2D" uid="uid://bbfc0mxe85pw0" path="res://assets/state layer art/churches/pc_san frediano in castello_drago.png" id="17_4x1nl"]
+[ext_resource type="Texture2D" uid="uid://bsoi1sl2ajbyp" path="res://assets/state layer art/churches/pc_santa maria in verzaia_drago.png" id="18_4u5eh"]
+[ext_resource type="Texture2D" uid="uid://js0n1id0vav6" path="res://assets/state layer art/churches/pc_san felice in piazza_ferza.png" id="19_4ftv6"]
+[ext_resource type="Texture2D" uid="uid://cif0168jt1rmd" path="res://assets/state layer art/palazzos/leon doro_Palazzo Neroni.png" id="19_rcnyy"]
+[ext_resource type="Texture2D" uid="uid://fhc7hkt8chjl" path="res://assets/state layer art/churches/pc_san pier gattolino_ferza.png" id="20_qi8rr"]
+[ext_resource type="Texture2D" uid="uid://ctd8bv78eyyfo" path="res://assets/state layer art/palazzos/leon doro_Palazzo Medici.png" id="21_7p0n4"]
+[ext_resource type="Texture2D" uid="uid://dgvdhmjo6u7ax" path="res://assets/state layer art/churches/pc_santa felicita_santa maria soprarno.png" id="21_bkpr4"]
+[ext_resource type="Texture2D" uid="uid://duu6aju21krgx" path="res://assets/state layer art/farms/leon bianco_plot1.png" id="21_wkuhq"]
+[ext_resource type="Texture2D" uid="uid://buuwg3bdet5tf" path="res://assets/state layer art/churches/pc_santa maria soprarno_santa maria soprarno.png" id="22_dufhq"]
+[ext_resource type="Texture2D" uid="uid://dy1tdmttmor1q" path="res://assets/state layer art/farms/leon bianco_plot2.png" id="22_li245"]
+[ext_resource type="Texture2D" uid="uid://cl6ugfla5wlgq" path="res://assets/state layer art/sanitation/well2.png" id="22_rgejt"]
+[ext_resource type="Texture2D" uid="uid://coim200yraa6l" path="res://assets/state layer art/trade routes/leon doro_Porta di camaldoli.png" id="22_vwjwr"]
+[ext_resource type="Texture2D" uid="uid://ck8tac25k1rbn" path="res://assets/state layer art/farms/leon bianco_plot3.png" id="23_8rfbi"]
+[ext_resource type="Texture2D" uid="uid://g1ae20fcg1rb" path="res://assets/state layer art/security/leon doro_wall.png" id="23_51oog"]
+[ext_resource type="Texture2D" uid="uid://ebes5ggwlavk" path="res://assets/state layer art/churches/pc_san jacopo soprarno_san felice in piazza.png" id="23_fdsl6"]
+[ext_resource type="Texture2D" uid="uid://7n4d6t8cqxhp" path="res://assets/state layer art/sanitation/well.png" id="24_2pmm6"]
+[ext_resource type="Texture2D" uid="uid://lfd4odqq7aca" path="res://assets/state layer art/churches/pc_san remigio_leon nero.png" id="24_5hfbm"]
+[ext_resource type="Texture2D" uid="uid://dam48lps063qt" path="res://assets/state layer art/industry_cloth/cloth_workshop2.png" id="24_ab5uu"]
+[ext_resource type="Texture2D" uid="uid://njvmxtbdb3yj" path="res://assets/state layer art/sanitation/hospital_ospedale san paolo.png" id="24_d1ud8"]
+[ext_resource type="Texture2D" uid="uid://bjro2uaycqxqj" path="res://assets/state layer art/churches/c_san firenze_leon nero.png" id="25_kgjp2"]
+[ext_resource type="Texture2D" uid="uid://bx175h57ubcjd" path="res://assets/state layer art/industry_other/cager.png" id="25_p26h6"]
+[ext_resource type="Texture2D" uid="uid://d0mt5qs663sh5" path="res://assets/state layer art/churches/pc_santapollinare_bue.png" id="26_8nw4o"]
+[ext_resource type="Texture2D" uid="uid://dogxlot3m6371" path="res://assets/state layer art/farms/unicorno_plot1.png" id="26_byybd"]
+[ext_resource type="Texture2D" uid="uid://cipc4hbgucd4q" path="res://assets/state layer art/guilds/guild_furriers skinners.png" id="26_dqbdn"]
+[ext_resource type="Texture2D" uid="uid://bw7gylaxq18fg" path="res://assets/state layer art/churches/pc_santo stefano della badia_bue.png" id="27_i3b3c"]
+[ext_resource type="Texture2D" uid="uid://dp2ejp7wm658w" path="res://assets/state layer art/palazzos/leon bianco_Palazzo Antinori.png" id="27_i6ghu"]
+[ext_resource type="Texture2D" uid="uid://4gwlovdj8n8q" path="res://assets/state layer art/farms/unicorno_plot2.png" id="27_tt2s1"]
+[ext_resource type="Texture2D" uid="uid://bnchriea1gikj" path="res://assets/state layer art/churches/pc_san piero maggiore_chiavi.png" id="28_06wwb"]
+[ext_resource type="Texture2D" uid="uid://btegm72xdwu15" path="res://assets/state layer art/farms/unicorno_plot3.png" id="28_h1ey6"]
+[ext_resource type="Texture2D" uid="uid://dwjfhtvm0exve" path="res://assets/state layer art/sanitation/well4.png" id="28_wxttk"]
+[ext_resource type="Texture2D" uid="uid://cbe4s6xxrnpk4" path="res://assets/state layer art/churches/pc_santambrogio_chiavi.png" id="29_d7lpa"]
+[ext_resource type="Texture2D" uid="uid://dy2hq2uontih7" path="res://assets/state layer art/sanitation/well3.png" id="29_f1165"]
+[ext_resource type="Texture2D" uid="uid://cwwi1rdv4swh6" path="res://assets/state layer art/guilds/guild_armorers and swordsmiths.png" id="29_u6wl5"]
+[ext_resource type="Texture2D" uid="uid://bdr30y5aq2q26" path="res://assets/state layer art/churches/pc_san benedetto_san benedetto.png" id="30_2mpbv"]
+[ext_resource type="Texture2D" uid="uid://fa57ql21u6il" path="res://assets/state layer art/guilds/guild_judges notaries.png" id="30_xdleb"]
+[ext_resource type="Texture2D" uid="uid://dg2s170mywv5j" path="res://assets/state layer art/trade routes/leon bianco_porta faenza.png" id="31_cj4bo"]
+[ext_resource type="Texture2D" uid="uid://d18t0vcyojcvr" path="res://assets/state layer art/churches/pc_san michele visdomini_san benedetto.png" id="31_idjox"]
+[ext_resource type="Texture2D" uid="uid://cgchyetaifxpg" path="res://assets/state layer art/security/leon bianco-leon doro_Fortezza da Basso.png" id="32_oegka"]
+[ext_resource type="Texture2D" uid="uid://dc4gis0qjp3bx" path="res://assets/state layer art/churches/pc_santa maria maggiore_drago sg.png" id="32_wp170"]
+[ext_resource type="Texture2D" uid="uid://di0q1v853eghf" path="res://assets/state layer art/churches/pc_santa maria nipotecosa_drago sg.png" id="33_ueixh"]
+[ext_resource type="Texture2D" uid="uid://cm3trvbup7ufi" path="res://assets/state layer art/churches/pc_chiesa di orsanmichele_carro.png" id="34_csjnj"]
+[ext_resource type="Texture2D" uid="uid://bn3fcs0vfn0ax" path="res://assets/state layer art/sanitation/well5.png" id="34_ir4ek"]
+[ext_resource type="Texture2D" uid="uid://b37yldhqjov7r" path="res://assets/state layer art/guilds/guild_vintners.png" id="35_2ujjm"]
+[ext_resource type="Texture2D" uid="uid://cjn7w5kgf03f8" path="res://assets/state layer art/farms/drago1_plot1.png" id="35_3ig3n"]
+[ext_resource type="Texture2D" uid="uid://e6b1ttiqh82r" path="res://assets/state layer art/churches/pc_san tommaso_vipera.png" id="35_6n04h"]
+[ext_resource type="Texture2D" uid="uid://butqxrm2bb4sl" path="res://assets/state layer art/industry_cloth/cloth_workshop10.png" id="36_882i0"]
+[ext_resource type="Texture2D" uid="uid://ddcgi4kknxxbw" path="res://assets/state layer art/guilds/guild_locksmiths and toolmakers.png" id="36_84540"]
+[ext_resource type="Texture2D" uid="uid://036d1tps8n6x" path="res://assets/state layer art/churches/pc_santi apostoli_vipera.png" id="36_ien7c"]
+[ext_resource type="Texture2D" uid="uid://ddjwy3f14s71a" path="res://assets/state layer art/farms/drago1_plot2.png" id="36_p6xbs"]
+[ext_resource type="Texture2D" uid="uid://dde20cerchjxu" path="res://assets/state layer art/churches/pc_santa trinita_leon rosso.png" id="37_0mxvh"]
+[ext_resource type="Texture2D" uid="uid://dcslambmcg61r" path="res://assets/state layer art/farms/drago1_plot3.png" id="37_gk2xi"]
+[ext_resource type="Texture2D" uid="uid://clrcs1ovge14m" path="res://assets/state layer art/farms/ferza_plot1.png" id="38_xw3r6"]
+[ext_resource type="Texture2D" uid="uid://wwb038min4a5" path="res://assets/state layer art/sanitation/well6.png" id="38_ylql3"]
+[ext_resource type="Texture2D" uid="uid://cn671tejkfneu" path="res://assets/state layer art/industry_other/saddler.png" id="39_1abow"]
+[ext_resource type="Texture2D" uid="uid://bu1gp5q1ojguo" path="res://assets/state layer art/trade routes/unicorno_Porta della Molina.png" id="39_2mgvl"]
+[ext_resource type="Texture2D" uid="uid://cpu4v0dd8vk1k" path="res://assets/state layer art/guilds/guild_wool.png" id="39_8wivp"]
+[ext_resource type="Texture2D" uid="uid://droiuwn8alci6" path="res://assets/state layer art/farms/ferza_plot2.png" id="39_t5fds"]
+[ext_resource type="Texture2D" uid="uid://bo7njd77123t0" path="res://assets/state layer art/guilds/guild_butchers.png" id="40_424i7"]
+[ext_resource type="Texture2D" uid="uid://bd6623tri6iv8" path="res://assets/state layer art/farms/scala_plot1.png" id="40_ao5ho"]
+[ext_resource type="Texture2D" uid="uid://ddyej0ku8jkul" path="res://assets/state layer art/trade routes/unicorno_Porta al Prato.png" id="40_kvyfr"]
+[ext_resource type="Texture2D" uid="uid://d4dq1gixv4xhr" path="res://assets/state layer art/farms/ferza_plot3.png" id="40_y52j1"]
+[ext_resource type="Texture2D" uid="uid://e6tbme0a5grv" path="res://assets/state layer art/farms/santa maria soprarno_plot1.png" id="41_2chb3"]
+[ext_resource type="Texture2D" uid="uid://bcimxwq7uu311" path="res://assets/state layer art/farms/santa maria soprarno_plot2.png" id="42_bdgo8"]
+[ext_resource type="Texture2D" uid="uid://ceyyhh656nb40" path="res://assets/state layer art/palazzos/drago_Palazzo del pugliese.png" id="42_j6wdj"]
+[ext_resource type="Texture2D" uid="uid://dvdwpbxh7aqmf" path="res://assets/state layer art/guilds/guild_bankers.png" id="42_m2ss8"]
+[ext_resource type="Texture2D" uid="uid://5pyc13owsffx" path="res://assets/state layer art/sanitation/well7.png" id="42_vo0pe"]
+[ext_resource type="Texture2D" uid="uid://m87fd4gy2ffs" path="res://assets/state layer art/guilds/guild_merchants.png" id="43_3yyy8"]
+[ext_resource type="Texture2D" uid="uid://durdcaxy11mom" path="res://assets/state layer art/security/drago_wall.png" id="43_hgbvb"]
+[ext_resource type="Texture2D" uid="uid://6hujflu40drp" path="res://assets/state layer art/guilds/guild_blacksmiths.png" id="44_2rten"]
+[ext_resource type="Texture2D" uid="uid://d0uok5tmerwna" path="res://assets/state layer art/sanitation/hospital_Ospizio di Orbatello.png" id="44_ck34l"]
+[ext_resource type="Script" path="res://building_factory.gd" id="45_0quvh"]
+[ext_resource type="Texture2D" uid="uid://c6p46jpp6nhcw" path="res://assets/state layer art/farms/leon nero_plot1.png" id="45_02ktq"]
+[ext_resource type="Texture2D" uid="uid://l4m310jkg5b4" path="res://assets/state layer art/guilds/guild_shoemakers.png" id="45_c43sb"]
+[ext_resource type="Texture2D" uid="uid://c6ip5bqqqhqb7" path="res://assets/state layer art/farms/leon nero_plot2.png" id="46_1l3d6"]
+[ext_resource type="Texture2D" uid="uid://dkevoqxbqs047" path="res://assets/state layer art/trade routes/drago_Porta san frediano.png" id="46_8fore"]
+[ext_resource type="Texture2D" uid="uid://dfixcqsh3c7v8" path="res://assets/state layer art/guilds/guild_stonemasons woodcrafters.png" id="46_os0mr"]
+[ext_resource type="Texture2D" uid="uid://cw37psvrkukqm" path="res://assets/state layer art/farms/leon nero_plot3.png" id="47_1e3kb"]
+[ext_resource type="Texture2D" uid="uid://dveg7rbnwv2cm" path="res://assets/state layer art/sanitation/well8.png" id="47_3klxf"]
+[ext_resource type="Texture2D" uid="uid://mng8e07xy8gy" path="res://assets/state layer art/guilds/guild_saddlers.png" id="47_3mrgm"]
+[ext_resource type="Texture2D" uid="uid://b1c25s6s2cheo" path="res://assets/state layer art/sanitation/hospital_Spedale degli innocenti.png" id="49_6c8rx"]
+[ext_resource type="Texture2D" uid="uid://cpqh1fjpighvo" path="res://assets/state layer art/industry_cloth/cloth_workshop7.png" id="49_7ufdg"]
+[ext_resource type="Texture2D" uid="uid://dipns2q6v574k" path="res://assets/state layer art/guilds/guild_silk weavers.png" id="50_d4tno"]
+[ext_resource type="Texture2D" uid="uid://b2chwa4mf7dxd" path="res://assets/state layer art/industry_cloth/cloth_workshop6.png" id="50_hvhc7"]
+[ext_resource type="Texture2D" uid="uid://cruqj70j1nxxf" path="res://assets/state layer art/farms/bue_plot1.png" id="50_m8uyg"]
+[ext_resource type="Texture2D" uid="uid://dgehf416hddk5" path="res://assets/state layer art/security/ferza_wall.png" id="50_srccd"]
+[ext_resource type="Texture2D" uid="uid://bp1p6giitthid" path="res://assets/state layer art/guilds/guild_tailors and cloth dealers.png" id="51_6rhqk"]
+[ext_resource type="Texture2D" uid="uid://c6w3ymscm1a2w" path="res://assets/state layer art/industry_cloth/cloth_workshop.png" id="51_og70r"]
+[ext_resource type="Texture2D" uid="uid://mcisiqfxl3qt" path="res://assets/state layer art/trade routes/drago-unicorno_ponte alla Carraia.png" id="51_xf3fb"]
+[ext_resource type="Texture2D" uid="uid://q2clpkb3faw4" path="res://assets/state layer art/palazzos/ferza_Palazzo Spinelli.png" id="51_xr7s4"]
+[ext_resource type="Texture2D" uid="uid://d1c50ur6g8bsv" path="res://assets/state layer art/guilds/guild_innkeepers.png" id="52_lm6sc"]
+[ext_resource type="Texture2D" uid="uid://cq5yqeqqmwetm" path="res://assets/state layer art/trade routes/ferza_porta romana.png" id="52_tju5x"]
+[ext_resource type="Texture2D" uid="uid://bnh01d744laqh" path="res://assets/state layer art/farms/chiavi_plot1.png" id="52_uh2ty"]
+[ext_resource type="Texture2D" uid="uid://dptn446dwpsds" path="res://assets/state layer art/industry_other/butcher.png" id="52_w3gm3"]
+[ext_resource type="Texture2D" uid="uid://ts2j6nd4f2ag" path="res://assets/state layer art/sanitation/well9.png" id="53_3mrih"]
+[ext_resource type="Texture2D" uid="uid://cyfo54xs0uw1" path="res://assets/state layer art/farms/chiavi_plot2.png" id="53_crfd6"]
+[ext_resource type="Texture2D" uid="uid://d4lnugmto84b5" path="res://assets/state layer art/sanitation/hospital_ospedale santa maria nuova.png" id="53_eomf3"]
+[ext_resource type="Texture2D" uid="uid://xe6bpp4031r3" path="res://assets/state layer art/palazzos/scala_Palazzo Capponi alle Rovinate.png" id="53_ioy0m"]
+[ext_resource type="Texture2D" uid="uid://cc7hvb4rrvb3o" path="res://assets/state layer art/guilds/guild_olive oil merchants.png" id="53_tbiv2"]
+[ext_resource type="Texture2D" uid="uid://dyx38epy6m7ph" path="res://assets/state layer art/farms/chiavi_plot3.png" id="54_758xa"]
+[ext_resource type="Texture2D" uid="uid://d33q43wjqojvx" path="res://assets/state layer art/guilds/guild_physicians.png" id="55_mujbv"]
+[ext_resource type="Texture2D" uid="uid://c5etrkqjndsrl" path="res://assets/state layer art/guilds/guild_tanners.png" id="56_dog63"]
+[ext_resource type="Texture2D" uid="uid://chkumsonmj31l" path="res://assets/state layer art/palazzos/scala_Palazzo Torrigiani.png" id="57_ia20i"]
+[ext_resource type="Texture2D" uid="uid://m7841v4di2hi" path="res://assets/state layer art/palazzos/nicchio_Palazzo Lanfredini.png" id="57_stxfg"]
+[ext_resource type="Texture2D" uid="uid://b23jelbgxjqom" path="res://assets/state layer art/farms/vaio_plot1.png" id="57_xbeff"]
+[ext_resource type="Texture2D" uid="uid://1t8kuumljb6h" path="res://assets/state layer art/farms/vaio_plot2.png" id="58_36ora"]
+[ext_resource type="Texture2D" uid="uid://ce1mim4gr23jm" path="res://assets/state layer art/palazzos/nicchio_Palazzo Machiavelli.png" id="58_kmrxc"]
+[ext_resource type="Texture2D" uid="uid://d0jp7j8m1cke7" path="res://assets/state layer art/farms/vaio_plot3.png" id="59_hmdjc"]
+[ext_resource type="Texture2D" uid="uid://dgciahki3js3o" path="res://assets/state layer art/palazzos/scala_palazzo pitti.png" id="60_07ll6"]
+[ext_resource type="Texture2D" uid="uid://bl55m2g340jn7" path="res://assets/state layer art/palazzos/leon nero_Palazzo Corsi-Alberti.png" id="62_44xiv"]
+[ext_resource type="Texture2D" uid="uid://bwx13gmpkolyj" path="res://assets/state layer art/industry_cloth/cloth_workshop5.png" id="64_7fknj"]
+[ext_resource type="Texture2D" uid="uid://s2f7mc2v2vw0" path="res://assets/state layer art/churches/pc_san donato vecchietti_leon rosso.png" id="64_dvs17"]
+[ext_resource type="Texture2D" uid="uid://ct4mgw1c06xui" path="res://assets/state layer art/farms/drago_plot2.png" id="65_eayi2"]
+[ext_resource type="Texture2D" uid="uid://cjf3xrwhthk3f" path="res://assets/state layer art/industry_other/baker.png" id="66_jnc87"]
+[ext_resource type="Texture2D" uid="uid://cuor7hltj48eb" path="res://assets/state layer art/industry_other/cobbler.png" id="67_f6fbx"]
+[ext_resource type="Texture2D" uid="uid://bml8gvawibu20" path="res://assets/state layer art/trade routes/scala_porta san niccolo.png" id="67_vd4ik"]
+[ext_resource type="Texture2D" uid="uid://dtcri8i8bf0tf" path="res://assets/state layer art/trade routes/scala_porta san miniato.png" id="68_1d7of"]
+[ext_resource type="Texture2D" uid="uid://c6d8c54fq6tv0" path="res://assets/state layer art/trade routes/scala_porta san giorgio.png" id="69_51576"]
+[ext_resource type="Texture2D" uid="uid://bye7h0eufttm" path="res://assets/state layer art/farms/drago_plot1.png" id="69_b3est"]
+[ext_resource type="Texture2D" uid="uid://jp1y68ince40" path="res://assets/state layer art/palazzos/leon nero_Palazzo Borghini.png" id="70_a085o"]
+[ext_resource type="Texture2D" uid="uid://dqirlh6ycdrl1" path="res://assets/state layer art/palazzos/bue_Palazzo Gondi.png" id="71_5yf6k"]
+[ext_resource type="Texture2D" uid="uid://dwys0675476p3" path="res://assets/state layer art/trade routes/leon nero-scala_Ponte alle Grazie.png" id="71_wruel"]
+[ext_resource type="Texture2D" uid="uid://cs71ua6aag5bu" path="res://assets/state layer art/trade routes/nicchio-leon rosso_Ponte a Santa Trinita.png" id="71_x2p7n"]
+[ext_resource type="Texture2D" uid="uid://c5acw7ei34434" path="res://assets/state layer art/trade routes/nicchio-vipera_Ponte Vecchio.png" id="72_r6jse"]
+[ext_resource type="Texture2D" uid="uid://do48y8e66h1pp" path="res://assets/state layer art/sanitation/hospital_Ospedale vecchio di San Giovanni di Dio.png" id="74_k33ei"]
+[ext_resource type="Texture2D" uid="uid://cjunhil7hdd8w" path="res://assets/state layer art/palazzos/chiavi_Palazzo Pazzi.png" id="76_fjaxg"]
+[ext_resource type="Texture2D" uid="uid://d2k2txp1g3yi6" path="res://assets/state layer art/government/gov1.png" id="76_h5pd0"]
+[ext_resource type="Texture2D" uid="uid://bne22edbw5wex" path="res://assets/state layer art/security/scala_security.png" id="77_m4avt"]
+[ext_resource type="Texture2D" uid="uid://wvedf1cj3xqa" path="res://assets/state layer art/security/nicchio_security.png" id="78_cfvdx"]
+[ext_resource type="Texture2D" uid="uid://dljle0fu17uuu" path="res://assets/state layer art/trade routes/leon nero_Porta della Giustizia.png" id="80_fahgb"]
+[ext_resource type="Texture2D" uid="uid://c4k8788lcdmuw" path="res://assets/state layer art/industry_other/potmaker.png" id="83_ue8pj"]
+[ext_resource type="Texture2D" uid="uid://becpgpcvsmmh5" path="res://assets/state layer art/industry_other/carpenter.png" id="84_yroov"]
+[ext_resource type="Texture2D" uid="uid://b8jvl7xntlstq" path="res://assets/state layer art/trade routes/bue_Porta Ghibellina.png" id="85_hlrow"]
+[ext_resource type="Texture2D" uid="uid://c213dxhpe8tn6" path="res://assets/state layer art/industry_cloth/cloth_workshop4.png" id="85_oh2xr"]
+[ext_resource type="Texture2D" uid="uid://7anphqwyay65" path="res://assets/state layer art/security/leon nero_security.png" id="92_pia2g"]
+[ext_resource type="Texture2D" uid="uid://gtc5ynomiql0" path="res://assets/state layer art/trade routes/chiavi_Porta a Pinti.png" id="94_mu0li"]
+[ext_resource type="Texture2D" uid="uid://dnvugq1743nmh" path="res://assets/state layer art/palazzos/vaio_Palazzo della Gherardesca.png" id="95_g25wa"]
+[ext_resource type="Texture2D" uid="uid://hviqxycbg4r6" path="res://assets/state layer art/trade routes/chiavi_Porta alla Croce.png" id="95_sb3cp"]
+[ext_resource type="Texture2D" uid="uid://t2jetowd3lbp" path="res://assets/state layer art/industry_cloth/cloth_workshop3.png" id="96_kxylr"]
+[ext_resource type="Texture2D" uid="uid://dgywtcfd3uesf" path="res://assets/state layer art/security/bue_security.png" id="99_w41gj"]
+[ext_resource type="Texture2D" uid="uid://btp15owa4mvet" path="res://assets/state layer art/industry_other/blacksmith.png" id="102_x1dcm"]
+[ext_resource type="Texture2D" uid="uid://drmk5cb2fmaps" path="res://assets/state layer art/palazzos/drago sg_palazzo vettori.png" id="103_v1iub"]
+[ext_resource type="Texture2D" uid="uid://blpw6vc0ikekh" path="res://assets/state layer art/trade routes/vaio_Porta dei servi.png" id="105_hl0vu"]
+[ext_resource type="Texture2D" uid="uid://b6i2l0sp4sl6h" path="res://assets/state layer art/industry_cloth/cloth_workshop11.png" id="109_fbqvj"]
+[ext_resource type="Texture2D" uid="uid://ctjr70yfnoewx" path="res://assets/state layer art/palazzos/leon rosso_Palazzo Gianfigliazzi.png" id="111_1hr54"]
+[ext_resource type="Texture2D" uid="uid://bokpvuqhww5b3" path="res://assets/state layer art/security/chiavi_security.png" id="111_pwshp"]
+[ext_resource type="Texture2D" uid="uid://777cqc0cvrfb" path="res://assets/state layer art/government/palazzo vecchio.png" id="113_d2jnc"]
+[ext_resource type="Texture2D" uid="uid://qcj70oxp82od" path="res://assets/state layer art/trade routes/drago sg_Porta San Gallo.png" id="113_yfy3j"]
+[ext_resource type="Texture2D" uid="uid://dx5nc47ucu1ak" path="res://assets/state layer art/government/uffizi.png" id="114_gl7c7"]
+[ext_resource type="Texture2D" uid="uid://ycvguyggt8j4" path="res://assets/state layer art/industry_cloth/cloth_workshop9.png" id="117_n7av4"]
+[ext_resource type="Texture2D" uid="uid://c4neh0m57m0oi" path="res://assets/state layer art/industry_other/broom.png" id="119_ag6ss"]
+[ext_resource type="Texture2D" uid="uid://b5h4msklgnk6m" path="res://assets/state layer art/security/vaio_security.png" id="122_mmwo0"]
+[ext_resource type="Texture2D" uid="uid://c5vyav5tvy1p" path="res://assets/state layer art/palazzos/leon rosso_Palazzo Rucellai.png" id="122_msgi4"]
+[ext_resource type="Texture2D" uid="uid://dkw4q4k683aed" path="res://assets/state layer art/security/drago sg_wall.png" id="131_o5taq"]
+[ext_resource type="Texture2D" uid="uid://cxh4mobakpt8b" path="res://assets/state layer art/industry_other/vegetables.png" id="135_faxn1"]
+[ext_resource type="Texture2D" uid="uid://cheq3turptvws" path="res://assets/state layer art/government/bargello.png" id="136_wu2al"]
+[ext_resource type="Texture2D" uid="uid://1eopu1vb76s1" path="res://assets/state layer art/security/vipera_wall.png" id="144_55mdp"]
+[ext_resource type="Texture2D" uid="uid://c3f5mdximob3k" path="res://assets/state layer art/security/carro_wall.png" id="144_v8las"]
+[ext_resource type="Texture2D" uid="uid://cfxhg3gr5c4xc" path="res://assets/state layer art/security/unicorno_wall.png" id="146_5ama5"]
+[ext_resource type="Texture2D" uid="uid://d15op0xokwh57" path="res://assets/state layer art/security/leon rosso_wall.png" id="156_2e2ti"]
+[ext_resource type="Texture2D" uid="uid://c3eb4s26ljdxl" path="res://assets/state layer art/industry_other/dealer.png" id="156_yj6xn"]
+[ext_resource type="Texture2D" uid="uid://byh3xwyc8schf" path="res://assets/state layer art/industry_cloth/cloth_workshop8.png" id="159_fj67u"]
+[ext_resource type="Texture2D" uid="uid://nyjb15howvil" path="res://assets/state layer art/industry_other/tailor.png" id="166_3xcys"]
+[ext_resource type="Texture2D" uid="uid://n2p2eamtlap" path="res://assets/state layer art/government/loggia dei lanzi.png" id="168_t7pfk"]
+[ext_resource type="Texture2D" uid="uid://c1qxw5b1y34uk" path="res://assets/state layer art/government/mercato nuovo.png" id="170_t02bp"]
+[ext_resource type="Script" path="res://debug_console.gd" id="194_pwuel"]
+[ext_resource type="Script" path="res://card_dumpster.gd" id="195_023qy"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_oibvw")
+
+[node name="City" type="Sprite2D" parent="."]
+position = Vector2(310, 361)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_qamot")
+
+[node name="hand" type="Node2D" parent="."]
+position = Vector2(814, 707)
+script = ExtResource("2_o7nvh")
+
+[node name="draw_pile" type="Node2D" parent="."]
+position = Vector2(1125, 642)
+script = ExtResource("4_sk7cc")
+
+[node name="card_back_0" type="Sprite2D" parent="draw_pile"]
+visible = false
+texture = ExtResource("5_2p0vc")
+
+[node name="card_back_1" type="Sprite2D" parent="draw_pile"]
+visible = false
+position = Vector2(2, 2)
+texture = ExtResource("5_2p0vc")
+
+[node name="card_back_2" type="Sprite2D" parent="draw_pile"]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("5_2p0vc")
+
+[node name="card_back_3" type="Sprite2D" parent="draw_pile"]
+visible = false
+position = Vector2(6, 6)
+texture = ExtResource("5_2p0vc")
+
+[node name="card_back_4" type="Sprite2D" parent="draw_pile"]
+visible = false
+position = Vector2(8, 8)
+texture = ExtResource("5_2p0vc")
+
+[node name="discard_pile" type="Node2D" parent="."]
+position = Vector2(1219, 642)
+script = ExtResource("5_ltrcj")
+
+[node name="board" type="Node2D" parent="."]
+position = Vector2(0, 6)
+script = ExtResource("3_1b2fl")
+
+[node name="btn_end_turn" type="Button" parent="board"]
+offset_left = 1084.0
+offset_top = 543.0
+offset_right = 1202.0
+offset_bottom = 574.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+text = "End Turn"
+
+[node name="turn_skip_cost" type="Label" parent="board"]
+offset_left = 1210.0
+offset_top = 551.0
+offset_right = 1250.0
+offset_bottom = 574.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+text = "-0"
+horizontal_alignment = 2
+
+[node name="turn_skip_icon" type="Sprite2D" parent="board"]
+position = Vector2(1261, 558)
+texture = ExtResource("16_21r20")
+
+[node name="year_counter" type="Label" parent="board"]
+offset_left = 864.0
+offset_top = 22.0
+offset_right = 1020.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("16_gigqh")
+theme_override_font_sizes/font_size = 24
+text = "3000 AD"
+
+[node name="leon_doro" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+_initial_environment = {
+"max-bureaucracy-level": 0,
+"max-church-level": 0,
+"max-cloth-industry-level": 0,
+"max-farm-level": 3,
+"max-industry-level": 0,
+"max-palazzo-level": 0,
+"max-sanitation-level": 0,
+"max-security-level": 0,
+"max-trade-level": 0
+}
+
+[node name="area" type="Area2D" parent="board/leon_doro"]
+position = Vector2(352, 140)
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/leon_doro/area"]
+polygon = PackedVector2Array(77, 47, 94, 19, 107, -7, 131, -48, 165, -111, 151, -135, 95, -113, 1, -80, -51, -57, -90, -32, -84, -2, -84, 15, -80, 29, -49, 105, -49, 114, -43, 122, -16, 171, -6, 175, 21, 175, 21, 167, 29, 139, 51, 97)
+
+[node name="elements" type="Node2D" parent="board/leon_doro"]
+
+[node name="farm_plot1" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(325.75, 120.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_fiw1a")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(411.25, 84.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_3a60b")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(448.75, 58.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_5lxgr")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="guild_olive oil merchants" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(370, 301)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("53_tbiv2")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(350, 185)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("13_u3xxm")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="sanitation_ospedale bonifazio" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(438, 98)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("14_g56bo")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="sanitation_ospedale san giovanni decollato" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(341, 174)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("15_ect87")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="palazzo_Neroni" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(385, 258)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("19_rcnyy")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="palazzo_Medici" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(346, 288)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("21_7p0n4")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo_2"
+
+[node name="trade_Porta di camaldoli" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(370, 52)
+texture = ExtResource("22_vwjwr")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="security_wall" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(502, 6)
+texture = ExtResource("23_51oog")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(407, 161)
+texture = ExtResource("24_ab5uu")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_cager" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(421, 168)
+texture = ExtResource("25_p26h6")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="industry_vegetables" type="Sprite2D" parent="board/leon_doro/elements"]
+position = Vector2(325, 257)
+texture = ExtResource("135_faxn1")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_2"
+
+[node name="change_list" type="Label" parent="board/leon_doro"]
+offset_left = 334.0
+offset_top = 181.0
+offset_right = 374.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="leon_bianco" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/leon_bianco"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/leon_bianco/area"]
+polygon = PackedVector2Array(191, 124, 261, 108, 267, 138, 268, 156, 276, 183, 294, 225, 302, 245, 302, 252, 290, 257, 302, 281, 280, 302, 280, 306, 306, 327, 314, 329, 334, 341, 334, 344, 296, 369, 282, 369, 273, 361, 271, 358, 261, 343, 260, 340, 246, 320, 240, 312, 230, 296, 216, 275, 215, 270, 208, 262, 192, 237, 183, 219, 161, 185, 145, 162, 139, 150)
+
+[node name="elements" type="Node2D" parent="board/leon_bianco"]
+
+[node name="sanitation_Officina perfume-pharmaceutical of Santa Maria Novella" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(254, 266)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("16_3rccs")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(260, 270)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("24_2pmm6")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="church_san michele" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(298, 345)
+texture = ExtResource("12_163f8")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_santa maria" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(243, 278)
+texture = ExtResource("13_cl75v")
+script = ExtResource("9_dsncv")
+_script_name = "santa-maria"
+
+[node name="guild_tailors retailers" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(300, 355)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("51_6rhqk")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="farm_plot1" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(175.7, 170.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_wkuhq")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(211.7, 139)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("22_li245")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(249.25, 136.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23_8rfbi")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="palazzo_Palazzo Antinori" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(312, 344)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("27_i6ghu")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="security_fortress" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(250, 95)
+texture = ExtResource("32_oegka")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="trade_porta faenza" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(257, 105)
+texture = ExtResource("31_cj4bo")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(241, 234)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("36_882i0")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_baker" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(243, 243)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("66_jnc87")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="industry_saddler" type="Sprite2D" parent="board/leon_bianco/elements"]
+position = Vector2(284, 329)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("39_1abow")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_2"
+
+[node name="change_list" type="Label" parent="board/leon_bianco"]
+offset_left = 219.0
+offset_top = 214.0
+offset_right = 259.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="unicorno" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/unicorno"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/unicorno/area"]
+polygon = PackedVector2Array(136, 152, 106.402, 164.852, 67, 184, 62, 189, 49, 194, 37, 206, 25, 222, 25, 225, 36, 235, 39, 236, 55, 257, 77, 279, 81, 281, 98, 298, 97, 301, 89, 311, 79, 327, 103, 337, 123, 347, 145, 359, 180, 380, 202, 393, 211, 398, 229, 375, 238, 364, 255, 335, 215, 273, 215, 270, 211, 267, 189, 232, 183, 221, 173, 203, 154, 177, 149, 167, 141, 158, 141, 155, 138, 150)
+
+[node name="elements" type="Node2D" parent="board/unicorno"]
+
+[node name="sanitation_ospedale san paolo" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(246, 327)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("24_d1ud8")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="church_san pagolo" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(225, 340)
+texture = ExtResource("14_vyrdv")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_santa lucia dognissanti" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(134, 281)
+texture = ExtResource("15_eypi6")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_stonemasons" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(218, 369)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("46_os0mr")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(171, 251)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("22_rgejt")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="farm_plot1" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(109, 336.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("26_byybd")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(57.99, 245.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("27_tt2s1")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(140.5, 180.2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("28_h1ey6")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="trade_porta della molina" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(96, 290)
+texture = ExtResource("39_2mgvl")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="trade_Porta al Prato" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(51, 190)
+texture = ExtResource("40_kvyfr")
+script = ExtResource("9_dsncv")
+_script_name = "trade_2"
+
+[node name="trade_ponte alla Carraia2" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(202, 410.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("51_xf3fb")
+script = ExtResource("9_dsncv")
+_script_name = "trade_3"
+
+[node name="security" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(79, 320)
+texture = ExtResource("146_5ama5")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(182, 263)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("49_7ufdg")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_vegetables" type="Sprite2D" parent="board/unicorno/elements"]
+position = Vector2(162, 291)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("135_faxn1")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="change_list" type="Label" parent="board/unicorno"]
+offset_left = 141.0
+offset_top = 292.0
+offset_right = 181.0
+offset_bottom = 315.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="drago" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/drago"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/drago/area"]
+polygon = PackedVector2Array(211, 437, 203, 450, 197, 466, 190, 485, 181, 502, 172, 515, 149, 503, 100, 514, 98, 523, 87, 546, 80, 566, 80, 570, 77, 576, 70, 592, 69, 595, 66, 600, 64, 595, 62, 552, 59, 520, 44, 496, 32, 479, 48.9684, 416.616, 57, 392, 66, 354, 103, 380)
+
+[node name="elements" type="Node2D" parent="board/drago"]
+
+[node name="industry_cloth" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(153, 426)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("24_ab5uu")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_cloth2" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(158, 418)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("50_hvhc7")
+script = ExtResource("9_dsncv")
+_script_name = "industry_2"
+
+[node name="industry_cloth3" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(124, 417)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("51_og70r")
+script = ExtResource("9_dsncv")
+_script_name = "industry_3"
+
+[node name="industry_butcher" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(110, 414)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("52_w3gm3")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="farm_plot1" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(76.75, 381.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("35_3ig3n")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(55.75, 463)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("36_p6xbs")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(133, 495.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("37_gk2xi")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="church_santa maria" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(124, 466)
+texture = ExtResource("16_00wwd")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_san frediano" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(163, 442)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("17_4x1nl")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_santa maria verzaia" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(85, 410)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("18_4u5eh")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(121, 469)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("22_rgejt")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="palazzo_Del Pugliese" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(140, 426)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("42_j6wdj")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="trade_Porta san frediano" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(52, 397)
+texture = ExtResource("46_8fore")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="trade_ponte alla Carraia" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(202, 410.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("51_xf3fb")
+script = ExtResource("9_dsncv")
+_script_name = "trade_2"
+
+[node name="security" type="Sprite2D" parent="board/drago/elements"]
+position = Vector2(52, 518)
+texture = ExtResource("43_hgbvb")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="change_list" type="Label" parent="board/drago"]
+offset_left = 87.0
+offset_top = 423.0
+offset_right = 127.0
+offset_bottom = 446.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="ferza" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/ferza"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/ferza/area"]
+polygon = PackedVector2Array(137, 708, 143, 708, 146.639, 705.246, 151, 704, 155.063, 701.46, 195, 687, 200, 684, 222, 678, 242, 642, 243, 637, 251, 624, 254, 619, 266, 594, 266, 589, 256, 584, 234.184, 571.634, 220, 563, 219, 560, 226, 540, 229, 527, 232, 527, 233, 523, 232, 520, 218, 512, 201, 530, 197, 532, 179, 520, 173, 516, 151, 504, 143, 505, 133, 506, 122, 510, 114, 511, 102, 513, 98, 523, 90, 539, 88.0002, 546.727, 78, 574, 66, 602, 70, 629, 72, 631, 72, 662, 75, 682, 81, 688, 105, 694)
+
+[node name="elements" type="Node2D" parent="board/ferza"]
+
+[node name="farm_plot1" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(217, 634.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("38_xw3r6")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(142, 672.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("39_t5fds")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(97.75, 601)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("40_y52j1")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(189, 547)
+texture = ExtResource("64_7fknj")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_cloth2" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(147, 522)
+texture = ExtResource("50_hvhc7")
+script = ExtResource("9_dsncv")
+_script_name = "industry_2"
+
+[node name="industry_baker" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(141, 536)
+texture = ExtResource("66_jnc87")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="industry_cobbler" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(183, 577)
+texture = ExtResource("67_f6fbx")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_2"
+
+[node name="church_san felice" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(212, 553)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("19_4ftv6")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_san pier ghattolino" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(140, 612)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("20_qi8rr")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(138, 538)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("24_2pmm6")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="palazzo_Spinelli" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(227, 519)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("51_xr7s4")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="trade_porta romana" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(88, 687)
+texture = ExtResource("52_tju5x")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="security" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(80, 679)
+texture = ExtResource("50_srccd")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="government" type="Sprite2D" parent="board/ferza/elements"]
+position = Vector2(168, 581)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("76_h5pd0")
+script = ExtResource("9_dsncv")
+_script_name = "government"
+
+[node name="change_list" type="Label" parent="board/ferza"]
+offset_left = 136.0
+offset_top = 570.0
+offset_right = 176.0
+offset_bottom = 593.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="santa_maria_soprarno" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/santa_maria_soprarno"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/santa_maria_soprarno/area"]
+polygon = PackedVector2Array(223, 678, 248, 673, 266, 670, 275, 666, 283, 663, 293, 654, 300, 663, 303, 663, 304, 657, 319, 645, 344, 633, 347, 628, 366, 610, 376, 604, 377, 603, 382, 603, 390, 606, 399, 610, 399, 612, 410, 623, 413, 624, 414, 626, 416, 626, 416, 612, 472, 612, 484, 610, 494, 607, 502, 602, 551, 602, 593, 606, 625, 606, 639, 578, 640, 577, 640, 572, 617.677, 567.326, 610, 565, 604, 564, 599, 561, 593, 559, 583, 556, 572, 549, 552, 545, 549, 543, 539, 543, 534, 542, 468, 542, 451, 548, 439, 548, 416, 538, 393, 525, 378, 519, 363, 512, 346, 502, 338, 497, 333.147, 495.952, 319, 489, 314.705, 491.902, 282, 514, 267, 524, 262, 529, 221, 557, 218, 562, 231, 570, 266, 589, 266, 594, 255, 617, 243, 638, 240, 645, 223, 676)
+
+[node name="elements" type="Node2D" parent="board/santa_maria_soprarno"]
+
+[node name="farm_plot1" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(469, 587.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("40_ao5ho")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(347.5, 563.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("41_2chb3")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(297.25, 635.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("42_bdgo8")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="trade_porta san niccolo" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(638, 569)
+texture = ExtResource("67_vd4ik")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="trade_porta san miniato" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(576, 600)
+texture = ExtResource("68_1d7of")
+script = ExtResource("9_dsncv")
+_script_name = "trade_2"
+
+[node name="trade_porta san giorgio" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(386, 599)
+texture = ExtResource("69_51576")
+script = ExtResource("9_dsncv")
+_script_name = "trade_3"
+
+[node name="trade_Ponte alle Grazie" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(440.5, 527.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("71_wruel")
+script = ExtResource("9_dsncv")
+_script_name = "trade_4"
+
+[node name="guild_furriers skinners" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+z_index = 1
+position = Vector2(326, 486)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("26_dqbdn")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="church_santa felicita" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+z_index = 1
+position = Vector2(310, 500)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("21_bkpr4")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_santa maria soprarno" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(400, 525)
+texture = ExtResource("22_dufhq")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(350, 541)
+texture = ExtResource("38_ylql3")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="industry_butcher" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(355, 534)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("52_w3gm3")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="industry_potmaker" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(551, 573)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("83_ue8pj")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_2"
+
+[node name="industry_carpenter" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(275, 531)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("84_yroov")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_3"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(299, 526)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("85_oh2xr")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="security_wall" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(412, 614)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("77_m4avt")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="palazzo_Torrigiani" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(412, 536)
+texture = ExtResource("57_ia20i")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo_2"
+
+[node name="palazzo_Capponi alle Rovinate" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+z_index = 1
+position = Vector2(430, 541)
+texture = ExtResource("53_ioy0m")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="palazzo_Pitti" type="Sprite2D" parent="board/santa_maria_soprarno/elements"]
+position = Vector2(265, 543)
+texture = ExtResource("60_07ll6")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo_3"
+
+[node name="change_list" type="Label" parent="board/santa_maria_soprarno"]
+offset_left = 362.0
+offset_top = 547.0
+offset_right = 402.0
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="nicchio" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/nicchio"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/nicchio/area"]
+polygon = PackedVector2Array(172, 515, 197, 532, 201, 530, 218, 513, 233, 521, 229, 527, 219, 559, 317, 489, 295.382, 478.607, 292, 476, 280, 470, 230.917, 447.29, 212, 438, 207, 443, 202, 452, 193, 479, 182, 502)
+
+[node name="elements" type="Node2D" parent="board/nicchio"]
+
+[node name="security_wall" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(239.5, 450.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("78_cfvdx")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="trade_Ponte a Santa Trinita" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(265, 447.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("71_x2p7n")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="trade_Ponte Vecchio" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(320.5, 472.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("72_r6jse")
+script = ExtResource("9_dsncv")
+_script_name = "trade_2"
+
+[node name="palazzo_Lanfredini" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(229, 450)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("57_stxfg")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="palazzo_Machiavelli" type="Sprite2D" parent="board/nicchio/elements"]
+z_index = 1
+position = Vector2(271, 463)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("58_kmrxc")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo_2"
+
+[node name="church_san jacopo soprarno" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(239, 459)
+texture = ExtResource("23_fdsl6")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(250, 517)
+texture = ExtResource("96_kxylr")
+script = ExtResource("9_dsncv")
+_script_name = "industry_3"
+
+[node name="industry_cloth2" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(264, 504)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("49_7ufdg")
+script = ExtResource("9_dsncv")
+_script_name = "industry_2"
+
+[node name="industry_cloth3" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(248, 503)
+texture = ExtResource("50_hvhc7")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_baker" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(246, 470)
+texture = ExtResource("66_jnc87")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/nicchio/elements"]
+position = Vector2(268, 517)
+texture = ExtResource("29_f1165")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="change_list" type="Label" parent="board/nicchio"]
+offset_left = 208.0
+offset_top = 458.0
+offset_right = 248.0
+offset_bottom = 481.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="leon_nero" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/leon_nero"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/leon_nero/area"]
+polygon = PackedVector2Array(384, 499, 392, 501, 408.101, 500.968, 412, 502, 453, 511, 476, 514, 486.628, 514.916, 492, 516, 506, 516, 516, 519, 540.274, 520.918, 564, 525, 579, 525, 588, 528, 604, 529, 632, 535, 645, 541, 652, 517, 641, 511, 630.797, 506.23, 589, 485, 567.57, 475.152, 537, 460, 519, 453, 516, 450, 494, 449, 452, 449, 454, 442, 454, 427, 451, 425, 439, 422, 424, 418, 419, 416, 416, 432, 413, 435, 404, 434, 388, 427, 380.17, 435.284, 377, 435, 377, 439, 379, 440, 379, 467, 373, 493, 379, 498)
+
+[node name="elements" type="Node2D" parent="board/leon_nero"]
+
+[node name="farm_plot1" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(559.75, 486.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("45_02ktq")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(609.25, 499)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("46_1l3d6")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(629.5, 526.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("47_1e3kb")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="church_san remigio" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(465, 463)
+texture = ExtResource("24_5hfbm")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_san firenze" type="Sprite2D" parent="board/leon_nero/elements"]
+z_index = 1
+position = Vector2(438, 430)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("25_kgjp2")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(503, 475)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("34_ir4ek")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="palazzo_corsi alberti" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(479, 502)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("62_44xiv")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="palazzo_borghini" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(489, 452)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("70_a085o")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo_2"
+
+[node name="security_wall" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(656, 535)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("92_pia2g")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="trade_Porta della Giustizia" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(648, 526)
+texture = ExtResource("80_fahgb")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="trade_Ponte alle Grazie" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(440.5, 527.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("71_wruel")
+script = ExtResource("9_dsncv")
+_script_name = "trade_2"
+
+[node name="government_uffizi" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(393, 486)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("114_gl7c7")
+script = ExtResource("9_dsncv")
+_script_name = "government"
+
+[node name="government_palazzo vecchio" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(392, 448)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("113_d2jnc")
+script = ExtResource("9_dsncv")
+_script_name = "government_2"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(416, 457)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("51_og70r")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_cloth2" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(404, 463)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("109_fbqvj")
+script = ExtResource("9_dsncv")
+_script_name = "industry_2"
+
+[node name="industry_blacksmith" type="Sprite2D" parent="board/leon_nero/elements"]
+position = Vector2(425, 463)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("102_x1dcm")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="change_list" type="Label" parent="board/leon_nero"]
+offset_left = 474.0
+offset_top = 466.0
+offset_right = 514.0
+offset_bottom = 489.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="bue" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/bue"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/bue/area"]
+polygon = PackedVector2Array(653, 516, 654, 508, 656, 503, 678, 443, 652, 436, 642.21, 431.893, 620, 425, 597.425, 420.439, 578, 415, 569, 413, 557.527, 408.304, 553, 407, 527.393, 400.724, 507, 395, 500, 394, 431, 393, 428, 392, 385, 392, 381, 395, 373, 395, 373, 422, 378, 435, 380, 435, 388.099, 427.11, 404, 434, 413, 435, 416, 432, 418, 421, 420, 417, 454, 426, 454, 443, 453, 444, 453, 449, 493, 449, 496, 450, 516, 450, 517, 452, 544, 463, 614, 498)
+
+[node name="elements" type="Node2D" parent="board/bue"]
+
+[node name="church_santapolinare" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(420, 393)
+texture = ExtResource("26_8nw4o")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="farm_plot1" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(642.25, 457.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("50_m8uyg")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="church_santo stefano" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(459, 408)
+texture = ExtResource("27_i3b3c")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_armorers" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(401, 403)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("29_u6wl5")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(629, 443)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("38_ylql3")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="palazzo_gondi" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(388, 421)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("71_5yf6k")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="trade_porta ghibellina" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(670, 452)
+texture = ExtResource("85_hlrow")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="security_wall" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(661, 483)
+texture = ExtResource("99_w41gj")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(535, 417)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("64_7fknj")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_cloth3" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(550, 407)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("117_n7av4")
+script = ExtResource("9_dsncv")
+_script_name = "industry_3"
+
+[node name="industry_cloth4" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(547, 414)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("51_og70r")
+script = ExtResource("9_dsncv")
+_script_name = "industry_3"
+
+[node name="industry_cloth2" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(429, 413)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("49_7ufdg")
+script = ExtResource("9_dsncv")
+_script_name = "industry_2"
+
+[node name="industry_broom" type="Sprite2D" parent="board/bue/elements"]
+position = Vector2(577, 453)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("119_ag6ss")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="change_list" type="Label" parent="board/bue"]
+offset_left = 509.0
+offset_top = 406.0
+offset_right = 549.0
+offset_bottom = 429.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="chiavi" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/chiavi"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/chiavi/area"]
+polygon = PackedVector2Array(678, 443, 682, 428, 690, 393, 691, 390, 691, 314, 690, 307, 672, 281, 658, 264, 643.122, 237.067, 629, 216, 617, 196, 599, 225, 590, 238, 587, 241, 566, 226, 561, 235, 547, 253, 535, 266, 520, 287, 495, 319, 476, 343, 457, 329, 448, 348, 442, 348, 426, 342, 426, 391, 429, 393, 501, 394, 513, 398, 525, 400, 550, 406, 553.875, 407.348, 573, 414, 602, 421, 620, 425, 631, 429, 656, 437)
+
+[node name="elements" type="Node2D" parent="board/chiavi"]
+
+[node name="palazzo_Pazzi" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(441, 362)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("76_fjaxg")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="farm_plot1" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(613, 290.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("52_uh2ty")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(637, 322.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("53_crfd6")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(664, 349.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("54_758xa")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="church_san piero maggiore" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(498, 369)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("28_06wwb")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_sant ambrogio" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(618, 364)
+texture = ExtResource("29_d7lpa")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_judges notaries" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(445, 378)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_xdleb")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(590, 366)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("42_vo0pe")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="sanitation_Ospizio di Orbatello" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(540, 291)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("44_ck34l")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="trade_Porta a Pinti" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(622, 196)
+texture = ExtResource("94_mu0li")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="trade_Porta alla Croce" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(687, 391)
+texture = ExtResource("95_sb3cp")
+script = ExtResource("9_dsncv")
+_script_name = "trade_2"
+
+[node name="security_wall" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(693, 308)
+texture = ExtResource("111_pwshp")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="industry_cloth2" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(531, 333)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("96_kxylr")
+script = ExtResource("9_dsncv")
+_script_name = "industry_2"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(527, 343)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("36_882i0")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_carpenter" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(569, 377)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("84_yroov")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="government_bargello" type="Sprite2D" parent="board/chiavi/elements"]
+position = Vector2(456, 369)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("136_wu2al")
+script = ExtResource("9_dsncv")
+_script_name = "government"
+
+[node name="change_list" type="Label" parent="board/chiavi"]
+offset_left = 558.0
+offset_top = 293.0
+offset_right = 598.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="vaio" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/vaio"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/vaio/area"]
+polygon = PackedVector2Array(425, 391, 387, 391, 386, 356, 379, 352, 380, 337, 382, 329, 383, 319, 385.939, 313.432, 394, 301, 402, 283, 406, 277, 412, 270, 412.639, 263.428, 415, 259, 419, 254, 422, 248, 425.188, 244.55, 434, 229, 445, 206, 447, 200, 450.896, 196.053, 457, 185, 464, 175, 468, 164, 471.73, 154.755, 477, 145, 481, 141, 485.87, 128.222, 493, 115, 497, 107, 501.926, 100.36, 513, 80, 519, 69, 525.29, 61.3394, 531, 51, 542, 65, 556, 88, 558, 96, 565, 110, 575.385, 124.175, 594, 156, 599, 161, 617, 194, 614, 203, 608.688, 207.656, 589, 240, 587, 241, 567, 226, 559, 236, 546, 254, 536, 264, 535, 267, 516, 292, 501, 311, 476, 343, 457, 329, 448, 348, 444, 349, 426, 342)
+
+[node name="elements" type="Node2D" parent="board/vaio"]
+
+[node name="farm_plot1" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(521.5, 85.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("57_xbeff")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(540.25, 130)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("58_36ora")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="farm_plot3" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(574, 181)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("59_hmdjc")
+script = ExtResource("9_dsncv")
+_script_name = "farm_3"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(501, 226)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("109_fbqvj")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_vegetables" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(511, 248)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("135_faxn1")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="church_san benedetto" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(417, 361)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_2mpbv")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_san michele visdomini" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(452, 284)
+texture = ExtResource("31_idjox")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_vintners" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(416, 367)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("35_2ujjm")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_locksmiths" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(402, 369)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("36_84540")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(528, 224)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("47_3klxf")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="sanitation_spedale degli innocenti" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(496, 240)
+texture = ExtResource("49_6c8rx")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="sanitation_ospedale santa maria nuova" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(501, 282)
+texture = ExtResource("53_eomf3")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="palazzo_Gherardesca" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(575, 217)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("95_g25wa")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="trade_Porta dei servi" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(576, 124)
+texture = ExtResource("105_hl0vu")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="security_wall" type="Sprite2D" parent="board/vaio/elements"]
+position = Vector2(599, 155)
+texture = ExtResource("122_mmwo0")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="change_list" type="Label" parent="board/vaio"]
+offset_left = 487.0
+offset_top = 175.0
+offset_right = 527.0
+offset_bottom = 198.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="drago_di san giovanni" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/drago_di san giovanni"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/drago_di san giovanni/area"]
+polygon = PackedVector2Array(386, 392, 381, 395, 363, 395, 360, 396, 354, 396, 353, 345, 340, 345, 338.038, 343.235, 334, 343, 334, 341, 310, 327, 305, 326, 303, 323, 280, 305, 280, 302, 301, 281, 301, 278, 291, 260, 291, 257, 293, 256, 300, 252, 303.106, 254.611, 311, 267, 317, 276, 325, 291, 332, 304, 337, 311, 341, 314, 346, 314, 348, 315, 373, 315, 373, 307, 377.721, 297.759, 382, 276, 400.956, 240.816, 404, 236, 427.301, 192.576, 429, 187, 431.833, 181.801, 440, 170, 456, 142, 464, 125, 470.684, 112.434, 483, 94, 501, 56, 517, 29, 531, 50, 526, 58, 520, 67, 511, 84, 505, 93, 499.47, 105.326, 496, 107, 495, 111, 490, 120, 480.679, 141.357, 477, 145, 474, 151, 470, 160, 463.911, 174.378, 456, 186, 447, 200, 446, 204, 431, 235, 427, 241, 420, 251, 412, 265, 412, 270, 402, 283, 395, 299, 390, 308, 384, 317, 380, 336, 379, 338, 379, 343, 380, 354, 387, 356)
+
+[node name="elements" type="Node2D" parent="board/drago_di san giovanni"]
+
+[node name="farm_plot1" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(508, 79.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("69_b3est")
+script = ExtResource("9_dsncv")
+_script_name = "farm_1"
+
+[node name="farm_plot2" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(474.25, 130)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("65_eayi2")
+script = ExtResource("9_dsncv")
+_script_name = "farm_2"
+
+[node name="church_santa maria maggiore" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(308, 308)
+texture = ExtResource("32_wp170")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_santa maria nipotecosa" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(367, 366)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("33_ueixh")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_wool" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(368, 380)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("39_8wivp")
+script = ExtResource("9_dsncv")
+_script_name = "guild_2"
+
+[node name="guild_butchers" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(386, 380)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("40_424i7")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(464, 141)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("53_3mrih")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="palazzo_Vettori" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(425, 219)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("103_v1iub")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="trade_Porta San Gallo" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(524, 31)
+texture = ExtResource("113_yfy3j")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="security_wall" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(527, 43)
+texture = ExtResource("131_o5taq")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(299, 289)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("117_n7av4")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_dealer" type="Sprite2D" parent="board/drago_di san giovanni/elements"]
+position = Vector2(450, 165)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("156_yj6xn")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="change_list" type="Label" parent="board/drago_di san giovanni"]
+offset_left = 337.0
+offset_top = 320.0
+offset_right = 377.0
+offset_bottom = 343.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="carro" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/carro"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/carro/area"]
+polygon = PackedVector2Array(367, 491, 334, 468, 335, 461, 337, 454, 342, 445, 353, 423, 354, 396, 362, 395, 373, 394, 373, 422, 376, 428, 379, 441, 379, 466, 373, 492)
+
+[node name="elements" type="Node2D" parent="board/carro"]
+
+[node name="church_santa maria nipotecosa2" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(368, 403)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("34_csjnj")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_bankers" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(366, 419)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("42_m2ss8")
+script = ExtResource("9_dsncv")
+_script_name = "guild_3"
+
+[node name="guild_merchants" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(375, 422)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("43_3yyy8")
+script = ExtResource("9_dsncv")
+_script_name = "guild_3"
+
+[node name="guild_blacksmiths" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(364, 441)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("44_2rten")
+script = ExtResource("9_dsncv")
+_script_name = "guild_2"
+
+[node name="guild_shoemakers" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(379, 437)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("45_c43sb")
+script = ExtResource("9_dsncv")
+_script_name = "guild_2"
+
+[node name="guild_saddlers" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(353, 444)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("47_3mrgm")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(344, 457)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("159_fj67u")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_carpenter" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(356, 430)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("84_yroov")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(363, 452)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("47_3klxf")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="public_loggia dei lanzi" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(369, 451)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("168_t7pfk")
+script = ExtResource("9_dsncv")
+_script_name = "public_space"
+
+[node name="security_wall" type="Sprite2D" parent="board/carro/elements"]
+position = Vector2(351, 479)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("144_v8las")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="change_list" type="Label" parent="board/carro"]
+offset_left = 339.0
+offset_top = 440.0
+offset_right = 379.0
+offset_bottom = 463.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="vipera" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/vipera"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/vipera/area"]
+polygon = PackedVector2Array(333, 467, 324, 463, 290, 444, 291, 440, 292, 439, 292, 432, 288, 421, 288, 409, 308, 411, 318, 414, 333, 414, 333, 409, 334, 407.9, 334, 396, 333, 393, 333, 365, 334, 364.8, 334, 359, 336, 358, 335, 344, 340, 344, 340.834, 345.64, 353, 345, 353, 422, 344, 441, 337, 455)
+
+[node name="elements" type="Node2D" parent="board/vipera"]
+
+[node name="public_mercato nuovo" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(343, 413)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("170_t02bp")
+script = ExtResource("9_dsncv")
+_script_name = "public_space"
+
+[node name="industry_tailor" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(299, 416)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("166_3xcys")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_2"
+
+[node name="industry_blacksmith" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(297, 425)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("102_x1dcm")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(306, 431)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("85_oh2xr")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="trade_Ponte Vecchio" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(320.5, 472.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("72_r6jse")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="church_san tommaso" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(350, 357)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("35_6n04h")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_san apostoli" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(311, 438)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("36_ien7c")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_silk weavers" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(348, 424)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("50_d4tno")
+script = ExtResource("9_dsncv")
+_script_name = "guild_2"
+
+[node name="guild_innkeepers" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(353, 380)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("52_lm6sc")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(327, 439)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("53_3mrih")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="security_wall" type="Sprite2D" parent="board/vipera/elements"]
+position = Vector2(313.75, 457)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("144_55mdp")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="change_list" type="Label" parent="board/vipera"]
+offset_left = 298.0
+offset_top = 418.0
+offset_right = 338.0
+offset_bottom = 441.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="leon_rosso" type="Node2D" parent="board"]
+script = ExtResource("8_7dv2b")
+
+[node name="area" type="Area2D" parent="board/leon_rosso"]
+
+[node name="polygon" type="CollisionPolygon2D" parent="board/leon_rosso/area"]
+polygon = PackedVector2Array(290, 443, 287, 442, 281, 439, 269, 434, 243, 416, 229, 409, 216, 401, 212, 398, 224.99, 379.573, 236, 368, 246, 349, 255, 337, 257, 335, 263, 347, 268, 355, 274, 363, 279, 367, 285, 370, 296, 369, 306, 362, 318, 355, 321, 352, 328, 349, 334, 345, 335, 346, 335, 358, 333, 365, 332, 393, 334, 394, 334, 406, 332, 414, 318, 414, 306, 411, 300, 411, 288, 409, 288, 422, 291, 431, 292, 439)
+
+[node name="elements" type="Node2D" parent="board/leon_rosso"]
+
+[node name="trade_Ponte a Santa Trinita" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(265, 447.25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("71_x2p7n")
+script = ExtResource("9_dsncv")
+_script_name = "trade_1"
+
+[node name="church_santa trinita" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(269, 413)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("37_0mxvh")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="church_san donato vecchietti" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(330, 357)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("64_dvs17")
+script = ExtResource("9_dsncv")
+_script_name = "san-michele"
+
+[node name="guild_physicians" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(332, 399)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("55_mujbv")
+script = ExtResource("9_dsncv")
+_script_name = "guild_2"
+
+[node name="guild_tanners" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(317, 397)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("56_dog63")
+script = ExtResource("9_dsncv")
+_script_name = "guild_1"
+
+[node name="sanitation_well" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(248, 402)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("28_wxttk")
+script = ExtResource("9_dsncv")
+_script_name = "well"
+
+[node name="sanitation_Ospedale vecchio di San Giovanni di Dio" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(243, 377)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("74_k33ei")
+script = ExtResource("9_dsncv")
+_script_name = "hospital"
+
+[node name="palazzo_Gianfigliazzi" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(281, 427)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("111_1hr54")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo"
+
+[node name="palazzo_Rucellai" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(263, 362)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("122_msgi4")
+script = ExtResource("9_dsncv")
+_script_name = "palazzo_2"
+
+[node name="security_wall" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(230.5, 407.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("156_2e2ti")
+script = ExtResource("9_dsncv")
+_script_name = "security"
+
+[node name="industry_cloth" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(256, 390)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("159_fj67u")
+script = ExtResource("9_dsncv")
+_script_name = "industry_1"
+
+[node name="industry_baker" type="Sprite2D" parent="board/leon_rosso/elements"]
+position = Vector2(267, 395)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("66_jnc87")
+script = ExtResource("9_dsncv")
+_script_name = "other_industry_1"
+
+[node name="change_list" type="Label" parent="board/leon_rosso"]
+offset_left = 241.0
+offset_top = 374.0
+offset_right = 281.0
+offset_bottom = 397.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+vertical_alignment = 1
+
+[node name="shop" type="Node2D" parent="."]
+position = Vector2(903, 166)
+script = ExtResource("3_2o8d3")
+
+[node name="restock_btn" type="Button" parent="shop"]
+offset_left = 201.0
+offset_top = -130.0
+offset_right = 305.0
+offset_bottom = -99.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+text = "Refresh"
+
+[node name="restock_cost" type="Label" parent="shop"]
+offset_left = 306.0
+offset_top = -122.0
+offset_right = 348.0
+offset_bottom = -106.0
+theme_override_fonts/font = ExtResource("8_04v0i")
+text = "-0"
+horizontal_alignment = 2
+
+[node name="restock_cost_icon" type="Sprite2D" parent="shop"]
+position = Vector2(359, -115)
+texture = ExtResource("15_u5ufa")
+
+[node name="card_picker_root" parent="." instance=ExtResource("14_n350e")]
+visible = false
+
+[node name="global_stats" type="Node2D" parent="."]
+position = Vector2(736, 40)
+script = ExtResource("15_oif6q")
+
+[node name="florin" type="Node2D" parent="global_stats"]
+position = Vector2(32, 0)
+
+[node name="florin_count" type="Label" parent="global_stats/florin"]
+custom_minimum_size = Vector2(48, 0)
+offset_left = -25.0
+offset_top = -7.0
+offset_right = 23.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("16_gigqh")
+text = "123"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="florin_icon" type="Sprite2D" parent="global_stats/florin"]
+position = Vector2(35, 0)
+texture = ExtResource("15_u5ufa")
+
+[node name="govpt" type="Node2D" parent="global_stats"]
+position = Vector2(-32, 0)
+
+[node name="govpt_count" type="Label" parent="global_stats/govpt"]
+custom_minimum_size = Vector2(48, 0)
+offset_left = -44.0
+offset_top = -7.0
+offset_right = 4.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("16_gigqh")
+text = "123"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="govpt_icon" type="Sprite2D" parent="global_stats/govpt"]
+position = Vector2(16, 0)
+texture = ExtResource("16_21r20")
+
+[node name="card_factory" type="Node" parent="."]
+script = ExtResource("4_gpflh")
+_script_directory = "res://card_scripts"
+
+[node name="building_factory" type="Node" parent="."]
+script = ExtResource("45_0quvh")
+_script_directory = "res://building_scripts"
+
+[node name="debug_console" type="LineEdit" parent="."]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 258.0
+offset_bottom = 37.0
+script = ExtResource("194_pwuel")
+
+[node name="card_dumpster" type="Node2D" parent="."]
+script = ExtResource("195_023qy")
+
+[connection signal="pressed" from="board/btn_end_turn" to="board" method="_on_btn_end_turn_pressed"]
+[connection signal="pressed" from="shop/restock_btn" to="shop" method="_on_restock_btn_pressed"]
+[connection signal="gui_input" from="debug_console" to="debug_console" method="_on_gui_input"]
+[connection signal="text_submitted" from="debug_console" to="debug_console" method="_on_text_submitted"]

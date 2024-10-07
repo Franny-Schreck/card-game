@@ -2,8 +2,8 @@ class_name GlobalStats
 extends Node2D
 
 const INITIAL_ENVIRONMENT: Dictionary = {
-	"fl" = 25,
-	"gp" = 30,
+	"fl" = 15,
+	"gp" = 15,
 	"total-church-level" = 0,
 	"total-taxation-level" = 0,
 	"total-bureaucracy-level" = 0,
