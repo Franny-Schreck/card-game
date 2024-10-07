@@ -22,3 +22,5 @@
 	(setf + %contentment 2)
 	(modify-prices 1 2)
 	(show (setf + %industry-level 1) "ind")
+
+#Source: https://knightstemplar.co/crafting-the-middle-ages-the-role-of-medieval-carpenters/

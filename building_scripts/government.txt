@@ -1,6 +1,6 @@
 {NAME} "government"
 
-{DESCRIPTION} "Gain 1 Florin and lose 2 contentment"
+{DESCRIPTION} "Gain 1 Florin and lose 1 contentment"
 
 {TYPE} "government"
 
@@ -8,4 +8,4 @@
 
 {EFFECT}
 	(setf + $fl 1)
-	(setf - %contentment 2)
+	(setf - %contentment 1)

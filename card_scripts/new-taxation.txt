@@ -18,3 +18,5 @@
 	(setf + $fl 3)
 	(setf - %contentment 3)
 	(setf + %taxation-level 1)
+
+#Source: https://www.scheideanstalt.de/muenzkatalog/goldmuenzen/oesterreich/florin/

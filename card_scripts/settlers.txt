@@ -26,3 +26,5 @@
 		(put-card "draw" (take-card -1 "discard" "random"))
 		())
 	(put-card "hand" (take-card 1 "draw" "top"))
+
+#Source: https://www.medievalists.net/2014/10/fashion-police-16th-century-italy/

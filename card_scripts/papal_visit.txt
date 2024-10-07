@@ -1,10 +1,10 @@
 {NAME} "papal-visit"
-{PLAY-COST} 1
-{SHOP-COST} 5
+{PLAY-COST} 7
+{SHOP-COST} 8
 
 {DISPLAYNAME} "Papal Visit"
 
-{DESCRIPTION} "You lose 5 Florin, gain 5 Governance Points and each district gains 5 contentment."
+{DESCRIPTION} "You lose 5 Florin, gain 3 Governance Points and each district gains 2 contentment."
 
 {IMAGE} "papal-visit"
 
@@ -24,3 +24,5 @@
 	(setf - $fl 5)
 	(setf + $gp 5)
 	(all-districts (setf + %contentment 5))
+
+#Source: http://www.papalartifacts.com/the-medici-popes-on-papal-artifacts/

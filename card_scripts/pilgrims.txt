@@ -22,3 +22,5 @@
 {EFFECT}
 	(setf + $fl 10)
 	(setf - %contentment 2)
+
+#Source: https://www.medievalists.net/tag/pilgrimage/ and https://1308.no/2019/09/08/peregrinus-preparatus-wandering-with-a-purpose/

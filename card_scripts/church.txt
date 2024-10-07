@@ -22,3 +22,5 @@
 	(setf - $fl 7)
 	(setf + $gp 5)
 	(setf + %church-level 1)
+
+#Source: https://www.tickets-florence.it/de/duomo-florence/history-of-florence-duomo/

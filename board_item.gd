@@ -61,7 +61,7 @@ func _ready() -> void:
 		_change_indicator = Sprite2D.new()
 		_change_indicator.texture = load("res://assets/god_hand.png")
 		_change_indicator.visible = false
-		_change_indicator.position = Vector2(25, 0) + _calc_right_image_edge() * scale
+		_change_indicator.position = _calc_change_indicator_pos()
 		_change_indicator.scale = Vector2.ONE / scale
 		_change_indicator.z_index = 2
 		add_child(_change_indicator)
@@ -99,6 +99,29 @@ func _get_district() -> District:
 		parent = parent.get_parent()
 
 	return parent
+
+func _calc_change_indicator_pos() -> Vector2:
+	var image: Image = texture.get_image()
+
+	var upper_bound: int = image.get_height()
+	var lower_bound: int = 0
+	var right_bound: int = 0
+	
+	for y: int in range(image.get_height()):
+		for x: int in range(image.get_width()):
+			var pixel = image.get_pixel(x, y)
+			if pixel.a8 > 10:
+				if upper_bound > y:
+					upper_bound = y
+				if lower_bound < y:
+					lower_bound = y
+				if right_bound < x:
+					right_bound = x
+
+	var right_center: Vector2 = Vector2(right_bound - image.get_width() / 2, (lower_bound + upper_bound - image.get_height()) / 2)
+	
+	return right_center + Vector2(25, 5)
+
 
 # TODO: Do this nicely for all images, irrespective of image size vs. actual
 #       sprite size and position

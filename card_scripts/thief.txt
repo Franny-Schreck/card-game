@@ -32,3 +32,5 @@
 			(put-card "discard" (take-card 1 "hand" "random"))
 		)
 		())
+
+#Source: https://us.idyllic.app/gen/medieval-smuggler-193888

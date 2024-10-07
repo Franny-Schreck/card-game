@@ -26,9 +26,10 @@
 	(if (!= (card-attr self "age") 0)
 		(each
 			(animate-play self)
-			(setf - $fl (max 0 (- 10 $total-sanitation-level)))
+			(setf - $fl (max 0 (- 20 $total-sanitation-level)))
 			(put-card "void" self)
 			(all-districts (setf - %contentment (max 0 (- 10 %sanitation-level))))
 		)
 		())
-	# TODO: Global contentment change (setf - %contentment 5)
+
+#Source: https://allthatsinteresting.com/how-many-people-died-from-the-black-plague

@@ -26,4 +26,6 @@
 	(animate-play self)
 	(put-card "void" self)
 	(setf - $gp (max 0 (- 7 $total-security-level)))
-	(all-districts (setf - %contentment 1))
+	(all-districts (setf - %contentment 3))
+
+#Source: https://www.nzz.ch/schweiz/500-jahre-ewiger-frieden-zwischen-der-schweiz-und-frankreich-als-die-eidgenossenschaft-nach-westen-kippte-ld.118696

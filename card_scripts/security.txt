@@ -25,3 +25,5 @@
 		())
 	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + %security-level 1)
+
+#Source: https://castellitoscani.com/en/florence-city-walls/

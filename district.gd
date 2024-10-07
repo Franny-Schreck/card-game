@@ -151,7 +151,7 @@ func apply_building_turn_effects(display_index: int) -> bool:
 	if changes.size() != 0:
 		# Do not await this, so it only affects the UI, without delaying any effects
 		var show_delay: float = 0.15 * pow(display_index, 0.75)
-		var hide_delay: float = show_delay + 2
+		var hide_delay: float = show_delay + 3
 		_show_change_list(show_delay)
 		_hide_change_list(hide_delay)
 		curr_environment = env.local_vars
@@ -296,8 +296,8 @@ func _show_change_list(delay: float) -> void:
 
 	tween.tween_callback(_change_list.show)
 
-	tween.tween_property(_change_list, "position", _change_list_position, 0.3)
-	tween.parallel().tween_property(_change_list, "modulate", Color.WHITE, 0.25)
+	tween.tween_property(_change_list, "position", _change_list_position, 0.15)
+	tween.parallel().tween_property(_change_list, "modulate", Color.WHITE, 0.15)
 
 
 func _hide_change_list(delay: float) -> void:

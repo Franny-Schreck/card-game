@@ -22,3 +22,5 @@
 	(setf - $fl 1)
 	(setf + %contentment 3)
 	(setf + %sanitation-level 1)
+
+#Source: https://knightstemplar.co/unveiling-disgusting-medieval-hygiene-practices-a-deep-dive/

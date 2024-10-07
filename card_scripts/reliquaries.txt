@@ -26,3 +26,5 @@
 	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + $gp 2)
 	(setf + %contentment 3)
+
+#Source: https://www.metmuseum.org/art/collection/search/464469 and https://projects.mcah.columbia.edu/treasuresofheaven/relics/Reliquary-Tabernacle-with-Virgin-and-Child.php

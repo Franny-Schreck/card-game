@@ -23,3 +23,5 @@
 	(setf + $gp 3)
 	(setf + %contentment 3)
 	(setf + %palazzo-level 1)
+
+#Source: https://www.theguardian.com/artanddesign/jonathanjonesblog/2011/aug/10/medicis-florence-renaissance-art

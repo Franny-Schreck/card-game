@@ -23,3 +23,5 @@
 	(put-card "hand" (take-card 1 "draw" "top"))
 	(setf + $gp 5)
 	(setf - %contentment 2)
+
+#Source: https://museocivico.comune.siena.it/sale/sala-di-balia

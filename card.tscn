@@ -54,13 +54,13 @@ position = Vector2(0, -17)
 
 [node name="display_name_container" type="Node2D" parent="scale_container"]
 position = Vector2(-26, -52)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.6, 0.6)
 
 [node name="display_name" type="Label" parent="scale_container/display_name_container"]
-offset_left = -0.999971
-offset_top = -0.499998
-offset_right = 59.0
-offset_bottom = 9.5
+offset_left = -2.11108
+offset_top = 0.611109
+offset_right = 57.8889
+offset_bottom = 10.6111
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_b67tl")
 theme_override_font_sizes/font_size = 8

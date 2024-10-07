@@ -20,3 +20,5 @@
 {EFFECT}
 	(setf + %contentment 7)
 	(async 5 (setf - $fl 1))
+
+#Source: http://www.artnet.de/k%C3%BCnstler/quentin-metsys-massys-the-younger/the-tax-collectors-RZ6fqlKNnHhwoNMSK6cQcQ2

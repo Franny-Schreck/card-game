@@ -23,3 +23,5 @@
 	(if (> %taxation-level 0)
 		(replace-card "taxation" "new-taxation")
 		())
+
+#Source: https://www.scheideanstalt.de/muenzkatalog/goldmuenzen/oesterreich/florin/
